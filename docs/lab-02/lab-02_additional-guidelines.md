@@ -1,6 +1,6 @@
 # Lab 02 Additional Guidelines/Requirements
 
-These are lab-02-specific requirements imposed upon the base guidelines. **These rules take priority over the base guidelines in all cases.**
+These are lab-02-specific requirements imposed upon the base guidelines. **These rules take priority over the general guidelines in all cases.**
 
 ## Programming Requirements
 - Implement the requested sorting and binary-search algorithms yourself. Built-in helpers such as Arrays.sort(), Collections.sort(), and library search methodsm may not replace the required implementations.
