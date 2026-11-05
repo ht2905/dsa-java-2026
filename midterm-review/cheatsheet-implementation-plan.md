@@ -5,6 +5,8 @@
 
 ## General Rules
 - Since I can't find proper Java code, your cheatsheet should be focused on **code**  and **actual templates for implementing** each concept I've learned in the `midterm-review-book`. Handhold me: write those modular templates so simply that I can just copy (from the cheatsheet) and paste (into the exam paper) during the exam. Also include instructions on how to use those modules together.
+- Simple code and implementation is better: I just need them to be simple and readable, not optimized the way I usually expect.
+- Some stuff that aren't on the DSA exam but are fundamental: getters, setters, and constructors. Include ready-to-use template for each in the cheatsheets.
 - I'm only allowed to bring eight A4 pages as my cheatsheet into the exam room. I've decided to take you generated cheatsheet and put it through this Typst template:
 	```typst
 	// =========================================================================
@@ -99,9 +101,9 @@
 
 Make sure the cheatsheet is long enough to take advantage of all the space I get (eight 4-column A4 pages).
 
-- If you still have space left on the cheatsheet, fill that space with the real exam solutions and mock exam solutions from `/home/ht2905/projects/dsa-java-2026/midterm-review/exam-solution/`.
+- If you still have space left on the cheatsheet, fill that space with the real exam solutions and mock exam solutions from `/home/ht2905/projects/dsa-java-2026/midterm-review/exam-solution/`. Make sure the end results fill all $4 \cdot 8 = 32 \text{ columns}$.
 - Your generated cheatsheets should be written in normal Markdown – I will convert them into Typst myself.
 
 ## Some Areas to Focus on
 - Compare the time complexity of the algorithms of interest, such as Bubble Sort, Merge Sort, Insertion Sort, Selection Sort, Binary Search, Optimized Linear Search, Linear Search, and so on.
-- Include explanations of how each algorithm wo
+- Include explanations of how each algorithm works.
