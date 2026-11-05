@@ -12,19 +12,18 @@ Undergraduate coursework, algorithm implementations, analytical reports, and pro
 
 ```text
 dsa-java-2026/
-├── docs/                      # Course specifications and laboratory guidelines
 ├── in-class-assignments/      # In-class algorithmic exercises and quizzes
-├── lab-*/                     # Laboratory implementations, test drivers, and formal reports
 ├── lecture-slides/            # Official course theoretical slides
-├── src/                       # Standalone algorithmic implementations
-└── summary-and-cheatsheets/   # First-principles review guides and Java quick reference
+├── midterm-review/            # Comprehensive review guide, cheatsheets, and exam solutions
+├── practical-module/          # Laboratory specifications, implementations, and analytical reports
+└── src/                       # Standalone algorithmic implementations
 ```
 
 ---
 
 ## Curriculum Structure & Problem Sets
 
-All detailed problem breakdowns, algorithmic classifications, and formal time and auxiliary space complexity bounds are cataloged in [`problem-index.md`](problem-index.md).
+Overview of algorithmic techniques and complexity evaluations across the curriculum:
 
 - **Lab 01 – Array Fundamentals & Invariant Verification:**
   Single-pass prefix and suffix arrays, missing element arithmetic progressions, frequency indexing, and subarray element-contribution weighting.
@@ -65,12 +64,12 @@ Compile and run Java source files directly using `javac` and `java`:
 
 ```bash
 # Example: Run Lab 02 Problem 01 (Sorting comparison driver)
-javac lab-02/src/Problem01_CalibrationOffsetOrdering.java lab-02/src/SortUtils.java
-java -cp lab-02/src Problem01_CalibrationOffsetOrdering
+javac practical-module/lab-02/src/Problem01_CalibrationOffsetOrdering.java practical-module/lab-02/src/SortUtils.java
+java -cp practical-module/lab-02/src Problem01_CalibrationOffsetOrdering
 
 # Example: Run Lab 03 Problem 05 (Peak Passenger Window - Sliding Window Maximum)
-javac lab-03/src/Problem05_PeakPassengerWindow.java
-java -cp lab-03/src Problem05_PeakPassengerWindow
+javac practical-module/lab-03/src/Problem05_PeakPassengerWindow.java
+java -cp practical-module/lab-03/src Problem05_PeakPassengerWindow
 
 # Example: Run Lab 05 Quiz Problem 02 (Balance)
 javac in-class-assignments/lab-05-quiz/problem-02/Main.java
@@ -88,12 +87,13 @@ java -cp in-class-assignments/lab-05-quiz/problem-01 Main < input.txt
 
 ## Reference Materials & Guides
 
-- **Problem Specifications & Complexity Index:** Detailed operation counts and asymptotic bounds cataloged in [`problem-index.md`](problem-index.md).
-- **Midterm Master Handbook (`summary-and-cheatsheets/dsa_midterm-review-book.md`):**
+- **Midterm Master Handbook (`midterm-review/review-guide/midterm-review-book.md`):**
   A first-principles guide tailored for bioinformaticians transitioning to DSA, covering memory models (Stack vs. Heap), reference semantics, Big-O mechanics, and recursion frames.
-- **Java Shorthands Cheatsheet (`summary-and-cheatsheets/java-shorthands.md`):**
+- **Java Shorthands Cheatsheet (`midterm-review/cheatsheets/java-shorthands.md`):**
   Fast I/O patterns, IDE live templates, lambda comparators, and heap/map idioms.
-- **Midterm Review Cheatsheets (`docs/lab-04/`):**
+- **Exam Cheatsheets (`midterm-review/cheatsheets/4-column/`):**
+  Calibrated 8-page 4-column Typst cheatsheets with algorithmic templates and reversal rules.
+- **Midterm Review Cheatsheets (`practical-module/docs/lab-04/`):**
   Summary reference sheets covering algorithm analysis and core data structures.
 - **Course Lecture Slides (`lecture-slides/`):**
   Curriculum slide presentations spanning computational complexity, linear collections, sorting algorithms, and recursion trees.
