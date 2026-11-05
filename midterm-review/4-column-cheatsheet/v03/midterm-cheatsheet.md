@@ -210,8 +210,7 @@ int largest = maxPQ.poll();  // Returns 20
 3. **Nested Loops (Quadratic $O(n^2)$)**:
    - Dependent inner loop: `for (int i = 0; i < n; i++) for (int j = i + 1; j < n; j++)`
    - Total executions: $\sum_{i=0}^{n-1} (n - 1 - i) = 
-rac{n(n-1)}{2} = 
-rac{n^2 - n}{2} \in \Theta(n^2)$.
+\frac{n(n-1)}{2} = \frac{n^2 - n}{2} \in \Theta(n^2)$.
 4. **Divide and Conquer (Merge Sort $O(n \log n)$)**:
    - Recurrence: $T(n) = 2T(n/2) + O(n)$.
    - By Master Theorem: $a = 2, b = 2, d = 1 \implies \log_b a = \log_2 2 = 1 = d \implies T(n) \in \Theta(n \log n)$.
@@ -232,11 +231,10 @@ rac{n^2 - n}{2} \in \Theta(n^2)$.
 
 | Sorting Algorithm | Best Time | Average Time | Worst Time | Auxiliary Space | Stable? | Comparisons (Avg) | Swaps / Shifts (Avg) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Bubble Sort** | $O(n)$ flag | $O(n^2)$ | $O(n^2)$ | $O(1)$ | **YES** | $pprox n^2 / 2$ | $pprox 3n^2 / 4$ writes |
-| **Selection Sort** | $O(n^2)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$ | **NO** | Exactly $
-rac{n(n-1)}{2}$ | At most $n - 1$ swaps |
-| **Insertion Sort** | $O(n)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$ | **YES** | $pprox n^2 / 4$ | $pprox n^2 / 4$ shifts |
-| **Merge Sort** | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | $O(n)$ | **YES** | $pprox n \log_2 n$ | $O(n \log n)$ copies |
+| **Bubble Sort** | $O(n)$ flag | $O(n^2)$ | $O(n^2)$ | $O(1)$ | **YES** | $\approx n^2 / 2$ | $\approx 3n^2 / 4$ writes |
+| **Selection Sort** | $O(n^2)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$ | **NO** | Exactly $\frac{n(n-1)}{2}$ | At most $n - 1$ swaps |
+| **Insertion Sort** | $O(n)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$ | **YES** | $\approx n^2 / 4$ | $\approx n^2 / 4$ shifts |
+| **Merge Sort** | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | $O(n)$ | **YES** | $\approx n \log_2 n$ | $O(n \log n)$ copies |
 
 ---
 
@@ -283,20 +281,15 @@ floor + 1 \implies \mathbf{O(\log n)}$ worst and average case. Best case $O(1)$.
 - **Optimized Early-Exit**: A boolean flag `swapped` is set to `false` at the start of each pass. If no swaps occur during an entire pass, the array is already sorted, and the algorithm breaks immediately.
 - **Complexity**:
   - *Best Case*: $O(n)$ comparisons, $0$ swaps (when already sorted with `swapped` flag).
-  - *Worst Case*: Array reversed. $
-rac{n(n-1)}{2}$ comparisons and $
-rac{n(n-1)}{2}$ swaps $\implies \mathbf{O(n^2)}$.
-  - *Average Case*: $
-rac{n(n-1)}{2}$ comparisons, $pprox 
-rac{n^2}{4}$ swaps $\implies \mathbf{O(n^2)}$.
-- **Cost**: Each swap requires 3 memory operations ($2$ array writes). Worst-case writes $pprox n^2 - n$. Slowest elementary sort in practice.
+  - *Worst Case*: Array reversed. $\frac{n(n-1)}{2}$ comparisons and $\frac{n(n-1)}{2}$ swaps $\implies \mathbf{O(n^2)}$.
+  - *Average Case*: $\frac{n(n-1)}{2}$ comparisons, $\approx \frac{n^2}{4}$ swaps $\implies \mathbf{O(n^2)}$.
+- **Cost**: Each swap requires 3 memory operations ($2$ array writes). Worst-case writes $\approx n^2 - n$. Slowest elementary sort in practice.
 
 ### 5. Selection Sort
 - **Mechanical Principle**: Blind extremum selection and boundary placement.
 - **How it Works**: Divides array into sorted prefix $arr[0..i-1]$ and unsorted suffix $arr[i..n-1]$. In iteration $i$, unconditionally scans the entire unsorted suffix to find the index `min_idx` of the global minimum. Then performs **exactly ONE swap** between `arr[i]` and `arr[min_idx]`.
 - **Complexity**:
-  - *Comparisons*: Completely non-adaptive! Even if the array is already sorted, it MUST compare every element in the remaining suffix to confirm no smaller element exists. Always exactly $\sum_{i=0}^{n-2} (n - 1 - i) = \mathbf{
-rac{n(n-1)}{2} \in \Theta(n^2)}$ comparisons in Best, Average, and Worst cases!
+  - *Comparisons*: Completely non-adaptive! Even if the array is already sorted, it MUST compare every element in the remaining suffix to confirm no smaller element exists. Always exactly $\sum_{i=0}^{n-2} (n - 1 - i) = \mathbf{\frac{n(n-1)}{2} \in \Theta(n^2)}$ comparisons in Best, Average, and Worst cases!
   - *Swaps*: At most $n - 1$ swaps across the entire sort.
 - **Stability**: **UNSTABLE**. Long-distance swaps leapfrog over identical elements (e.g. `[2a, 2b, 1] 	o [1, 2b, 2a]`).
 - **Ideal Use Case**: Optimal when write operations are physically expensive or destructive (e.g., flash memory, EEPROM), since it guarantees at most $n - 1$ swaps.
@@ -306,12 +299,8 @@ rac{n(n-1)}{2} \in \Theta(n^2)}$ comparisons in Best, Average, and Worst cases!
 - **How it Works**: Divides array into sorted prefix $arr[0..i-1]$ and unsorted suffix $arr[i..n-1]$. In iteration $i$, saves `key = arr[i]`. It scans backwards from $j = i - 1$ down to 0. For every element where `arr[j] > key`, it shifts `arr[j]` one position right (`arr[j + 1] = arr[j]`). As soon as an element $\le key$ is found (or $j < 0$), the scan stops immediately, and `key` is written into the vacated slot `arr[j + 1]`.
 - **Complexity**:
   - *Best Case*: Already sorted array $\implies key \ge arr[i-1]$ on the first check. Loop terminates after 1 comparison per outer pass. Exactly $n - 1$ comparisons, $0$ shifts $\implies \mathbf{O(n)}$ linear time!
-  - *Worst Case*: Reversed array $\implies$ every key shifts the entire prefix. $
-rac{n(n-1)}{2}$ comparisons, $
-rac{n(n-1)}{2}$ shifts $\implies \mathbf{O(n^2)}$.
-  - *Average Case*: Random data $\implies$ key stops halfway through prefix. $pprox 
-rac{n^2}{4}$ comparisons, $pprox 
-rac{n^2}{4}$ shifts $\implies \mathbf{O(n^2)}$.
+  - *Worst Case*: Reversed array $\implies$ every key shifts the entire prefix. $\frac{n(n-1)}{2}$ comparisons, $\frac{n(n-1)}{2}$ shifts $\implies \mathbf{O(n^2)}$.
+  - *Average Case*: Random data $\implies$ key stops halfway through prefix. $\approx \frac{n^2}{4}$ comparisons, $\approx \frac{n^2}{4}$ shifts $\implies \mathbf{O(n^2)}$.
 - **Stability**: **STABLE**. Strict inequality `arr[j] > key` prevents duplicate keys from crossing.
 - **Shift vs Swap Advantage**: A shift requires only 1 array write (`arr[j+1] = arr[j]`), whereas a swap requires 2 array writes and a temporary variable. Insertion Sort does half the memory writes of Bubble Sort.
 
@@ -349,13 +338,12 @@ ceil$. At each level, merging takes $O(n)$ time.
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Linear Search** | Brute Force | $O(1)$ | $O(n)$ | $O(n)$ | $O(1)$ | N/A | No | $n/2$ | $0$ |
 | **Sentinel Search**| Optimized Brute | $O(1)$ | $O(n)$ | $O(n)$ | $O(1)$ | N/A | No | $n/2$ (half branches) | $2$ (set/restore) |
-| **Binary Search** | Divide & Conquer | $O(1)$ | $O(\log n)$ | $O(\log n)$ | $O(1)$ | N/A | Yes | $pprox \log_2 n$ | $0$ |
-| **Bubble Sort** | Exchange | $O(n)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$ | **YES** | Yes (flag) | $pprox n^2 / 2$ | $pprox 3n^2 / 4$ writes |
-| **Selection Sort** | Selection | $O(n^2)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$ | **NO** | No | Exactly $
-rac{n(n-1)}{2}$ | At most $n - 1$ swaps |
-| **Insertion Sort** | Insertion | $O(n)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$ | **YES** | **YES** | $pprox n^2 / 4$ | $pprox n^2 / 4$ shifts |
-| **Merge Sort** | Divide & Conquer | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | $O(n)$ | **YES** | No | $pprox n \log_2 n$ | $2n \log_2 n$ copies |
-| **Quick Sort** | Partitioning | $O(n \log n)$ | $O(n \log n)$ | $O(n^2)$ | $O(\log n)$ | **NO** | No | $pprox 1.39 n \log_2 n$ | $O(n \log n)$ swaps |
+| **Binary Search** | Divide & Conquer | $O(1)$ | $O(\log n)$ | $O(\log n)$ | $O(1)$ | N/A | Yes | $\approx \log_2 n$ | $0$ |
+| **Bubble Sort** | Exchange | $O(n)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$ | **YES** | Yes (flag) | $\approx n^2 / 2$ | $\approx 3n^2 / 4$ writes |
+| **Selection Sort** | Selection | $O(n^2)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$ | **NO** | No | Exactly $\frac{n(n-1)}{2}$ | At most $n - 1$ swaps |
+| **Insertion Sort** | Insertion | $O(n)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$ | **YES** | **YES** | $\approx n^2 / 4$ | $\approx n^2 / 4$ shifts |
+| **Merge Sort** | Divide & Conquer | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | $O(n)$ | **YES** | No | $\approx n \log_2 n$ | $2n \log_2 n$ copies |
+| **Quick Sort** | Partitioning | $O(n \log n)$ | $O(n \log n)$ | $O(n^2)$ | $O(\log n)$ | **NO** | No | $\approx 1.39 n \log_2 n$ | $O(n \log n)$ swaps |
 
 ---
 
@@ -697,8 +685,7 @@ public class InsertionSort {
   - *Counterexample*: `[2_a, 2_b, 1]`. Min is `1` at index 2. Swap `a[0]` ($2_a$) with `a[2]` ($1$). Array becomes `[1, 2_b, 2_a]`. Relative order of $2_a$ and $2_b$ is inverted!
 - **Best-Case Comparisons**:
   - Insertion Sort: Already sorted $\implies a[j] > key$ fails on first check. Exactly $n - 1$ comparisons, 0 shifts $\implies \mathbf{O(n)}$.
-  - Selection Sort: Non-adaptive $\implies$ outer loop runs $n - 1$ times; inner loop scans to end. Always $\mathbf{
-rac{n(n-1)}{2} \in O(n^2)}$ comparisons.
+  - Selection Sort: Non-adaptive $\implies$ outer loop runs $n - 1$ times; inner loop scans to end. Always $\mathbf{\frac{n(n-1)}{2} \in O(n^2)}$ comparisons.
 
 ---
 
@@ -2477,10 +2464,10 @@ Before submitting any code or tracing answer, check:
 5. **Linked List Deletions**: Never advance your traversal pointer `cur` immediately after unlinking a duplicate node (`cur.next = cur.next.next`), because the newly attached node might also be a duplicate!
 
 ## 13.2 Rapid Mental Math & Recurrence Formulas
-- Comparisons in Selection Sort: Exactly $rac{n(n - 1)}{2} pprox 0.5 n^2$.
-- Comparisons in Insertion Sort (Average): $pprox rac{n^2}{4} = 0.25 n^2$.
+- Comparisons in Selection Sort: Exactly $\frac{n(n - 1)}{2} \approx 0.5 n^2$.
+- Comparisons in Insertion Sort (Average): $\approx \frac{n^2}{4} = 0.25 n^2$.
 - Number of Swaps in Selection Sort: At most $n - 1$.
-- Number of Shifts in Insertion Sort: At most $rac{n(n - 1)}{2}$, average $pprox rac{n^2}{4}$.
+- Number of Shifts in Insertion Sort: At most $\frac{n(n - 1)}{2}$, average $\approx \frac{n^2}{4}$.
 - Tree Height (Heap / Balanced Tree): $\lfloor \log_2 n 
 floor$.
 - Exam Rounding Convention: Ceiling division `(a + b - 1) / b` (e.g. $7 / 2 \implies 4$).

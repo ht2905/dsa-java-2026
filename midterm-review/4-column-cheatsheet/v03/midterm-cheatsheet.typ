@@ -338,7 +338,7 @@ int largest = maxPQ.poll();  // Returns 20
   - Dependent inner loop:
     `for (int i = 0; i < n; i++) for (int j = i + 1; j < n; j++)`
   - Total executions:
-    $sum_(i = 0)^(n - 1)\(n - 1 - i\)= r a c n\(n - 1\) 2 = r a c n^2 - n 2 in Theta\(n^2\)$.
+    $sum_(i = 0)^(n - 1)\(n - 1 - i\)= frac(n\(n - 1\), 2) = frac(n^2 - n, 2) in Theta\(n^2\)$.
 + #strong[Divide and Conquer (Merge Sort $O\(n log n\)$)]:
   - Recurrence: $T\(n\)= 2 T\(n\/2\)+ O\(n\)$.
   - By Master Theorem:
@@ -390,17 +390,16 @@ int largest = maxPQ.poll();  // Returns 20
       (Avg)], [Swaps / Shifts (Avg)],),
     table.hline(),
     [#strong[Bubble Sort]], [$O\(n\)$
-    flag], [$O\(n^2\)$], [$O\(n^2\)$], [$O\(1\)$], [#strong[YES]], [\$pprox n^2 / 2\$], [\$pprox 3n^2 / 4\$
+    flag], [$O\(n^2\)$], [$O\(n^2\)$], [$O\(1\)$], [#strong[YES]], [$approx n^2\/2$], [$approx 3 n^2\/4$
     writes],
     [#strong[Selection
     Sort]], [$O\(n^2\)$], [$O\(n^2\)$], [$O\(n^2\)$], [$O\(1\)$], [#strong[NO]], [Exactly
-    \$], [],
-    [rac{n(n-1)}{2}\$], [At most $n - 1$ swaps], [], [], [], [], [], [],
+    $frac(n\(n - 1\), 2)$], [At most $n - 1$ swaps],
     [#strong[Insertion
-    Sort]], [$O\(n\)$], [$O\(n^2\)$], [$O\(n^2\)$], [$O\(1\)$], [#strong[YES]], [\$pprox n^2 / 4\$], [\$pprox n^2 / 4\$
+    Sort]], [$O\(n\)$], [$O\(n^2\)$], [$O\(n^2\)$], [$O\(1\)$], [#strong[YES]], [$approx n^2\/4$], [$approx n^2\/4$
     shifts],
     [#strong[Merge
-    Sort]], [$O\(n log n\)$], [$O\(n log n\)$], [$O\(n log n\)$], [$O\(n\)$], [#strong[YES]], [\$pprox n \\log\_2 n\$], [$O\(n log n\)$
+    Sort]], [$O\(n log n\)$], [$O\(n log n\)$], [$O\(n log n\)$], [$O\(n\)$], [#strong[YES]], [$approx n log_2 n$], [$O\(n log n\)$
     copies],
   )]
   , kind: table
@@ -489,13 +488,14 @@ int largest = maxPQ.poll();  // Returns 20
 - #strong[Complexity]:
   - #emph[Best Case]: $O\(n\)$ comparisons, $0$ swaps (when already
     sorted with `swapped` flag).
-  - #emph[Worst Case]: Array reversed. \$ rac{n(n-1)}{2}\$ comparisons
-    and \$ rac{n(n-1)}{2}\$ swaps
+  - #emph[Worst Case]: Array reversed. $frac(n\(n - 1\), 2)$ comparisons
+    and $frac(n\(n - 1\), 2)$ swaps
     $arrow.r.double.long upright(bold(O\(n^2\)))$.
-  - #emph[Average Case]: \$ rac{n(n-1)}{2}\$ comparisons, \$pprox
-    rac{n^2}{4}\$ swaps $arrow.r.double.long upright(bold(O\(n^2\)))$.
+  - #emph[Average Case]: $frac(n\(n - 1\), 2)$ comparisons,
+    $approx n^2 / 4$ swaps
+    $arrow.r.double.long upright(bold(O\(n^2\)))$.
 - #strong[Cost]: Each swap requires 3 memory operations ($2$ array
-  writes). Worst-case writes \$pprox n^2 - n\$. Slowest elementary sort
+  writes). Worst-case writes $approx n^2 - n$. Slowest elementary sort
   in practice.
 
 === 5. Selection Sort
@@ -511,7 +511,7 @@ int largest = maxPQ.poll();  // Returns 20
   - #emph[Comparisons]: Completely non-adaptive! Even if the array is
     already sorted, it MUST compare every element in the remaining
     suffix to confirm no smaller element exists. Always exactly
-    $sum_(i = 0)^(n - 2)\(n - 1 - i\)= upright(bold(r a c n\(n - 1\) 2 in Theta\(n^2\)))$
+    $sum_(i = 0)^(n - 2)\(n - 1 - i\)= upright(bold(frac(n\(n - 1\), 2) in Theta\(n^2\)))$
     comparisons in Best, Average, and Worst cases!
   - #emph[Swaps]: At most $n - 1$ swaps across the entire sort.
 - #strong[Stability]: #strong[UNSTABLE]. Long-distance swaps leapfrog
@@ -538,13 +538,13 @@ int largest = maxPQ.poll();  // Returns 20
     comparisons, $0$ shifts $arrow.r.double.long upright(bold(O\(n\)))$
     linear time!
   - #emph[Worst Case]: Reversed array $arrow.r.double.long$ every key
-    shifts the entire prefix. \$ rac{n(n-1)}{2}\$ comparisons, \$
-    rac{n(n-1)}{2}\$ shifts
+    shifts the entire prefix. $frac(n\(n - 1\), 2)$ comparisons,
+    $frac(n\(n - 1\), 2)$ shifts
     $arrow.r.double.long upright(bold(O\(n^2\)))$.
   - #emph[Average Case]: Random data $arrow.r.double.long$ key stops
-    halfway through prefix. \$pprox
-    rac{n^2}{4}\$ comparisons, \$pprox
-    rac{n^2}{4}\$ shifts $arrow.r.double.long upright(bold(O\(n^2\)))$.
+    halfway through prefix. $approx n^2 / 4$ comparisons,
+    $approx n^2 / 4$ shifts
+    $arrow.r.double.long upright(bold(O\(n^2\)))$.
 - #strong[Stability]: #strong[STABLE]. Strict inequality `arr[j] > key`
   prevents duplicate keys from crossing.
 - #strong[Shift vs Swap Advantage]: A shift requires only 1 array write
@@ -618,23 +618,21 @@ int largest = maxPQ.poll();  // Returns 20
     Brute], [$O\(1\)$], [$O\(n\)$], [$O\(n\)$], [$O\(1\)$], [N/A], [No], [$n\/2$
     (half branches)], [$2$ (set/restore)],
     [#strong[Binary Search]], [Divide &
-    Conquer], [$O\(1\)$], [$O\(log n\)$], [$O\(log n\)$], [$O\(1\)$], [N/A], [Yes], [\$pprox \\log\_2 n\$], [$0$],
+    Conquer], [$O\(1\)$], [$O\(log n\)$], [$O\(log n\)$], [$O\(1\)$], [N/A], [Yes], [$approx log_2 n$], [$0$],
     [#strong[Bubble
     Sort]], [Exchange], [$O\(n\)$], [$O\(n^2\)$], [$O\(n^2\)$], [$O\(1\)$], [#strong[YES]], [Yes
-    (flag)], [\$pprox n^2 / 2\$], [\$pprox 3n^2 / 4\$ writes],
+    (flag)], [$approx n^2\/2$], [$approx 3 n^2\/4$ writes],
     [#strong[Selection
     Sort]], [Selection], [$O\(n^2\)$], [$O\(n^2\)$], [$O\(n^2\)$], [$O\(1\)$], [#strong[NO]], [No], [Exactly
-    \$], [],
-    [rac{n(n-1)}{2}\$], [At most $n - 1$
-    swaps], [], [], [], [], [], [], [], [],
+    $frac(n\(n - 1\), 2)$], [At most $n - 1$ swaps],
     [#strong[Insertion
-    Sort]], [Insertion], [$O\(n\)$], [$O\(n^2\)$], [$O\(n^2\)$], [$O\(1\)$], [#strong[YES]], [#strong[YES]], [\$pprox n^2 / 4\$], [\$pprox n^2 / 4\$
+    Sort]], [Insertion], [$O\(n\)$], [$O\(n^2\)$], [$O\(n^2\)$], [$O\(1\)$], [#strong[YES]], [#strong[YES]], [$approx n^2\/4$], [$approx n^2\/4$
     shifts],
     [#strong[Merge Sort]], [Divide &
-    Conquer], [$O\(n log n\)$], [$O\(n log n\)$], [$O\(n log n\)$], [$O\(n\)$], [#strong[YES]], [No], [\$pprox n \\log\_2 n\$], [$2 n log_2 n$
+    Conquer], [$O\(n log n\)$], [$O\(n log n\)$], [$O\(n log n\)$], [$O\(n\)$], [#strong[YES]], [No], [$approx n log_2 n$], [$2 n log_2 n$
     copies],
     [#strong[Quick
-    Sort]], [Partitioning], [$O\(n log n\)$], [$O\(n log n\)$], [$O\(n^2\)$], [$O\(log n\)$], [#strong[NO]], [No], [\$pprox 1.39 n \\log\_2 n\$], [$O\(n log n\)$
+    Sort]], [Partitioning], [$O\(n log n\)$], [$O\(n log n\)$], [$O\(n^2\)$], [$O\(log n\)$], [#strong[NO]], [No], [$approx 1.39 n log_2 n$], [$O\(n log n\)$
     swaps],
   )]
   , kind: table
@@ -1023,7 +1021,7 @@ public class InsertionSort {
     $arrow.r.double.long upright(bold(O\(n\)))$.
   - Selection Sort: Non-adaptive $arrow.r.double.long$ outer loop runs
     $n - 1$ times; inner loop scans to end. Always
-    $upright(bold(r a c n\(n - 1\) 2 in O\(n^2\)))$ comparisons.
+    $upright(bold(frac(n\(n - 1\), 2) in O\(n^2\)))$ comparisons.
 
 #divider()
 
@@ -3319,13 +3317,12 @@ newly attached node might also be a duplicate!
 
 == 13.2 Rapid Mental Math & Recurrence Formulas
 <rapid-mental-math-recurrence-formulas>
-- Comparisons in Selection Sort: Exactly \$rac{n(n - 1)}{2} pprox 0.5
-  n^2\$.
-- Comparisons in Insertion Sort (Average):
-  \$pprox rac{n^2}{4} = 0.25 n^2\$.
+- Comparisons in Selection Sort: Exactly
+  $frac(n\(n - 1\), 2) approx 0.5 n^2$.
+- Comparisons in Insertion Sort (Average): $approx n^2 / 4 = 0.25 n^2$.
 - Number of Swaps in Selection Sort: At most $n - 1$.
-- Number of Shifts in Insertion Sort: At most \$rac{n(n - 1)}{2}\$,
-  average \$pprox rac{n^2}{4}\$.
+- Number of Shifts in Insertion Sort: At most $frac(n\(n - 1\), 2)$,
+  average $approx n^2 / 4$.
 - Tree Height (Heap / Balanced Tree): $floor.l log_2 n f l o o r$.
 - Exam Rounding Convention: Ceiling division `(a + b - 1) / b`
   (e.g.~$7\/2 arrow.r.double.long 4$).
