@@ -268,7 +268,7 @@ int largest = maxPQ.poll();  // Returns 20
   - If `arr[mid] == target`, match found ($O(1)$ best case).
   - If `arr[mid] < target`, the target CANNOT exist in the left half `arr[low..mid]`. Discard left half: `low = mid + 1`.
   - If `arr[mid] > target`, discard right half: `high = mid - 1`.
-- **Complexity**: Halves the search space every step ($n 	o n/2 	o n/4 	o \dots 	o 1$). Total steps = $\lfloor \log_2 n 
+- **Complexity**: Halves the search space every step ($n \to n/2 \to n/4 \to \dots \to 1$). Total steps = $\lfloor \log_2 n 
 floor + 1 \implies \mathbf{O(\log n)}$ worst and average case. Best case $O(1)$.
 - **Non-Negotiable Constraints**:
   1. Monotonicity: Data MUST be sorted.
@@ -291,7 +291,7 @@ floor + 1 \implies \mathbf{O(\log n)}$ worst and average case. Best case $O(1)$.
 - **Complexity**:
   - *Comparisons*: Completely non-adaptive! Even if the array is already sorted, it MUST compare every element in the remaining suffix to confirm no smaller element exists. Always exactly $\sum_{i=0}^{n-2} (n - 1 - i) = \mathbf{\frac{n(n-1)}{2} \in \Theta(n^2)}$ comparisons in Best, Average, and Worst cases!
   - *Swaps*: At most $n - 1$ swaps across the entire sort.
-- **Stability**: **UNSTABLE**. Long-distance swaps leapfrog over identical elements (e.g. `[2a, 2b, 1] 	o [1, 2b, 2a]`).
+- **Stability**: **UNSTABLE**. Long-distance swaps leapfrog over identical elements (e.g. `[2a, 2b, 1] \to [1, 2b, 2a]`).
 - **Ideal Use Case**: Optimal when write operations are physically expensive or destructive (e.g., flash memory, EEPROM), since it guarantees at most $n - 1$ swaps.
 
 ### 6. Insertion Sort
@@ -736,7 +736,7 @@ public class SelectionSort {
 ```
 
 ## 5.3 Selection Sort: Variant Max-to-End (Mock Exam 2 Style)
-Finds the maximum in $a[0..	ext{end}]$ and swaps it to position $	ext{end}$.
+Finds the maximum in $a[0..\text{end}]$ and swaps it to position $\text{end}$.
 ```java
 public static void sortMaxToEnd(int[] a) {
     int n = a.length;

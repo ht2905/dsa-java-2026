@@ -37,15 +37,15 @@ For up to 2,000 calibration offsets, **Insertion Sort** is the best choice. It r
 
 ### Analysis Questions
 1. **Sorted regions maintained:** After $i$ passes, **Optimized Bubble Sort** maintains the $i$ largest elements in final sorted order at the right end (`a[n - i .. n - 1]`). **Selection Sort** maintains the $i$ smallest elements in final sorted order at the left prefix (`a[0 .. i - 1]`). **Insertion Sort** maintains the first $i$ original elements in relative sorted order at the left prefix (`a[0 .. i - 1]`), though later elements may still be inserted into this prefix.
-	
+  
 2. **Early termination:** If a complete left-to-right pass makes zero swaps, then `a[j] <= a[j + 1]` holds for every adjacent pair. By transitivity, the entire array is in non-decreasing order. Its best-case time is $O(n)$ ($n - 1$ comparisons, 0 swaps) and worst-case time is $O(n^2)$ ($\frac{n(n - 1)}{2}$ comparisons and swaps on strictly descending data).
-	
+  
 3. **Fixed comparison count:** **Selection Sort** always performs exactly $\frac{n(n - 1)}{2}$ key comparisons regardless of input order because its inner loop must scan every remaining element in the unsorted suffix to be certain it found the minimum.
-	
+  
 4. **Insertion shifts vs. Selection swaps:** In Insertion Sort, each shift moves one value one index right (1 array write), plus 1 final write to place `key`, totaling $k + 1$ writes when an element moves past $k$ larger items (up to $\frac{n(n-1)}{2} + (n-1)$ writes in the worst case). In Selection Sort, each pass performs at most 1 swap (2 array writes), so total writes never exceed $2(n - 1)$ ($O(n)$ writes) even in the worst case.
-	
+  
 5. **Working space and stability:** Each sorting algorithm uses $O(1)$ auxiliary working memory. The comparison driver allocates three separate $O(n)$ working copies (`copyBubble`, `copySelection`, `copyInsertion`) so the original array is preserved. **Optimized Bubble Sort** and **Insertion Sort** preserve equal-key order (stable) because they use strict inequality (`>`) and never move equal elements past one another. Standard **Selection Sort** is **not stable** because a long-range swap can jump an earlier occurrence of a value past an identical value into the unsorted suffix (e.g., in `[4a, 4b, 1]`, `4a` swaps with `1` to yield `[1, 4b, 4a]`).
-	
+  
 6. **Why elementary sorting stays small:** Elementary sorts take $O(n^2)$ comparisons in the average and worst cases. At $n = 2,000$, $\frac{n(n-1)}{2} \approx 2 \times 10^6$ operations, which finishes in milliseconds. At $n = 10^6$ (permitted in later $O(n)$ sliding window or $O(\log n)$ binary search tasks), $\frac{n(n-1)}{2} \approx 5 \times 10^{11}$ operations, which would take minutes or hours.
 
 ### Test Cases & Recorded Outputs
@@ -118,20 +118,20 @@ The algorithm scans the battery array `charges` sequentially from index `0` to `
 
 ### Time & Auxiliary-Space Complexity
 - **Pre-processing Cost:** $O(1)$ (searches directly on the original array).
-	
-	- **Time Complexity:** Best case $O(1)$ (when the array is empty or the very first battery `charges[0] >= requirement`); Worst and Average case $O(n)$ (when the first qualifying battery is near the end or no battery qualifies, requiring all $n$ elements to be inspected).
-	
-	- **Auxiliary-Space Complexity:** $O(1)$ working memory (only loop index `i` and `long inspections` counter).
+  
+  - **Time Complexity:** Best case $O(1)$ (when the array is empty or the very first battery `charges[0] >= requirement`); Worst and Average case $O(n)$ (when the first qualifying battery is near the end or no battery qualifies, requiring all $n$ elements to be inspected).
+  
+  - **Auxiliary-Space Complexity:** $O(1)$ working memory (only loop index `i` and `long inspections` counter).
 
 ### Analysis Questions
 1. **Why the first successful check establishes the earliest position:** Because the loop iterates strictly left-to-right starting at index `0` (`i = 0, 1, 2, ...`), reaching index `i` means indices `0` through `i - 1` were already tested and found strictly less than $t$. Therefore, no earlier qualifying index can exist.
 
 2. **Why testing equality alone answers a different question:** Testing `charges[i] == t` only finds a battery with _exact_ charge $t$ and ignores batteries with more than enough charge (`charges[i] > t`). For example, on `[20, 75, 40, 90, 60]` with $t = 60$, `charges[1] = 75` is sufficient to power the device, whereas an equality check would skip `75` and `90` to return index `4` (or return `-1` for $t = 50$ even though four batteries have at least 50 units).
-	
+  
 3. **Best/worst time, auxiliary space, and immediate return cases:** Best-case time is $O(1)$, worst-case time is $O(n)$, and auxiliary space is $O(1)$. Immediate return occurs in two cases: an **empty shelf** (`n == 0`, returning `-1` with `0` inspections immediately) and when the **first shelf position qualifies** (`charges[0] >= t`, returning index `0` after `1` inspection, including whenever $t = 0$ on a non-empty shelf of nonnegative charges).
-	
+  
 4. **Why ordinary binary search is invalid on the unsorted shelf:** Binary search requires a monotonic (sorted) invariant so that inspecting `a[mid]` allows discarding half of the search range. On an unsorted shelf like `[20, 75, 40, 90, 60]` with $t = 60$, inspecting `mid = 2` (`40 < 60`) tells us nothing about whether a battery $\ge 60$ exists to the left (such as `75` at index `1`) or to the right.
-	
+  
 5. **Sorting before searching and required extra record information:** Sorting the raw integer array before searching would destroy the original shelf positions, so returning an index from the sorted array would not match the physical shelf index. Even if we paired each battery with its original index as a record `(charge, originalIndex)` ($O(n)$ extra space and $O(n \log n)$ or $O(n^2)$ sorting time), sorting by `charge` orders batteries by capacity rather than shelf position—so among all batteries with `charge >= t`, we would still have to scan for the minimum `originalIndex`, making sorting counterproductive compared to a single $O(n)$ pass.
 
 ### Test Cases & Recorded Outputs

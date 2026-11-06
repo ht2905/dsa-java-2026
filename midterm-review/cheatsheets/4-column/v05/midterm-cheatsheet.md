@@ -289,7 +289,7 @@ int largest = maxPQ.poll();  // Returns 20
 - **Complexity**:
   - *Comparisons*: Completely non-adaptive! Even if the array is already sorted, it MUST compare every element in the remaining suffix to confirm no smaller element exists. Always exactly $\sum_{i=0}^{n-2} (n - 1 - i) = \mathbf{\frac{n(n-1)}{2} \in \Theta(n^2)}$ comparisons in Best, Average, and Worst cases!
   - *Swaps*: At most $n - 1$ swaps across the entire sort.
-- **Stability**: **UNSTABLE**. Long-distance swaps leapfrog over identical elements (e.g. `[2a, 2b, 1] 	o [1, 2b, 2a]`).
+- **Stability**: **UNSTABLE**. Long-distance swaps leapfrog over identical elements (e.g. `[2a, 2b, 1] \to [1, 2b, 2a]`).
 - **Ideal Use Case**: Optimal when write operations are physically expensive or destructive (e.g., flash memory, EEPROM), since it guarantees at most $n - 1$ swaps.
 
 ### 6. Insertion Sort

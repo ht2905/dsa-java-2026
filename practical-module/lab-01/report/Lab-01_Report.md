@@ -20,30 +20,30 @@ The algorithm processes the array in a single linear pass from left to right:
 
 ### Complexity Analysis
 - **Time Complexity**: $O(n)$
-	- The algorithm iterates through the array of length $n$ exactly once, executing $n - 1$ comparison steps and at most $n - 1$ increment operations. Each comparison and increment takes $O(1)$ time, yielding an overall worst-, average-, and best-case time complexity of $O(n)$ for $n \ge 1$ (and $O(1)$ when $n = 0$).
+  - The algorithm iterates through the array of length $n$ exactly once, executing $n - 1$ comparison steps and at most $n - 1$ increment operations. Each comparison and increment takes $O(1)$ time, yielding an overall worst-, average-, and best-case time complexity of $O(n)$ for $n \ge 1$ (and $O(1)$ when $n = 0$).
 
 - **Auxiliary-Space Complexity**: $O(1)$
-	- Only two primitive integer variables (`blockCount` and loop index `i`) are allocated. The algorithm operates in-place without copying elements, allocating data structures, or mutating the input array.
+  - Only two primitive integer variables (`blockCount` and loop index `i`) are allocated. The algorithm operates in-place without copying elements, allocating data structures, or mutating the input array.
 
 ### Problem-Specific Analysis Questions
 1. **What is the input size $n$? For a nonempty array, how many adjacent pairs need to be checked?**
-	- The input size $n$ is `arr.length`, denoting the total number of integer elements stored in the array.
-	- For a non-empty array of length $n$, exactly $n - 1$ adjacent pairs `(arr[i - 1], arr[i])` need to be checked (for $i \in [1, n - 1]$). When $n = 1$, zero adjacent pairs are checked.
+  - The input size $n$ is `arr.length`, denoting the total number of integer elements stored in the array.
+  - For a non-empty array of length $n$, exactly $n - 1$ adjacent pairs `(arr[i - 1], arr[i])` need to be checked (for $i \in [1, n - 1]$). When $n = 1$, zero adjacent pairs are checked.
 2. **What are the time and auxiliary-space complexities?**
-	- **Time Complexity**: $O(n)$, requiring a single pass over $n$ elements.
-	- **Auxiliary-Space Complexity**: $O(1)$, using only scalar control variables.
+  - **Time Complexity**: $O(n)$, requiring a single pass over $n$ elements.
+  - **Auxiliary-Space Complexity**: $O(1)$, using only scalar control variables.
 3. **How should the count be initialized for empty and nonempty arrays?**
-	- **Empty array ($n = 0$)**: The count must be initialized to (or return) `0`, as zero elements yield zero blocks.
-	- **Nonempty array ($n \ge 1$)**: The count must be initialized to `1`. The initial item `arr[0]` establishes the first block, after which each detected mismatch `arr[i] != arr[i - 1]` marks the boundary of a subsequent block.
+  - **Empty array ($n = 0$)**: The count must be initialized to (or return) `0`, as zero elements yield zero blocks.
+  - **Nonempty array ($n \ge 1$)**: The count must be initialized to `1`. The initial item `arr[0]` establishes the first block, after which each detected mismatch `arr[i] != arr[i - 1]` marks the boundary of a subsequent block.
 4. **Why is counting distinct values not the same as counting blocks? Use the example to explain.**
-	- Distinct-value counting measures global set cardinality ($\{x \mid x \in \text{arr}\}$), collapsing identical elements regardless of their index positions. Contiguous block counting requires adjacency; an identical value re-appearing after a different value belongs to an entirely new block.
-	- In the example array `[4, 4, -1, -1, -1, 7, 4, 4]`:
-		- The distinct values are $\{4, -1, 7\}$, producing a distinct count of **3**.
-		- The maximal contiguous blocks are `[4, 4]`, `[-1, -1, -1]`, `[7]`, and `[4, 4]`, producing a block count of **4**.
-		- The value `4` appears in two disconnected intervals; a distinct counter counts `4` only once, whereas block counting recognizes both disjoint segments.
+  - Distinct-value counting measures global set cardinality ($\{x \mid x \in \text{arr}\}$), collapsing identical elements regardless of their index positions. Contiguous block counting requires adjacency; an identical value re-appearing after a different value belongs to an entirely new block.
+  - In the example array `[4, 4, -1, -1, -1, 7, 4, 4]`:
+    - The distinct values are $\{4, -1, 7\}$, producing a distinct count of **3**.
+    - The maximal contiguous blocks are `[4, 4]`, `[-1, -1, -1]`, `[7]`, and `[4, 4]`, producing a block count of **4**.
+    - The value `4` appears in two disconnected intervals; a distinct counter counts `4` only once, whereas block counting recognizes both disjoint segments.
 5. **What results should be returned for an all-equal array and for an array whose adjacent values are always different?**
-	- **All-equal array ($n \ge 1$)**: Returns **1**. Since `arr[i] != arr[i - 1]` evaluates to false for all $i \in [1, n - 1]$, no new block boundaries are triggered.
-	- **Array whose adjacent values are always different ($n \ge 1$)**: Returns **$n$**. Because `arr[i] != arr[i - 1]` evaluates to true at every step, each element forms a maximal block of length 1.
+  - **All-equal array ($n \ge 1$)**: Returns **1**. Since `arr[i] != arr[i - 1]` evaluates to false for all $i \in [1, n - 1]$, no new block boundaries are triggered.
+  - **Array whose adjacent values are always different ($n \ge 1$)**: Returns **$n$**. Because `arr[i] != arr[i - 1]` evaluates to true at every step, each element forms a maximal block of length 1.
 
 ### Test Cases and Verification
 
@@ -111,37 +111,37 @@ Under the lab constraints ($n \le 100{,}000$ integers, multiple queries, and an 
 
 ### Problem-Specific Analysis Questions
 1. **Analyze the time for one direct query in terms of both $n$ and $p$. What is its auxiliary-space complexity?**
-	- A direct query starting at index $p$ scans elements from index $p$ through $n - 1$, inclusive. This examines exactly $n - p$ elements and executes $n - p - 1$ comparison steps (for $p < n - 1$). Thus, the exact time complexity is $\Theta(n - p)$.
-	- The auxiliary-space complexity is $O(1)$, as the traversal only uses a scalar loop variable and a scalar accumulator (`maxVal`) without auxiliary allocations.
+  - A direct query starting at index $p$ scans elements from index $p$ through $n - 1$, inclusive. This examines exactly $n - p$ elements and executes $n - p - 1$ comparison steps (for $p < n - 1$). Thus, the exact time complexity is $\Theta(n - p)$.
+  - The auxiliary-space complexity is $O(1)$, as the traversal only uses a scalar loop variable and a scalar accumulator (`maxVal`) without auxiliary allocations.
 2. **Analyze the pre-processing time, time per query, and auxiliary space of Approach B.**
-	- **Pre-processing time**: $\Theta(n)$. The right-to-left loop visits each element from index $n - 1$ down to 0, executing exactly $n - 1$ comparisons of the form $\max(\text{arr}[i], \text{suffixMax}[i + 1])$.
-	- **Time per query**: $\Theta(1)$. Serving query index $p$ is an immediate $O(1)$ array access into `suffixMax[p]`.
-	- **Auxiliary space**: $\Theta(n)$. Requires allocating an additional integer array `suffixMax` of length $n$.
+  - **Pre-processing time**: $\Theta(n)$. The right-to-left loop visits each element from index $n - 1$ down to 0, executing exactly $n - 1$ comparisons of the form $\max(\text{arr}[i], \text{suffixMax}[i + 1])$.
+  - **Time per query**: $\Theta(1)$. Serving query index $p$ is an immediate $O(1)$ array access into `suffixMax[p]`.
+  - **Auxiliary space**: $\Theta(n)$. Requires allocating an additional integer array `suffixMax` of length $n$.
 3. **Let $q$ denote the number of queries. Compare the total costs, including pre-processing, when queries may start at index zero.**
-	- When queries can start at index $0$, each query in Approach A scans all $n$ elements in the worst case, giving a total time of $\Theta(q \cdot n)$ with $O(1)$ auxiliary space.
+  - When queries can start at index $0$, each query in Approach A scans all $n$ elements in the worst case, giving a total time of $\Theta(q \cdot n)$ with $O(1)$ auxiliary space.
     
-	- In Approach B, pre-processing requires $\Theta(n)$ operations, and the $q$ queries consume $\Theta(q)$ operations combined. The total time is $\Theta(n + q)$ with $\Theta(n)$ auxiliary space.
+  - In Approach B, pre-processing requires $\Theta(n)$ operations, and the $q$ queries consume $\Theta(q)$ operations combined. The total time is $\Theta(n + q)$ with $\Theta(n)$ auxiliary space.
     
-	- If $q = 1$, Approach A takes $c_1 n$ operations, whereas Approach B takes $c_2 n + c_3$ operations; Approach A is preferable due to lower constant factors and zero space overhead. However, once $q > 1$, the ratio of total work $\frac{\Theta(q \cdot n)}{\Theta(n + q)}$ quickly favors Approach B. When $q \approx n$, Approach A requires quadratic time $O(n^2)$ while Approach B completes in linear time $O(n)$.
+  - If $q = 1$, Approach A takes $c_1 n$ operations, whereas Approach B takes $c_2 n + c_3$ operations; Approach A is preferable due to lower constant factors and zero space overhead. However, once $q > 1$, the ratio of total work $\frac{\Theta(q \cdot n)}{\Theta(n + q)}$ quickly favors Approach B. When $q \approx n$, Approach A requires quadratic time $O(n^2)$ while Approach B completes in linear time $O(n)$.
 4. **Which approach would you choose for one query at $p = n − 1$? How would your choice change for many queries on the same array?**
-	- **Single query at $p = n - 1$**: Choose **Approach A**. The scan inspects only the final element `arr[n - 1]`, executing in $\Theta(1)$ time and $O(1)$ auxiliary space. Approach B would perform an unnecessary $\Theta(n)$ pre-processing phase and allocate an $n$-element array for a query that inspects a single element.
+  - **Single query at $p = n - 1$**: Choose **Approach A**. The scan inspects only the final element `arr[n - 1]`, executing in $\Theta(1)$ time and $O(1)$ auxiliary space. Approach B would perform an unnecessary $\Theta(n)$ pre-processing phase and allocate an $n$-element array for a query that inspects a single element.
     
-	- **Many queries on the same array**: Choose **Approach B**. Amortizing the initial $\Theta(n)$ pre-processing over $q$ queries drops the marginal cost per query to $\Theta(1)$, preventing the severe $O(q \cdot n)$ bottleneck of repeated scans.
+  - **Many queries on the same array**: Choose **Approach B**. Amortizing the initial $\Theta(n)$ pre-processing over $q$ queries drops the marginal cost per query to $\Theta(1)$, preventing the severe $O(q \cdot n)$ bottleneck of repeated scans.
 5. **How should the running maximum be initialized to handle all-negative arrays? What value is stored at the final position?**
-	- **Initialization**: The running maximum must **not** be initialized to `0`. In an array where all elements are negative (e.g., $[-9, -2, -15]$), initializing to `0` would yield an incorrect maximum of `0`. Instead:
+  - **Initialization**: The running maximum must **not** be initialized to `0`. In an array where all elements are negative (e.g., $[-9, -2, -15]$), initializing to `0` would yield an incorrect maximum of `0`. Instead:
     
-	    - In Approach A, initialize `maxVal` directly to the first element of the queried suffix: `maxVal = arr[p]` (or alternatively `Integer.MIN_VALUE`).
-	        
-	    - In Approach B, initialize the base case at index $n - 1$ directly to `arr[n - 1]`.
+      - In Approach A, initialize `maxVal` directly to the first element of the queried suffix: `maxVal = arr[p]` (or alternatively `Integer.MIN_VALUE`).
+          
+      - In Approach B, initialize the base case at index $n - 1$ directly to `arr[n - 1]`.
         
-	- **Value stored at the final position**: `suffixMax[n - 1]` stores `arr[n - 1]`. Because the suffix beginning at index $n - 1$ contains only one element, that element is trivially its own maximum.
+  - **Value stored at the final position**: `suffixMax[n - 1]` stores `arr[n - 1]`. Because the suffix beginning at index $n - 1$ contains only one element, that element is trivially its own maximum.
 6. **Why does a right-to-left traversal make the required summary available? What could become invalid if an input value changed after pre-processing?**
-	- **Why right-to-left traversal works**: The suffix starting at index $i$, $\text{arr}[i \dots n - 1]$, can be decomposed into $\{\text{arr}[i]\} \cup \text{arr}[i + 1 \dots n - 1]$. Its maximum satisfies the recurrence $\text{suffixMax}[i] = \max(\text{arr}[i], \text{suffixMax}[i + 1])$. Traversing right-to-left guarantees that when computing index $i$, the optimal summary for the subproblem at $i + 1$ has already been evaluated and recorded.
-	- **Consequences of an input modification**:
-		
-		- If an entry `arr[k]` is modified after pre-processing, every suffix containing index $k$—specifically all entries `suffixMax[i]` for $0 \le i \le k$—becomes invalid.
-		    
-		- If `arr[k]` increases above `suffixMax[k]`, the new larger value must propagate leftward. If `arr[k]` was the unique maximum of the suffix and decreases, the previous maximum is no longer present, necessitating a complete re-scan of the suffix. Static pre-processing is valid only under the assumption that the underlying array is immutable.
+  - **Why right-to-left traversal works**: The suffix starting at index $i$, $\text{arr}[i \dots n - 1]$, can be decomposed into $\{\text{arr}[i]\} \cup \text{arr}[i + 1 \dots n - 1]$. Its maximum satisfies the recurrence $\text{suffixMax}[i] = \max(\text{arr}[i], \text{suffixMax}[i + 1])$. Traversing right-to-left guarantees that when computing index $i$, the optimal summary for the subproblem at $i + 1$ has already been evaluated and recorded.
+  - **Consequences of an input modification**:
+    
+    - If an entry `arr[k]` is modified after pre-processing, every suffix containing index $k$—specifically all entries `suffixMax[i]` for $0 \le i \le k$—becomes invalid.
+        
+    - If `arr[k]` increases above `suffixMax[k]`, the new larger value must propagate leftward. If `arr[k]` was the unique maximum of the suffix and decreases, the previous maximum is no longer present, necessitating a complete re-scan of the suffix. Static pre-processing is valid only under the assumption that the underlying array is immutable.
 
 ### Test Cases and Verification
 
@@ -168,31 +168,31 @@ Given an array of length $n$ containing $n$ distinct integers from the inclusive
 #### Approach B (Presence Array)
 - **Mechanism**: Allocates an auxiliary boolean array `present` of length $n + 1$, where indices directly represent domain values $[0, n]$.
 - **Execution**:
-	- **Allocation & Initialization**: Allocates `boolean[n + 1]`, with Java automatically zero-initializing all entries to `false`.
-	- **Marking**: Performs a single pass over $\text{arr}$, setting `present[arr[i]] = true` for each element.
-	- **Scan**: Iterates through `present` from index $0$ to $n$. The first index where `present[candidate] == false` corresponds to the missing number.
+  - **Allocation & Initialization**: Allocates `boolean[n + 1]`, with Java automatically zero-initializing all entries to `false`.
+  - **Marking**: Performs a single pass over $\text{arr}$, setting `present[arr[i]] = true` for each element.
+  - **Scan**: Iterates through `present` from index $0$ to $n$. The first index where `present[candidate] == false` corresponds to the missing number.
 
 ### Complexity Analysis
 Let $n$ denote the length of the input array $\text{arr}$.
 
 #### Approach A: Repeated Membership Search
 - **Time Complexity**:
-	- **Best Case**: $\Theta(n)$. Occurs when candidate $0$ is missing. The algorithm searches for $c = 0$, checks all $n$ elements, finds no match, and immediately returns $0$ in a single pass of $n$ comparisons.
+  - **Best Case**: $\Theta(n)$. Occurs when candidate $0$ is missing. The algorithm searches for $c = 0$, checks all $n$ elements, finds no match, and immediately returns $0$ in a single pass of $n$ comparisons.
     
-	- **Worst Case**: $\Theta(n^2)$. Occurs when candidate $n$ is missing, and the elements $0, 1, \dots, n - 1$ appear in reverse order or toward the end of the array. The algorithm must successfully search for all candidates $c \in [0, n - 1]$ and then perform a full scan of $n$ comparisons for candidate $n$, requiring up to $\frac{n(n + 1)}{2} + n = \Theta(n^2)$ total comparisons.
+  - **Worst Case**: $\Theta(n^2)$. Occurs when candidate $n$ is missing, and the elements $0, 1, \dots, n - 1$ appear in reverse order or toward the end of the array. The algorithm must successfully search for all candidates $c \in [0, n - 1]$ and then perform a full scan of $n$ comparisons for candidate $n$, requiring up to $\frac{n(n + 1)}{2} + n = \Theta(n^2)$ total comparisons.
     
-	- **Average Case**: $\Theta(n^2)$ when candidates are uniformly distributed, as finding each present candidate takes $\approx \frac{n}{2}$ comparisons on average across $\approx \frac{n}{2}$ candidate iterations.
+  - **Average Case**: $\Theta(n^2)$ when candidates are uniformly distributed, as finding each present candidate takes $\approx \frac{n}{2}$ comparisons on average across $\approx \frac{n}{2}$ candidate iterations.
 - **Auxiliary-Space Complexity**: $O(1)$. Requires only primitive scalar variables (`candidate`, `i`, `found`) to drive the search loops.
 
 #### Approach B: Presence Array
 - **Time Complexity**:
-	- **Allocation & Zeroing**: $\Theta(n + 1) = \Theta(n)$ time to allocate and zero-initialize the boolean array.
+  - **Allocation & Zeroing**: $\Theta(n + 1) = \Theta(n)$ time to allocate and zero-initialize the boolean array.
     
-	- **Marking Phase**: $\Theta(n)$ time. Traverses all $n$ elements of $\text{arr}$ once, performing an $O(1)$ direct array write for each.
-	    
-	- **Final Scan Phase**: $O(n)$ time. Scans `present` from index $0$ to $m$ (where $m$ is the missing value), performing $m + 1 \le n + 1$ boolean checks.
-	    
-	- **Total Time**: $\Theta(n)$ across all cases (best, average, worst).
+  - **Marking Phase**: $\Theta(n)$ time. Traverses all $n$ elements of $\text{arr}$ once, performing an $O(1)$ direct array write for each.
+      
+  - **Final Scan Phase**: $O(n)$ time. Scans `present` from index $0$ to $m$ (where $m$ is the missing value), performing $m + 1 \le n + 1$ boolean checks.
+      
+  - **Total Time**: $\Theta(n)$ across all cases (best, average, worst).
 - **Auxiliary-Space Complexity**: $\Theta(n)$. Allocates a boolean array of size $n + 1$ on the heap, requiring $\Theta(n)$ additional memory.
 
 ### Algorithm Analysis Table
@@ -213,83 +213,83 @@ Under the lab constraints ($n \le 100{,}000$ integers), **Approach B (Presence A
 ### Problem-Specific Analysis Questions
 1. **Analyze the worst-case time and auxiliary space of repeated membership search. Give an input that forces a search for every candidate.**
 
-	- **Worst-Case Time & Space**: The worst case requires checking all $n + 1$ candidates ($c = 0, 1, \dots, n$). For candidates $0 \dots n - 1$, each search scans through the array until reaching the candidate. For candidate $n$, the entire array of length $n$ is scanned with no match found. The worst-case time is $\Theta(n^2)$, and auxiliary space is $O(1)$.
-	    
-	- **Adversarial Input**: Consider the input array arranged in strictly descending order:
-	    $$
-	    \text{arr} = [n - 1, n - 2, \dots, 2, 1, 0]
-	    $$
-	    
-	    Here, candidate $n$ is missing.
-	    
-	    - Candidate $0$ is located at index $n - 1$, taking $n$ comparisons.
-	        
-	    - Candidate $1$ is located at index $n - 2$, taking $n - 1$ comparisons.
-	        
-	    - Candidate $c$ takes $n - c$ comparisons.
-	        
-	    - Candidate $n - 1$ takes $1$ comparison.
-	        
-	    - Candidate $n$ is absent, scanning all $n$ elements ($n$ comparisons).
-	        
-	    - Total comparisons = $\sum_{k=1}^{n} k + n = \frac{n(n + 1)}{2} + n = \Theta(n^2)$.
+  - **Worst-Case Time & Space**: The worst case requires checking all $n + 1$ candidates ($c = 0, 1, \dots, n$). For candidates $0 \dots n - 1$, each search scans through the array until reaching the candidate. For candidate $n$, the entire array of length $n$ is scanned with no match found. The worst-case time is $\Theta(n^2)$, and auxiliary space is $O(1)$.
+      
+  - **Adversarial Input**: Consider the input array arranged in strictly descending order:
+      $$
+      \text{arr} = [n - 1, n - 2, \dots, 2, 1, 0]
+      $$
+      
+      Here, candidate $n$ is missing.
+      
+      - Candidate $0$ is located at index $n - 1$, taking $n$ comparisons.
+          
+      - Candidate $1$ is located at index $n - 2$, taking $n - 1$ comparisons.
+          
+      - Candidate $c$ takes $n - c$ comparisons.
+          
+      - Candidate $n - 1$ takes $1$ comparison.
+          
+      - Candidate $n$ is absent, scanning all $n$ elements ($n$ comparisons).
+          
+      - Total comparisons = $\sum_{k=1}^{n} k + n = \frac{n(n + 1)}{2} + n = \Theta(n^2)$.
 2. **How does the work change when zero is missing instead of $n$? Explain why input arrangement and the missing value can affect measurements.**
 
-	- **When $0$ is missing**: The outer loop evaluates candidate $c = 0$ first. It performs a single linear scan of all $n$ elements, detects that $0$ is absent, and returns $0$ immediately. The total work is exactly $n$ comparisons ($\Theta(n)$ time), irrespective of how non-zero elements are ordered.
-	    
-	- **When $n$ is missing**: The outer loop must search for all preceding candidates $0, 1, \dots, n - 1$ before testing $n$. It performs $n + 1$ separate searches.
-	    
-	- **Why arrangements and values affect measurements**:
-	    
-	    - **Missing value position**: Lower missing values terminate the outer candidate loop early, while higher missing values force more search iterations.
-	        
-	    - **Element arrangement**: Each successful search terminates at the earliest index $i$ where $\text{arr}[i] == c$. If elements matching early candidates are clustered near the front of $\text{arr}$, those searches finish in $O(1)$ operations; if placed near the end, they take $O(n)$ operations each.
+  - **When $0$ is missing**: The outer loop evaluates candidate $c = 0$ first. It performs a single linear scan of all $n$ elements, detects that $0$ is absent, and returns $0$ immediately. The total work is exactly $n$ comparisons ($\Theta(n)$ time), irrespective of how non-zero elements are ordered.
+      
+  - **When $n$ is missing**: The outer loop must search for all preceding candidates $0, 1, \dots, n - 1$ before testing $n$. It performs $n + 1$ separate searches.
+      
+  - **Why arrangements and values affect measurements**:
+      
+      - **Missing value position**: Lower missing values terminate the outer candidate loop early, while higher missing values force more search iterations.
+          
+      - **Element arrangement**: Each successful search terminates at the earliest index $i$ where $\text{arr}[i] == c$. If elements matching early candidates are clustered near the front of $\text{arr}$, those searches finish in $O(1)$ operations; if placed near the end, they take $O(n)$ operations each.
 3. **Analyze the total time and auxiliary space of the presence-array approach.**
 
-	- **Total Time**: $\Theta(n)$.
-	    
-	    - _Array allocation and zeroing_: The JVM allocates $n + 1$ booleans and zero-initializes them to `false` in $\Theta(n)$ time.
-	        
-	    - _Marking phase_: Iterating through $\text{arr}$ and assigning `present[arr[i]] = true` takes $n$ constant-time operations ($\Theta(n)$ time).
-	        
-	    - _Scan phase_: Inspecting `present` from index $0$ to $m$ takes $m + 1$ checks ($O(n)$ time).
-	        
-	    - Summing all phases yields $\Theta(n) + \Theta(n) + O(n) = \Theta(n)$.
-	        
-	- **Auxiliary Space**: $\Theta(n)$. The algorithm allocates one auxiliary array of length $n + 1$, requiring $(n + 1)$ bytes of heap space plus scalar loop indices.
+  - **Total Time**: $\Theta(n)$.
+      
+      - _Array allocation and zeroing_: The JVM allocates $n + 1$ booleans and zero-initializes them to `false` in $\Theta(n)$ time.
+          
+      - _Marking phase_: Iterating through $\text{arr}$ and assigning `present[arr[i]] = true` takes $n$ constant-time operations ($\Theta(n)$ time).
+          
+      - _Scan phase_: Inspecting `present` from index $0$ to $m$ takes $m + 1$ checks ($O(n)$ time).
+          
+      - Summing all phases yields $\Theta(n) + \Theta(n) + O(n) = \Theta(n)$.
+          
+  - **Auxiliary Space**: $\Theta(n)$. The algorithm allocates one auxiliary array of length $n + 1$, requiring $(n + 1)$ bytes of heap space plus scalar loop indices.
 4. **Why does the presence array need $n + 1$ positions? Which input constraint makes using a value as an index safe?**
 
-	- **Why $n + 1$ positions are required**: The domain of candidate values is the inclusive range $[0, n]$, which contains exactly $(n - 0) + 1 = n + 1$ distinct possible integers. To establish a direct mapping where value $v$ maps to index $v$, the array must contain valid indices from $0$ up to $n$. An array of size $n$ only spans indices $0$ to $n - 1$; if the value $n$ were present, accessing index $n$ would throw an `ArrayIndexOutOfBoundsException`.
-	    
-	- **Safe indexing constraint**: The guarantee that all integers come from the _inclusive range $0$ through $n$_. This guarantees $0 \le \text{arr}[i] \le n$ for all $i$, ensuring every value is guaranteed to be a valid index in `present[0 ... n]` without underflow or overflow.
+  - **Why $n + 1$ positions are required**: The domain of candidate values is the inclusive range $[0, n]$, which contains exactly $(n - 0) + 1 = n + 1$ distinct possible integers. To establish a direct mapping where value $v$ maps to index $v$, the array must contain valid indices from $0$ up to $n$. An array of size $n$ only spans indices $0$ to $n - 1$; if the value $n$ were present, accessing index $n$ would throw an `ArrayIndexOutOfBoundsException`.
+      
+  - **Safe indexing constraint**: The guarantee that all integers come from the _inclusive range $0$ through $n$_. This guarantees $0 \le \text{arr}[i] \le n$ for all $i$, ensuring every value is guaranteed to be a valid index in `present[0 ... n]` without underflow or overflow.
 5. **What would need to change if values could be arbitrary negative or very large integers? Would a directly indexed array still be appropriate?**
 
-	- **Why direct indexing fails**:
-	    
-	    - Direct indexing cannot handle negative integers because array indices in Java must be non-negative ($\ge 0$).
-	        
-	    - For very large integers (e.g., values up to $10^9$ or `Integer.MAX_VALUE`), direct indexing would require an array with billions of entries, triggering `OutOfMemoryError` and violating auxiliary-space constraints.
-	        
-	- **Required algorithmic changes**:
-	    
-	    - Direct indexing must be replaced by a hash set (`HashSet<Integer>`).
-	        
-	    - Elements are inserted into the hash set in $O(n)$ expected time, and membership queries are answered in $O(1)$ average time.
-	        
-	    - The auxiliary space would then scale strictly with the number of present elements $\Theta(n)$ rather than the numerical span of the values.
+  - **Why direct indexing fails**:
+      
+      - Direct indexing cannot handle negative integers because array indices in Java must be non-negative ($\ge 0$).
+          
+      - For very large integers (e.g., values up to $10^9$ or `Integer.MAX_VALUE`), direct indexing would require an array with billions of entries, triggering `OutOfMemoryError` and violating auxiliary-space constraints.
+          
+  - **Required algorithmic changes**:
+      
+      - Direct indexing must be replaced by a hash set (`HashSet<Integer>`).
+          
+      - Elements are inserted into the hash set in $O(n)$ expected time, and membership queries are answered in $O(1)$ average time.
+          
+      - The auxiliary space would then scale strictly with the number of present elements $\Theta(n)$ rather than the numerical span of the values.
 6. **Why are both the distinctness and range guarantees important to the statement that exactly one value is missing?**
 
-	- **Mathematical justification (Pigeonhole Principle)**:
-	    
-	    - The universe of possible values is $U = \{0, 1, 2, \dots, n\}$, which contains $\vert{}U\vert{} = n + 1$ elements.
-	        
-	    - The array contains $\vert{}\text{arr}\vert{} = n$ elements.
-	        
-	- **Role of the Distinctness Guarantee**: Because all $n$ entries in $\text{arr}$ are strictly distinct, the array covers exactly $n$ unique values from $U$. If distinctness were violated (e.g., duplicate values existed), the array would cover fewer than $n$ unique values, leaving _two or more_ values missing from $U$.
-	    
-	- **Role of the Range Guarantee**: Every element of $\text{arr}$ is guaranteed to be an element of $U$ ($\text{arr} \subseteq U$). If elements were allowed to fall outside $[0, n]$ (e.g., negative numbers or numbers $> n$), an invalid element would occupy an array slot without covering any element of $U$, again leaving _two or more_ values in $[0, n]$ missing.
-	    
-	- Both conditions together enforce $\vert{}\text{arr} \cap U\vert{} = n$ distinct items, ensuring that exactly $\vert{}U\vert{} - \vert{}\text{arr} \cap U\vert{} = (n + 1) - n = 1$ value is missing.
+  - **Mathematical justification (Pigeonhole Principle)**:
+      
+      - The universe of possible values is $U = \{0, 1, 2, \dots, n\}$, which contains $\vert{}U\vert{} = n + 1$ elements.
+          
+      - The array contains $\vert{}\text{arr}\vert{} = n$ elements.
+          
+  - **Role of the Distinctness Guarantee**: Because all $n$ entries in $\text{arr}$ are strictly distinct, the array covers exactly $n$ unique values from $U$. If distinctness were violated (e.g., duplicate values existed), the array would cover fewer than $n$ unique values, leaving _two or more_ values missing from $U$.
+      
+  - **Role of the Range Guarantee**: Every element of $\text{arr}$ is guaranteed to be an element of $U$ ($\text{arr} \subseteq U$). If elements were allowed to fall outside $[0, n]$ (e.g., negative numbers or numbers $> n$), an invalid element would occupy an array slot without covering any element of $U$, again leaving _two or more_ values in $[0, n]$ missing.
+      
+  - Both conditions together enforce $\vert{}\text{arr} \cap U\vert{} = n$ distinct items, ensuring that exactly $\vert{}U\vert{} - \vert{}\text{arr} \cap U\vert{} = (n + 1) - n = 1$ value is missing.
 
 ### Test Cases and Verification
 
@@ -364,64 +364,64 @@ Under the lab constraints ($n \le 100{,}000$ integers), **Approach B (Frequency 
 #### Problem-Specific Analysis Questions
 1. **Analyze the worst-case time and auxiliary space of repeated counting. Give an input on which every candidate must be examined.**
 
-	- **Worst-Case Time and Space**: The worst case requires evaluating all $n$ candidate positions $i \in [0, n - 1]$. For each candidate, the inner loop inspects all $n$ elements from $j = 0$ to $n - 1$. This results in exactly $n \times n = n^2$ total comparison operations, yielding a worst-case time complexity of $\Theta(n^2)$. The auxiliary space is strictly $O(1)$ because only primitive loop counters and accumulators are maintained on the call stack.
-	    
-	- **Adversarial Input**: Any array where **no element is unique** (or where the only unique element is at the very last index $n - 1$) forces every candidate to be examined. A concrete adversarial input is an array of identical pairs:
-	    
-	    $$\text{arr} = [1, 1, 2, 2, 3, 3, \dots, k, k]$$
-	    
-	    Because every element occurs twice, every candidate $i \in [0, n - 1]$ completes its full inner scan of $n$ elements, detects $\text{count} = 2 \ne 1$, and continues. All $n$ candidates are checked without success, executing all $n^2$ iterations before returning $-1$.
+  - **Worst-Case Time and Space**: The worst case requires evaluating all $n$ candidate positions $i \in [0, n - 1]$. For each candidate, the inner loop inspects all $n$ elements from $j = 0$ to $n - 1$. This results in exactly $n \times n = n^2$ total comparison operations, yielding a worst-case time complexity of $\Theta(n^2)$. The auxiliary space is strictly $O(1)$ because only primitive loop counters and accumulators are maintained on the call stack.
+      
+  - **Adversarial Input**: Any array where **no element is unique** (or where the only unique element is at the very last index $n - 1$) forces every candidate to be examined. A concrete adversarial input is an array of identical pairs:
+      
+      $$\text{arr} = [1, 1, 2, 2, 3, 3, \dots, k, k]$$
+      
+      Because every element occurs twice, every candidate $i \in [0, n - 1]$ completes its full inner scan of $n$ elements, detects $\text{count} = 2 \ne 1$, and continues. All $n$ candidates are checked without success, executing all $n^2$ iterations before returning $-1$.
 2. **Analyze the average total time of the frequency-map approach, including both passes. Let $d$ be the number of distinct values when describing storage.**
 
-	- **Average Total Time**:
-	    
-	    - _Pass 1 (Map Population)_: Iterates through all $n$ elements. Under the assumption of suitable hashing, each `put` and `getOrDefault` operation takes $O(1)$ average time with amortized insertion cost. The total time for Pass 1 is $\Theta(n)$.
-	        
-	    - _Pass 2 (Ordered Scan)_: Iterates through the array, performing an average $O(1)$ `get` operation per element. In the worst case, it scans all $n$ elements, requiring $O(n)$ time.
-	        
-	    - _Total Average Time_: $\Theta(n) + O(n) = \Theta(n)$.
-	        
-	- **Storage / Auxiliary Space**: The `HashMap` stores exactly one key-value pair for each unique value present in the array. Thus, it stores $d$ entries, where $d \le n$. The auxiliary-space complexity is $\Theta(d)$. When all elements are distinct ($d = n$), space is $\Theta(n)$; when all elements are identical ($d = 1$), space is $\Theta(1)$.
+  - **Average Total Time**:
+      
+      - _Pass 1 (Map Population)_: Iterates through all $n$ elements. Under the assumption of suitable hashing, each `put` and `getOrDefault` operation takes $O(1)$ average time with amortized insertion cost. The total time for Pass 1 is $\Theta(n)$.
+          
+      - _Pass 2 (Ordered Scan)_: Iterates through the array, performing an average $O(1)$ `get` operation per element. In the worst case, it scans all $n$ elements, requiring $O(n)$ time.
+          
+      - _Total Average Time_: $\Theta(n) + O(n) = \Theta(n)$.
+          
+  - **Storage / Auxiliary Space**: The `HashMap` stores exactly one key-value pair for each unique value present in the array. Thus, it stores $d$ entries, where $d \le n$. The auxiliary-space complexity is $\Theta(d)$. When all elements are distinct ($d = n$), space is $\Theta(n)$; when all elements are identical ($d = 1$), space is $\Theta(1)$.
 3. **Why is a HashSet containing only distinct values insufficient for the required frequency check?**
 
-	- A standard `HashSet` only records binary presence (membership vs. absence) and discards occurrence counts. When an element is inserted into a `HashSet`, subsequent additions are ignored.
-	    
-	- Consequently, a single `HashSet` cannot differentiate between an element that appears exactly once in the entire array and an element that appears multiple times; both simply appear as present in the set.
-	    
-	- Furthermore, tracking uniqueness requires a global property: a value seen once _so far_ during a forward scan cannot be declared unique, as duplicate instances may appear later in the array. A frequency map (or two sets: one for seen elements and one for duplicates) is required to determine whether an element's global frequency is strictly 1.
+  - A standard `HashSet` only records binary presence (membership vs. absence) and discards occurrence counts. When an element is inserted into a `HashSet`, subsequent additions are ignored.
+      
+  - Consequently, a single `HashSet` cannot differentiate between an element that appears exactly once in the entire array and an element that appears multiple times; both simply appear as present in the set.
+      
+  - Furthermore, tracking uniqueness requires a global property: a value seen once _so far_ during a forward scan cannot be declared unique, as duplicate instances may appear later in the array. A frequency map (or two sets: one for seen elements and one for duplicates) is required to determine whether an element's global frequency is strictly 1.
 4. **Why must the second pass follow the original array order rather than return an arbitrary value with frequency one?**
 
-	- The problem specifically demands the **smallest index** (the first position) whose value occurs exactly once.
-	    
-	- A `HashMap` is an unordered collection whose iteration order depends on hash codes and internal bucket chains, bearing no relationship to the original array indices. Iterating over the map's keys and picking an arbitrary key with frequency 1 could yield a unique value that appears later in the array rather than the one appearing at the minimal index.
-	    
-	- Scanning the original array from index $0$ to $n - 1$ guarantees that candidate positions are evaluated in strict ascending index order, ensuring that the first match found corresponds to the minimum index.
+  - The problem specifically demands the **smallest index** (the first position) whose value occurs exactly once.
+      
+  - A `HashMap` is an unordered collection whose iteration order depends on hash codes and internal bucket chains, bearing no relationship to the original array indices. Iterating over the map's keys and picking an arbitrary key with frequency 1 could yield a unique value that appears later in the array rather than the one appearing at the minimal index.
+      
+  - Scanning the original array from index $0$ to $n - 1$ guarantees that candidate positions are evaluated in strict ascending index order, ensuring that the first match found corresponds to the minimum index.
 5. **How much work does each required approach perform when every array value is distinct? Explain any early return.**
 
-	- **Approach A (Repeated Counting)**:
-	    
-	    - Evaluates candidate $i = 0$.
-	        
-	    - The inner loop scans all $n$ elements ($j = 0$ to $n - 1$) and finds that $\text{arr}[0]$ occurs only once ($\text{count} == 1$).
-	        
-	    - It immediately executes an early return of index `0`.
-	        
-	    - **Total Work**: Exactly $1$ outer iteration and $n$ comparisons, completing in $\Theta(n)$ time and $O(1)$ space.
-	        
-	- **Approach B (Frequency Map and Ordered Scan)**:
-	    
-	    - _Pass 1_: Cannot return early; it must unconditionally process all $n$ elements to insert $n$ entries into the map, establishing that each has frequency 1. This takes $\Theta(n)$ time.
-	        
-	    - _Pass 2_: Checks index $i = 0$, queries `freqMap.get(arr[0]) == 1`, and immediately executes an early return of index `0`.
-	        
-	    - **Total Work**: $n$ map insertions followed by $1$ map lookup. Although asymptotically $\Theta(n)$, Approach B performs significantly more work in practice than Approach A for this specific case due to hashing, heap allocations, and object boxing overhead.
+  - **Approach A (Repeated Counting)**:
+      
+      - Evaluates candidate $i = 0$.
+          
+      - The inner loop scans all $n$ elements ($j = 0$ to $n - 1$) and finds that $\text{arr}[0]$ occurs only once ($\text{count} == 1$).
+          
+      - It immediately executes an early return of index `0`.
+          
+      - **Total Work**: Exactly $1$ outer iteration and $n$ comparisons, completing in $\Theta(n)$ time and $O(1)$ space.
+          
+  - **Approach B (Frequency Map and Ordered Scan)**:
+      
+      - _Pass 1_: Cannot return early; it must unconditionally process all $n$ elements to insert $n$ entries into the map, establishing that each has frequency 1. This takes $\Theta(n)$ time.
+          
+      - _Pass 2_: Checks index $i = 0$, queries `freqMap.get(arr[0]) == 1`, and immediately executes an early return of index `0`.
+          
+      - **Total Work**: $n$ map insertions followed by $1$ map lookup. Although asymptotically $\Theta(n)$, Approach B performs significantly more work in practice than Approach A for this specific case due to hashing, heap allocations, and object boxing overhead.
 6. **How does returning an index avoid confusing the legitimate data value −1 with the no-result marker?**
 
-	- The specification states that array values can range from $-1{,}000{,}000$ to $1{,}000{,}000$, meaning $-1$ is a valid data element that could itself be the unique value (as demonstrated in test case `[-1, 5, -1, 3, 5]` where the unique value is $3$, but $-1$ could just as easily appear once).
-	    
-	- Valid array indices, however, are strictly non-negative integers bounded by $0 \le i < n$.
-	    
-	- By defining the return type as the **index** rather than the data value, successful outcomes always yield a non-negative integer ($\ge 0$). This reserves $-1$ as an unambiguous, out-of-band sentinel indicating that no unique value exists, preventing any collision between valid return values and the failure sentinel.
+  - The specification states that array values can range from $-1{,}000{,}000$ to $1{,}000{,}000$, meaning $-1$ is a valid data element that could itself be the unique value (as demonstrated in test case `[-1, 5, -1, 3, 5]` where the unique value is $3$, but $-1$ could just as easily appear once).
+      
+  - Valid array indices, however, are strictly non-negative integers bounded by $0 \le i < n$.
+      
+  - By defining the return type as the **index** rather than the data value, successful outcomes always yield a non-negative integer ($\ge 0$). This reserves $-1$ as an unambiguous, out-of-band sentinel indicating that no unique value exists, preventing any collision between valid return values and the failure sentinel.
 
 ### Test Cases and Verification
 
@@ -518,80 +518,80 @@ Under the stated constraints ($0 \le n \le 10{,}000$, values between $-1{,}000{,
     - The auxiliary-space complexity is $O(1)$ as only scalar counters and accumulators are stored.
 1. **For an index $i$, how many starting positions and ending positions can form a subarray containing $a[i]$? Derive its contribution.**
 
-	- For an element at index $i$ to be contained within a subarray $\text{arr}[s \dots e]$:
-	    
-	    - The start index $s$ must be chosen such that $0 \le s \le i$. There are $i + 1$ independent choices.
-	        
-	    - The end index $e$ must be chosen such that $i \le e \le n - 1$. There are $(n - 1) - i + 1 = n - i$ independent choices.
-	        
-	- By the fundamental counting principle, the number of distinct subarrays spanning index $i$ is:
-	    
-	    $$\text{occurrences}(i) = (i + 1) \times (n - i)$$
-	    
-	- Because $\text{arr}[i]$ appears in each of these subarrays, its total contribution to the grand total of all subarray sums is:
-	    
-	    $$\text{contribution}(i) = (i + 1) \cdot (n - i) \cdot \text{arr}[i]$$
+  - For an element at index $i$ to be contained within a subarray $\text{arr}[s \dots e]$:
+      
+      - The start index $s$ must be chosen such that $0 \le s \le i$. There are $i + 1$ independent choices.
+          
+      - The end index $e$ must be chosen such that $i \le e \le n - 1$. There are $(n - 1) - i + 1 = n - i$ independent choices.
+          
+  - By the fundamental counting principle, the number of distinct subarrays spanning index $i$ is:
+      
+      $$\text{occurrences}(i) = (i + 1) \times (n - i)$$
+      
+  - Because $\text{arr}[i]$ appears in each of these subarrays, its total contribution to the grand total of all subarray sums is:
+      
+      $$\text{contribution}(i) = (i + 1) \cdot (n - i) \cdot \text{arr}[i]$$
 3. **Analyze the time and auxiliary space of Approach B. Why can it avoid generating the subarrays explicitly?**
 
-	- **Time and auxiliary space**: Approach B runs a single loop from $i = 0$ to $n - 1$. Each iteration computes $(i + 1)(n - i)\text{arr}[i]$ and adds it to `totalSum` in $O(1)$ primitive steps, yielding $\Theta(n)$ total time. It requires $O(1)$ auxiliary space because it only uses a few 64-bit scalar variables.
-	    
-	- **Why explicit subarray generation is avoided**: Because addition is commutative and associative, the sum over all subarrays of their internal elements can be rearranged:
-	    
-	    $$\sum_{\text{all subarrays } S} \left( \sum_{x \in S} x \right) = \sum_{i=0}^{n-1} \left( \sum_{S \text{ containing } i} \text{arr}[i] \right) = \sum_{i=0}^{n-1} \left( \text{arr}[i] \times \vert{}\{S : i \in S\}\vert{} \right)$$
-	    
-	    Since combinatorics determines $\vert{}\{S : i \in S\}\vert{} = (i + 1)(n - i)$ directly in $O(1)$ time, the algorithm bypasses the need to enumerate individual subarrays.
+  - **Time and auxiliary space**: Approach B runs a single loop from $i = 0$ to $n - 1$. Each iteration computes $(i + 1)(n - i)\text{arr}[i]$ and adds it to `totalSum` in $O(1)$ primitive steps, yielding $\Theta(n)$ total time. It requires $O(1)$ auxiliary space because it only uses a few 64-bit scalar variables.
+      
+  - **Why explicit subarray generation is avoided**: Because addition is commutative and associative, the sum over all subarrays of their internal elements can be rearranged:
+      
+      $$\sum_{\text{all subarrays } S} \left( \sum_{x \in S} x \right) = \sum_{i=0}^{n-1} \left( \sum_{S \text{ containing } i} \text{arr}[i] \right) = \sum_{i=0}^{n-1} \left( \text{arr}[i] \times \vert{}\{S : i \in S\}\vert{} \right)$$
+      
+      Since combinatorics determines $\vert{}\{S : i \in S\}\vert{} = (i + 1)(n - i)$ directly in $O(1)$ time, the algorithm bypasses the need to enumerate individual subarrays.
 4. **Why does this method remain correct when values are negative or zero? What should a one-element array return?**
 
-	- **Negative or zero values**:
-	    
-	    - The frequency factor $(i + 1)(n - i)$ depends solely on index geometry and array length $n$, not on the numerical values stored in $\text{arr}$.
-	        
-	    - By the distributive law of multiplication over addition, summing a negative value $-v$ across $k$ separate subarrays is mathematically equivalent to adding $k \times (-v) = -k \cdot v$ directly to the total sum.
-	        
-	    - If $\text{arr}[i] = 0$, its contribution is $(i + 1)(n - i) \times 0 = 0$, reflecting that adding zero to any subarray sum leaves the total unchanged.
-	        
-	- **One-element array ($n = 1$, `arr = [x]`)**:
-	    
-	    - For $i = 0$, start choices $= 0 + 1 = 1$, and end choices $= 1 - 0 = 1$.
-	        
-	    - Total contribution $= 1 \times 1 \times x = x$.
-	        
-	    - Thus, it returns the value of that single element as a `long` (`(long) arr[0]`).
+  - **Negative or zero values**:
+      
+      - The frequency factor $(i + 1)(n - i)$ depends solely on index geometry and array length $n$, not on the numerical values stored in $\text{arr}$.
+          
+      - By the distributive law of multiplication over addition, summing a negative value $-v$ across $k$ separate subarrays is mathematically equivalent to adding $k \times (-v) = -k \cdot v$ directly to the total sum.
+          
+      - If $\text{arr}[i] = 0$, its contribution is $(i + 1)(n - i) \times 0 = 0$, reflecting that adding zero to any subarray sum leaves the total unchanged.
+          
+  - **One-element array ($n = 1$, `arr = [x]`)**:
+      
+      - For $i = 0$, start choices $= 0 + 1 = 1$, and end choices $= 1 - 0 = 1$.
+          
+      - Total contribution $= 1 \times 1 \times x = x$.
+          
+      - Thus, it returns the value of that single element as a `long` (`(long) arr[0]`).
 5. **Why may an int calculation overflow even when the final variable is a long? Explain why the stated size and value limits keep the total within long range.**
 
-	- **Why 32-bit `int` calculations overflow**:
-	    
-	    - In Java, expression evaluation types depend strictly on the static types of the operands, regardless of the destination variable's type.
-	        
-	    - If $i$, $n$, and $\text{arr}[i]$ are `int`, the expression `(i + 1) * (n - i) * arr[i]` is computed entirely in 32-bit signed integer arithmetic.
-	        
-	    - If the true value exceeds $[ -2^{31}, 2^{31} - 1 ]$ ($[-2{,}147{,}483{,}648, 2{,}147{,}483{,}647]$), the product wraps around and truncates before it is promoted and assigned to the 64-bit `long` variable.
-	        
-	    - To prevent this, at least one operand must be cast to `long` before multiplication: `(long) (i + 1) * (n - i) * arr[i]`.
-	        
-	- **Why the total remains within `long` range**:
-	    
-	    - Input constraints specify $n \le 10{,}000$ and $\vert{}\text{arr}[i]\vert{} \le 1{,}000{,}000 = 10^6$.
-	        
-	    - The total sum of all contributions across all indices is bounded by:
-	        
-	        $$\text{Max Total} \le \max \vert{}\text{arr}[i]\vert{} \times \sum_{i=0}^{n-1} (i + 1)(n - i)$$
-	        
-	    - Evaluating the sum of products of linear factors:
-	        
-	        $$\sum_{i=0}^{n-1} (i + 1)(n - i) = \sum_{k=1}^{n} k(n - k + 1) = \frac{n(n + 1)(n + 2)}{6}$$
-	        
-	    - For $n = 10{,}000$:
-	        
-	        $$\frac{10{,}000 \times 10{,}001 \times 10{,}002}{6} = \frac{1{,}000{,}300{,}020{,}000}{6} \approx 1.667 \times 10^{11}$$
-	        
-	    - Multiplying by the maximum magnitude $\vert{}\text{arr}[i]\vert{} \le 10^6$:
-	        
-	        $$\text{Max Magnitude} \approx 1.667 \times 10^{11} \times 10^6 = 1.667 \times 10^{17}$$
-	        
-	    - In Java, a signed 64-bit `long` spans up to $2^{63} - 1 \approx 9.22 \times 10^{18}$.
-	        
-	    - Because $1.667 \times 10^{17} < 9.22 \times 10^{18}$, the total cannot overflow a 64-bit `long`.
+  - **Why 32-bit `int` calculations overflow**:
+      
+      - In Java, expression evaluation types depend strictly on the static types of the operands, regardless of the destination variable's type.
+          
+      - If $i$, $n$, and $\text{arr}[i]$ are `int`, the expression `(i + 1) * (n - i) * arr[i]` is computed entirely in 32-bit signed integer arithmetic.
+          
+      - If the true value exceeds $[ -2^{31}, 2^{31} - 1 ]$ ($[-2{,}147{,}483{,}648, 2{,}147{,}483{,}647]$), the product wraps around and truncates before it is promoted and assigned to the 64-bit `long` variable.
+          
+      - To prevent this, at least one operand must be cast to `long` before multiplication: `(long) (i + 1) * (n - i) * arr[i]`.
+          
+  - **Why the total remains within `long` range**:
+      
+      - Input constraints specify $n \le 10{,}000$ and $\vert{}\text{arr}[i]\vert{} \le 1{,}000{,}000 = 10^6$.
+          
+      - The total sum of all contributions across all indices is bounded by:
+          
+          $$\text{Max Total} \le \max \vert{}\text{arr}[i]\vert{} \times \sum_{i=0}^{n-1} (i + 1)(n - i)$$
+          
+      - Evaluating the sum of products of linear factors:
+          
+          $$\sum_{i=0}^{n-1} (i + 1)(n - i) = \sum_{k=1}^{n} k(n - k + 1) = \frac{n(n + 1)(n + 2)}{6}$$
+          
+      - For $n = 10{,}000$:
+          
+          $$\frac{10{,}000 \times 10{,}001 \times 10{,}002}{6} = \frac{1{,}000{,}300{,}020{,}000}{6} \approx 1.667 \times 10^{11}$$
+          
+      - Multiplying by the maximum magnitude $\vert{}\text{arr}[i]\vert{} \le 10^6$:
+          
+          $$\text{Max Magnitude} \approx 1.667 \times 10^{11} \times 10^6 = 1.667 \times 10^{17}$$
+          
+      - In Java, a signed 64-bit `long` spans up to $2^{63} - 1 \approx 9.22 \times 10^{18}$.
+          
+      - Because $1.667 \times 10^{17} < 9.22 \times 10^{18}$, the total cannot overflow a 64-bit `long`.
 
 ### Test Cases and Verification
 
@@ -615,23 +615,23 @@ Given an array of even length $n = 2m$ structured as $[x_1, \dots, x_m, y_1, \do
 - **Mechanism**: Allocates an auxiliary buffer `aux` of size $n$.
         
 - **Execution**:
-	
-	1. **Interleaving Pass**: Iterates through $i \in [0, m - 1]$, mapping each element $x_{i+1}$ from $\text{arr}[i]$ to the even destination index `aux[2 * i]`, and each element $y_{i+1}$ from $\text{arr}[m + i]$ to the odd destination index `aux[2 * i + 1]`.
-		
-	2. **Copy-Back Pass**: Copies all $n$ elements from `aux` back into the original input array `arr` using `System.arraycopy`, modifying it in-place.
+  
+  1. **Interleaving Pass**: Iterates through $i \in [0, m - 1]$, mapping each element $x_{i+1}$ from $\text{arr}[i]$ to the even destination index `aux[2 * i]`, and each element $y_{i+1}$ from $\text{arr}[m + i]$ to the odd destination index `aux[2 * i + 1]`.
+    
+  2. **Copy-Back Pass**: Copies all $n$ elements from `aux` back into the original input array `arr` using `System.arraycopy`, modifying it in-place.
 
 #### Approach B (In-Place Ordered Insertions)
 - **Mechanism**: Sequentially inserts each element of the second half into its destination position immediately following its corresponding first-half partner, displacing intervening elements rightward without allocating extra heap space.
         
 - **Execution**: For each insertion step $k \in [0, m - 2]$:
-	
-	1. The next unplaced second-half element $y_{k+1}$ currently resides at index $\text{source} = m + k$. Its value is saved in a scalar temporary variable `temp`.
-		
-	2. The target destination is $\text{target} = 2k + 1$ (the slot immediately following $x_{k+1}$ at $2k$).
-		
-	3. A right-to-left shift moves all intervening elements at indices from $\text{target}$ to $\text{source} - 1$ one position to the right into slots $[\text{target} + 1, \text{source}]$.
-		
-	4. `temp` is written into `arr[target]`. The remaining element pair $(x_m, y_m)$ naturally occupies the final two indices without requiring a shift.
+  
+  1. The next unplaced second-half element $y_{k+1}$ currently resides at index $\text{source} = m + k$. Its value is saved in a scalar temporary variable `temp`.
+    
+  2. The target destination is $\text{target} = 2k + 1$ (the slot immediately following $x_{k+1}$ at $2k$).
+    
+  3. A right-to-left shift moves all intervening elements at indices from $\text{target}$ to $\text{source} - 1$ one position to the right into slots $[\text{target} + 1, \text{source}]$.
+    
+  4. `temp` is written into `arr[target]`. The remaining element pair $(x_m, y_m)$ naturally occupies the final two indices without requiring a shift.
 
 ### Complexity Analysis
 Let $n$ denote the length of the array, and let $m = \frac{n}{2}$ denote the size of each half.
@@ -683,73 +683,73 @@ Under the lab constraints ($n \le 100{,}000$ integers), **Approach A (Auxiliary 
 ### Problem-Specific Analysis Questions
 1. **Analyze the time and auxiliary space of the auxiliary-array approach, including copying back.**
 
-	- **Time Complexity**: $\Theta(n)$.
-	    
-	    - _Array Allocation_: Allocating `int[n]` takes $\Theta(n)$ time to claim and zero-initialize memory.
-	        
-	    - _Interleaving Pass_: The loop runs $m = \frac{n}{2}$ times. In each iteration, reading $\text{arr}[i]$ and $\text{arr}[m + i]$ and writing them to `aux[2 * i]` and `aux[2 * i + 1]` takes $O(1)$ operations, totaling $\Theta(n)$ time.
-	        
-	    - _Copy-Back Pass_: Copying all $n$ integers from `aux` back to `arr` takes $\Theta(n)$ time.
-	        
-	    - _Total Time_: $\Theta(n) + \Theta(n) + \Theta(n) = \Theta(n)$ across best, average, and worst cases.
-	        
-	- **Auxiliary Space**: $\Theta(n)$. Allocates a dedicated array of size $n$ on the heap, requiring $\Theta(n)$ auxiliary space beyond the scalar loop counters.
+  - **Time Complexity**: $\Theta(n)$.
+      
+      - _Array Allocation_: Allocating `int[n]` takes $\Theta(n)$ time to claim and zero-initialize memory.
+          
+      - _Interleaving Pass_: The loop runs $m = \frac{n}{2}$ times. In each iteration, reading $\text{arr}[i]$ and $\text{arr}[m + i]$ and writing them to `aux[2 * i]` and `aux[2 * i + 1]` takes $O(1)$ operations, totaling $\Theta(n)$ time.
+          
+      - _Copy-Back Pass_: Copying all $n$ integers from `aux` back to `arr` takes $\Theta(n)$ time.
+          
+      - _Total Time_: $\Theta(n) + \Theta(n) + \Theta(n) = \Theta(n)$ across best, average, and worst cases.
+          
+  - **Auxiliary Space**: $\Theta(n)$. Allocates a dedicated array of size $n$ on the heap, requiring $\Theta(n)$ auxiliary space beyond the scalar loop counters.
 2. **Trace the ordered insertions on the example. How many values must be shifted for the first insertion, the next insertion, and so on? Use $m = n/2$ to derive the total shifting work.**
 
-	- **Trace on Example**: Array $[1, 2, 3, 10, 20, 30]$ ($n = 6$, $m = 3$). Halves are $X = [1, 2, 3]$ and $Y = [10, 20, 30]$.
-	    
-	    - **Initial Array**: `[1, 2, 3, 10, 20, 30]`
-	        
-	    - **Insertion 1 ($k = 0$)**: Target index is $2(0) + 1 = 1$. Source index is $m + 0 = 3$ (value $10$).
-	        
-	        - Save $\text{temp} = 10$.
-	            
-	        - Shift intervening elements at indices $1$ and $2$ rightward into indices $2$ and $3$: `arr[3] = arr[2]` ($3$), `arr[2] = arr[1]` ($2$).
-	            
-	        - **Values shifted**: $2$ values ($m - 1 = 3 - 1 = 2$).
-	            
-	        - Write `arr[1] = 10`.
-	            
-	        - **Array state**: `[1, 10, 2, 3, 20, 30]`
-	            
-	    - **Insertion 2 ($k = 1$)**: Target index is $2(1) + 1 = 3$. Source index is $m + 1 = 4$ (value $20$).
-	        
-	        - Save $\text{temp} = 20$.
-	            
-	        - Shift intervening element at index $3$ rightward into index $4$: `arr[4] = arr[3]` ($3$).
-	            
-	        - **Values shifted**: $1$ value ($m - 2 = 3 - 2 = 1$).
-	            
-	        - Write `arr[3] = 20`.
-	            
-	        - **Array state**: `[1, 10, 2, 20, 3, 30]`
-	            
-	    - **Insertion 3 ($k = 2$)**: Target index is $5$, source index is $5$ (value $30$).
-	        
-	        - **Values shifted**: $0$ values ($m - 3 = 0$). Pair $(x_3, y_3) = (3, 30)$ is already at indices $4$ and $5$.
-	            
-	- **Derivation of Total Shifting Work**:
-	    
-	    - In step $k$ ($0 \le k \le m - 2$), target is $2k + 1$ and source is $m + k$. The number of shifted elements is:
-	        
-	        $$\text{source} - \text{target} = (m + k) - (2k + 1) = m - 1 - k$$
-	        
-	    - Summing across all $k = 0, 1, \dots, m - 2$:
-	        
-	        $$\text{Total Shifts} = \sum_{k=0}^{m-2} (m - 1 - k) = (m - 1) + (m - 2) + \dots + 1 = \frac{m(m - 1)}{2} = \frac{n(n - 2)}{8}$$
-	        
-	    - For $m = 3$ ($n = 6$), total shifting work is $\frac{3(2)}{2} = 3$ shifts.
+  - **Trace on Example**: Array $[1, 2, 3, 10, 20, 30]$ ($n = 6$, $m = 3$). Halves are $X = [1, 2, 3]$ and $Y = [10, 20, 30]$.
+      
+      - **Initial Array**: `[1, 2, 3, 10, 20, 30]`
+          
+      - **Insertion 1 ($k = 0$)**: Target index is $2(0) + 1 = 1$. Source index is $m + 0 = 3$ (value $10$).
+          
+          - Save $\text{temp} = 10$.
+              
+          - Shift intervening elements at indices $1$ and $2$ rightward into indices $2$ and $3$: `arr[3] = arr[2]` ($3$), `arr[2] = arr[1]` ($2$).
+              
+          - **Values shifted**: $2$ values ($m - 1 = 3 - 1 = 2$).
+              
+          - Write `arr[1] = 10`.
+              
+          - **Array state**: `[1, 10, 2, 3, 20, 30]`
+              
+      - **Insertion 2 ($k = 1$)**: Target index is $2(1) + 1 = 3$. Source index is $m + 1 = 4$ (value $20$).
+          
+          - Save $\text{temp} = 20$.
+              
+          - Shift intervening element at index $3$ rightward into index $4$: `arr[4] = arr[3]` ($3$).
+              
+          - **Values shifted**: $1$ value ($m - 2 = 3 - 2 = 1$).
+              
+          - Write `arr[3] = 20`.
+              
+          - **Array state**: `[1, 10, 2, 20, 3, 30]`
+              
+      - **Insertion 3 ($k = 2$)**: Target index is $5$, source index is $5$ (value $30$).
+          
+          - **Values shifted**: $0$ values ($m - 3 = 0$). Pair $(x_3, y_3) = (3, 30)$ is already at indices $4$ and $5$.
+              
+  - **Derivation of Total Shifting Work**:
+      
+      - In step $k$ ($0 \le k \le m - 2$), target is $2k + 1$ and source is $m + k$. The number of shifted elements is:
+          
+          $$\text{source} - \text{target} = (m + k) - (2k + 1) = m - 1 - k$$
+          
+      - Summing across all $k = 0, 1, \dots, m - 2$:
+          
+          $$\text{Total Shifts} = \sum_{k=0}^{m-2} (m - 1 - k) = (m - 1) + (m - 2) + \dots + 1 = \frac{m(m - 1)}{2} = \frac{n(n - 2)}{8}$$
+          
+      - For $m = 3$ ($n = 6$), total shifting work is $\frac{3(2)}{2} = 3$ shifts.
 3. **Analyze the time and auxiliary space of the required in-place approach. Explain the trade-off compared with Approach A.**
 
-	- **Time Complexity**: $\Theta(n^2)$. The algorithm executes $\frac{n(n - 2)}{8}$ individual element shifts. Since shifting operations dominate and are independent of value comparisons, time complexity is $\Theta(n^2)$ in all cases.
-	    
-	- **Auxiliary Space**: $O(1)$. Operates with zero heap allocations, using only primitive scalars (`temp`, loop variables).
-	    
-	- **Trade-off compared with Approach A**:
-	    
-	    - Approach A trades memory for speed: it consumes $\Theta(n)$ auxiliary space to deliver an optimal linear runtime $\Theta(n)$.
-	        
-	    - Approach B trades speed for memory: it eliminates auxiliary heap allocations entirely ($O(1)$ space), but this requires quadratic time $\Theta(n^2)$ due to repeated element shifting. At $n = 100{,}000$, Approach B incurs over $10^9$ operations, whereas Approach A finishes in $\approx 2 \times 10^5$ operations.
+  - **Time Complexity**: $\Theta(n^2)$. The algorithm executes $\frac{n(n - 2)}{8}$ individual element shifts. Since shifting operations dominate and are independent of value comparisons, time complexity is $\Theta(n^2)$ in all cases.
+      
+  - **Auxiliary Space**: $O(1)$. Operates with zero heap allocations, using only primitive scalars (`temp`, loop variables).
+      
+  - **Trade-off compared with Approach A**:
+      
+      - Approach A trades memory for speed: it consumes $\Theta(n)$ auxiliary space to deliver an optimal linear runtime $\Theta(n)$.
+          
+      - Approach B trades speed for memory: it eliminates auxiliary heap allocations entirely ($O(1)$ space), but this requires quadratic time $\Theta(n^2)$ due to repeated element shifting. At $n = 100{,}000$, Approach B incurs over $10^9$ operations, whereas Approach A finishes in $\approx 2 \times 10^5$ operations.
 4. **Why must the selected value be saved before shifting? Why does the shift proceed from right to left?**
     
     - **Why the selected value must be saved**: The rightward shift copies element `arr[source - 1]` into index `source`. If `arr[source]` were not stored in `temp` prior to this step, its value would be permanently overwritten and lost before being moved into its destination slot.
@@ -757,11 +757,11 @@ Under the lab constraints ($n \le 100{,}000$ integers), **Approach A (Auxiliary 
     - **Why shifting must proceed from right to left**: Shifting rightward moves each element from position $j - 1$ to position $j$. If processed left-to-right (from $\text{target}$ upward), writing `arr[target]` into `arr[target + 1]` would overwrite the original contents of `arr[target + 1]` before they could be read, causing the value at `arr[target]` to overwrite the rest of the array. Traversing right-to-left (from $j = \text{source}$ down to $\text{target} + 1$) guarantees that destination slot $j$ is filled only after its current value has already been safely shifted into $j + 1$.
 5. **How does your solution preserve the relative order within both halves, including when values repeat?**
 
-	- **First Half Elements ($x_1, \dots, x_m$)**: When an element $y_k$ is inserted at position $2k + 1$, all unplaced first-half elements located between $\text{target}$ and $\text{source} - 1$ are shifted together by exactly one position to the right. Because they shift as a uniform contiguous block without changing relative offsets, their relative order is strictly preserved.
-	    
-	- **Second Half Elements ($y_1, \dots, y_m$)**: Elements from the second half are selected and placed in strict increasing order of their original indices: $y_1$ is placed first, then $y_2$, and so forth.
-	    
-	- **Handling Repeating Values**: The algorithm is purely structural and index-driven; it performs no magnitude comparisons or value-dependent swaps. Identical values maintain their exact relative index order throughout the transformation, ensuring positional stability.
+  - **First Half Elements ($x_1, \dots, x_m$)**: When an element $y_k$ is inserted at position $2k + 1$, all unplaced first-half elements located between $\text{target}$ and $\text{source} - 1$ are shifted together by exactly one position to the right. Because they shift as a uniform contiguous block without changing relative offsets, their relative order is strictly preserved.
+      
+  - **Second Half Elements ($y_1, \dots, y_m$)**: Elements from the second half are selected and placed in strict increasing order of their original indices: $y_1$ is placed first, then $y_2$, and so forth.
+      
+  - **Handling Repeating Values**: The algorithm is purely structural and index-driven; it performs no magnitude comparisons or value-dependent swaps. Identical values maintain their exact relative index order throughout the transformation, ensuring positional stability.
 6. **Does using less auxiliary memory necessarily mean using less time? Base your answer on these two required algorithms, not a claim about every possible in-place algorithm.**
     
     - **No**, using less auxiliary memory does not imply using less time. In fact, these two algorithms demonstrate an inverse relationship.
