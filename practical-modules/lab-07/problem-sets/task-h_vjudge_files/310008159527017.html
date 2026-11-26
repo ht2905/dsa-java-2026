@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)https://vjudge.net/problem/description/310008159527017?3571748665565 -->
+<html data-bs-theme="dark" style="color-scheme: dark;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title></title>
+    <script>
+  (function () {
+    try {
+      const storedTheme = localStorage.getItem('theme') || 'auto';
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const effectiveTheme = storedTheme === 'auto'
+          ? (prefersDark ? 'dark' : 'light')
+          : storedTheme;
+      document.documentElement.setAttribute('data-bs-theme', effectiveTheme);
+      document.documentElement.style.setProperty('color-scheme', effectiveTheme);
+    } catch (e) {
+    }
+  })();
+</script>
+
+<script defer="" src="./efa7d47ed567ce6ec4fd.js"></script><script defer="" src="./72f19044b39cee1af034.js"></script><script defer="" src="./a58f481315d7a9617f38.js"></script><script defer="" src="./28cd6113d3c0123fe077.js"></script><script defer="" src="./e146438a76820eb69ccd.js"></script><script defer="" src="./a563b3ccbe1d371400e9.js"></script><script defer="" src="./8a58156bda78b245f556.js"></script><script defer="" src="./e1efb8287e5d38513169.js"></script><link href="./e9dc855184be8526c1d6.css" rel="stylesheet"><link href="./1cc39c5f99ce0722b157.css" rel="stylesheet"><link href="./a2d6def48179e2e5097c.css" rel="stylesheet"></head>
+
+<body>
+<div class="container" id="description-container" dir="ltr" lang="en"><style type="text/css">
+  .input, .output {
+      border: 1px solid #888888;
+  }
+  .output {
+      margin-bottom: 1em;
+      position: relative;
+      top: -1px;
+  }
+  .output pre, .input pre {
+      background-color: #EFEFEF;
+      line-height: 1.25em;
+      margin: 0;
+      padding: 0.25em;
+  }
+ </style>
+ <link rel="stylesheet" href="./problem-statement.css" type="text/css">
+<script>
+    window.katexOptions = {
+        delimiters: [
+          {left: '$$$$$$', right: '$$$$$$', display: true},
+          {left: '$$$', right: '$$$', display: false},
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false}
+        ]
+    };
+</script>
+<dd style="padding-top: 20px"><div style="padding: 0px 20px 20px;"><p>A company has <span class="tex-span"><i>n</i></span> employees numbered from <span class="tex-span">1</span> to <span class="tex-span"><i>n</i></span>. Each employee either has no immediate manager or exactly one immediate manager, who is another employee with a different number. An employee <span class="tex-span"><i>A</i></span> is said to be the <span class="tex-font-style-underline">superior</span> of another employee <span class="tex-span"><i>B</i></span> if at least one of the following is true:</p><ul> <li> Employee <span class="tex-span"><i>A</i></span> is the immediate manager of employee <span class="tex-span"><i>B</i></span> </li><li> Employee <span class="tex-span"><i>B</i></span> has an immediate manager employee <span class="tex-span"><i>C</i></span> such that employee <span class="tex-span"><i>A</i></span> is the superior of employee <span class="tex-span"><i>C</i></span>. </li></ul><p>The company will not have a managerial cycle. That is, there will not exist an employee who is the superior of his/her own immediate manager.</p><p>Today the company is going to arrange a party. This involves dividing all <span class="tex-span"><i>n</i></span> employees into several groups: every employee must belong to exactly one group. Furthermore, within any single group, there must not be two employees <span class="tex-span"><i>A</i></span> and <span class="tex-span"><i>B</i></span> such that <span class="tex-span"><i>A</i></span> is the superior of <span class="tex-span"><i>B</i></span>.</p><p>What is the minimum number of groups that must be formed?</p></div><h3 style="margin: 20px 20px 0 20px">Input</h3><div style="padding: 0px 20px 20px;"><p>The first line contains integer <span class="tex-span"><i>n</i></span> (<span class="tex-span">1 ≤ <i>n</i> ≤ 2000</span>) — the number of employees.</p><p>The next <span class="tex-span"><i>n</i></span> lines contain the integers <span class="tex-span"><i>p</i><sub class="lower-index"><i>i</i></sub></span> (<span class="tex-span">1 ≤ <i>p</i><sub class="lower-index"><i>i</i></sub> ≤ <i>n</i></span> or <span class="tex-span"><i>p</i><sub class="lower-index"><i>i</i></sub> = </span>-1). Every <span class="tex-span"><i>p</i><sub class="lower-index"><i>i</i></sub></span> denotes the immediate manager for the <span class="tex-span"><i>i</i></span>-th employee. If <span class="tex-span"><i>p</i><sub class="lower-index"><i>i</i></sub></span> is -1, that means that the <span class="tex-span"><i>i</i></span>-th employee does not have an immediate manager. </p><p>It is guaranteed, that no employee will be the immediate manager of him/herself (<span class="tex-span"><i>p</i><sub class="lower-index"><i>i</i></sub> ≠ <i>i</i></span>). Also, there will be no managerial cycles.</p></div><h3 style="margin: 20px 20px 0 20px">Output</h3><div style="padding: 0px 20px 20px;"><p>Print a single integer denoting the minimum number of groups that will be formed in the party.</p></div><h3 style="margin: 20px 20px 0 20px">Examples</h3><div style="padding: 0px 20px 20px;"><table class="vjudge_sample">
+<thead>
+  <tr>
+    <th>Input</th>
+    <th>Output</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><pre>5
+-1
+1
+2
+1
+-1
+</pre><span class="sample-cell-copier">Copy</span></td>
+    <td><pre>3
+</pre><span class="sample-cell-copier">Copy</span></td>
+  </tr>
+</tbody>
+</table>
+</div><h3 style="margin: 20px 20px 0 20px">Note</h3><div style="padding: 0px 20px 20px;"><p>For the first example, three groups are sufficient, for example: </p><ul> <li> Employee 1 </li><li> Employees 2 and 4 </li><li> Employees 3 and 5 </li></ul></div></dd></div>
+<textarea class="data-json-container" style="display: none">{"lang":"en","trustable":true,"prependHtml":"\u003cstyle type\u003d\u0027text/css\u0027\u003e\n  .input, .output {\n      border: 1px solid #888888;\n  }\n  .output {\n      margin-bottom: 1em;\n      position: relative;\n      top: -1px;\n  }\n  .output pre, .input pre {\n      background-color: #EFEFEF;\n      line-height: 1.25em;\n      margin: 0;\n      padding: 0.25em;\n  }\n \u003c/style\u003e\n \u003clink rel\u003d\"stylesheet\" href\u003d\"//codeforces.org/s/96598/css/problem-statement.css\" type\u003d\"text/css\" /\u003e\n\u003cscript\u003e\n    window.katexOptions \u003d {\n        delimiters: [\n          {left: \u0027$$$$$$\u0027, right: \u0027$$$$$$\u0027, display: true},\n          {left: \u0027$$$\u0027, right: \u0027$$$\u0027, display: false},\n          {left: \u0027$$\u0027, right: \u0027$$\u0027, display: true},\n          {left: \u0027$\u0027, right: \u0027$\u0027, display: false}\n        ]\n    };\n\u003c/script\u003e\n","sections":[{"title":"","value":{"format":"HTML","content":"\u003cp\u003eA company has \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003en\u003c/i\u003e\u003c/span\u003e employees numbered from \u003cspan class\u003d\"tex-span\"\u003e1\u003c/span\u003e to \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003en\u003c/i\u003e\u003c/span\u003e. Each employee either has no immediate manager or exactly one immediate manager, who is another employee with a different number. An employee \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003eA\u003c/i\u003e\u003c/span\u003e is said to be the \u003cspan class\u003d\"tex-font-style-underline\"\u003esuperior\u003c/span\u003e of another employee \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003eB\u003c/i\u003e\u003c/span\u003e if at least one of the following is true:\u003c/p\u003e\u003cul\u003e \u003cli\u003e Employee \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003eA\u003c/i\u003e\u003c/span\u003e is the immediate manager of employee \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003eB\u003c/i\u003e\u003c/span\u003e \u003c/li\u003e\u003cli\u003e Employee \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003eB\u003c/i\u003e\u003c/span\u003e has an immediate manager employee \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003eC\u003c/i\u003e\u003c/span\u003e such that employee \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003eA\u003c/i\u003e\u003c/span\u003e is the superior of employee \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003eC\u003c/i\u003e\u003c/span\u003e. \u003c/li\u003e\u003c/ul\u003e\u003cp\u003eThe company will not have a managerial cycle. That is, there will not exist an employee who is the superior of his/her own immediate manager.\u003c/p\u003e\u003cp\u003eToday the company is going to arrange a party. This involves dividing all \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003en\u003c/i\u003e\u003c/span\u003e employees into several groups: every employee must belong to exactly one group. Furthermore, within any single group, there must not be two employees \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003eA\u003c/i\u003e\u003c/span\u003e and \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003eB\u003c/i\u003e\u003c/span\u003e such that \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003eA\u003c/i\u003e\u003c/span\u003e is the superior of \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003eB\u003c/i\u003e\u003c/span\u003e.\u003c/p\u003e\u003cp\u003eWhat is the minimum number of groups that must be formed?\u003c/p\u003e"}},{"title":"Input","value":{"format":"HTML","content":"\u003cp\u003eThe first line contains integer \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003en\u003c/i\u003e\u003c/span\u003e (\u003cspan class\u003d\"tex-span\"\u003e1 ≤ \u003ci\u003en\u003c/i\u003e ≤ 2000\u003c/span\u003e) — the number of employees.\u003c/p\u003e\u003cp\u003eThe next \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003en\u003c/i\u003e\u003c/span\u003e lines contain the integers \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003ep\u003c/i\u003e\u003csub class\u003d\"lower-index\"\u003e\u003ci\u003ei\u003c/i\u003e\u003c/sub\u003e\u003c/span\u003e (\u003cspan class\u003d\"tex-span\"\u003e1 ≤ \u003ci\u003ep\u003c/i\u003e\u003csub class\u003d\"lower-index\"\u003e\u003ci\u003ei\u003c/i\u003e\u003c/sub\u003e ≤ \u003ci\u003en\u003c/i\u003e\u003c/span\u003e or \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003ep\u003c/i\u003e\u003csub class\u003d\"lower-index\"\u003e\u003ci\u003ei\u003c/i\u003e\u003c/sub\u003e \u003d \u003c/span\u003e-1). Every \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003ep\u003c/i\u003e\u003csub class\u003d\"lower-index\"\u003e\u003ci\u003ei\u003c/i\u003e\u003c/sub\u003e\u003c/span\u003e denotes the immediate manager for the \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003ei\u003c/i\u003e\u003c/span\u003e-th employee. If \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003ep\u003c/i\u003e\u003csub class\u003d\"lower-index\"\u003e\u003ci\u003ei\u003c/i\u003e\u003c/sub\u003e\u003c/span\u003e is -1, that means that the \u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003ei\u003c/i\u003e\u003c/span\u003e-th employee does not have an immediate manager. \u003c/p\u003e\u003cp\u003eIt is guaranteed, that no employee will be the immediate manager of him/herself (\u003cspan class\u003d\"tex-span\"\u003e\u003ci\u003ep\u003c/i\u003e\u003csub class\u003d\"lower-index\"\u003e\u003ci\u003ei\u003c/i\u003e\u003c/sub\u003e ≠ \u003ci\u003ei\u003c/i\u003e\u003c/span\u003e). Also, there will be no managerial cycles.\u003c/p\u003e"}},{"title":"Output","value":{"format":"HTML","content":"\u003cp\u003ePrint a single integer denoting the minimum number of groups that will be formed in the party.\u003c/p\u003e"}},{"title":"Examples","value":{"format":"HTML","content":"\u003ctable class\u003d\u0027vjudge_sample\u0027\u003e\n\u003cthead\u003e\n  \u003ctr\u003e\n    \u003cth\u003eInput\u003c/th\u003e\n    \u003cth\u003eOutput\u003c/th\u003e\n  \u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n  \u003ctr\u003e\n    \u003ctd\u003e\u003cpre\u003e5\n-1\n1\n2\n1\n-1\n\u003c/pre\u003e\u003c/td\u003e\n    \u003ctd\u003e\u003cpre\u003e3\n\u003c/pre\u003e\u003c/td\u003e\n  \u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n"}},{"title":"Note","value":{"format":"HTML","content":"\u003cp\u003eFor the first example, three groups are sufficient, for example: \u003c/p\u003e\u003cul\u003e \u003cli\u003e Employee 1 \u003c/li\u003e\u003cli\u003e Employees 2 and 4 \u003c/li\u003e\u003cli\u003e Employees 3 and 5 \u003c/li\u003e\u003c/ul\u003e"}}]}</textarea>
+
+<script type="text/javascript">basePath = "";</script>
+<script type="module" src="./vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;cbda702c6a634090aafa4717574879a5&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+
+
+</body></html>

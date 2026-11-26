@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)https://vjudge.net/problem/description/291611980445023?3541861673565 -->
+<html data-bs-theme="dark" style="color-scheme: dark;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title></title>
+    <script>
+  (function () {
+    try {
+      const storedTheme = localStorage.getItem('theme') || 'auto';
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const effectiveTheme = storedTheme === 'auto'
+          ? (prefersDark ? 'dark' : 'light')
+          : storedTheme;
+      document.documentElement.setAttribute('data-bs-theme', effectiveTheme);
+      document.documentElement.style.setProperty('color-scheme', effectiveTheme);
+    } catch (e) {
+    }
+  })();
+</script>
+
+<script defer="" src="./efa7d47ed567ce6ec4fd.js"></script><script defer="" src="./72f19044b39cee1af034.js"></script><script defer="" src="./a58f481315d7a9617f38.js"></script><script defer="" src="./28cd6113d3c0123fe077.js"></script><script defer="" src="./e146438a76820eb69ccd.js"></script><script defer="" src="./a563b3ccbe1d371400e9.js"></script><script defer="" src="./8a58156bda78b245f556.js"></script><script defer="" src="./e1efb8287e5d38513169.js"></script><link href="./e9dc855184be8526c1d6.css" rel="stylesheet"><link href="./1cc39c5f99ce0722b157.css" rel="stylesheet"><link href="./a2d6def48179e2e5097c.css" rel="stylesheet"></head>
+
+<body>
+<div class="container" id="description-container" dir="ltr" lang="en"><dd style="padding-top: 20px"><div style="padding: 0px 20px 20px;"><h1></h1>
+
+<p>
+ Search trees are data structures that support dynamic set operations including insert, search, delete and so on. Thus a search tree can be used both as a dictionary and as a priority queue. 
+</p>
+
+<p>
+  Binary search tree is one of fundamental search trees. The keys in a binary search tree are always stored in such a way as to satisfy the following binary search tree property:
+</p>
+
+<ul>
+<li> Let <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span> be a node in a binary search tree. If <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.625em; vertical-align: -0.1944em;"></span><span class="mord mathnormal" style="margin-right: 0.0359em;">y</span></span></span></span></span> is a node in the left subtree of <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span>, then <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mi mathvariant="normal">.</mi><mi>k</mi><mi>e</mi><mi>y</mi><mo>≤</mo><mi>x</mi><mi mathvariant="normal">.</mi><mi>k</mi><mi>e</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">y.key \leq x.key</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.8889em; vertical-align: -0.1944em;"></span><span class="mord mathnormal" style="margin-right: 0.0359em;">y</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span><span class="mord mathnormal" style="margin-right: 0.0359em;">ey</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.8889em; vertical-align: -0.1944em;"></span><span class="mord mathnormal">x</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span><span class="mord mathnormal" style="margin-right: 0.0359em;">ey</span></span></span></span></span>. If <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.625em; vertical-align: -0.1944em;"></span><span class="mord mathnormal" style="margin-right: 0.0359em;">y</span></span></span></span></span> is a node in the right subtree of <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span>, then <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mi mathvariant="normal">.</mi><mi>k</mi><mi>e</mi><mi>y</mi><mo>≤</mo><mi>y</mi><mi mathvariant="normal">.</mi><mi>k</mi><mi>e</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">x.key \leq y.key</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.8889em; vertical-align: -0.1944em;"></span><span class="mord mathnormal">x</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span><span class="mord mathnormal" style="margin-right: 0.0359em;">ey</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.8889em; vertical-align: -0.1944em;"></span><span class="mord mathnormal" style="margin-right: 0.0359em;">y</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span><span class="mord mathnormal" style="margin-right: 0.0359em;">ey</span></span></span></span></span>.
+</li>
+</ul>
+
+<p>
+  The following figure shows an example of the binary search tree.
+</p>
+
+<center>
+<img src="./fef1ead19f3f50601b88ec103def0fb6">
+</center>
+<br>
+
+<p>
+  For example, keys of nodes which belong to the left sub-tree of the node containing 80 are less than or equal to 80, and keys of nodes which belong to the right sub-tree are more than or equal to 80. The binary search tree property allows us to print out all the keys in the tree in sorted order by an inorder tree walk.
+</p>
+
+<p>
+  A binary search tree should be implemented in such a way that the binary search tree property continues to hold after modifications by insertions and deletions. A binary search tree can be represented by a linked data structure in which each node is an object. In addition to a key field and satellite data, each node contains fields <i>left</i>, <i>right</i>, and <i>p</i> that point to the nodes corresponding to its left child, its right child, and its parent, respectively.
+</p>
+
+<p>
+  To insert a new value <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.4306em;"></span><span class="mord mathnormal" style="margin-right: 0.0359em;">v</span></span></span></span></span> into a binary search tree <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6833em;"></span><span class="mord mathnormal" style="margin-right: 0.1389em;">T</span></span></span></span></span>, we can use the procedure insert as shown in the following pseudo code. The insert procedure is passed a node <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.4306em;"></span><span class="mord mathnormal" style="margin-right: 0.044em;">z</span></span></span></span></span> for which <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mi mathvariant="normal">.</mi><mi>k</mi><mi>e</mi><mi>y</mi><mo>=</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">z.key = v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.8889em; vertical-align: -0.1944em;"></span><span class="mord mathnormal" style="margin-right: 0.044em;">z</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span><span class="mord mathnormal" style="margin-right: 0.0359em;">ey</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.4306em;"></span><span class="mord mathnormal" style="margin-right: 0.0359em;">v</span></span></span></span></span>, <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mi mathvariant="normal">.</mi><mi>l</mi><mi>e</mi><mi>f</mi><mi>t</mi><mo>=</mo><mi>N</mi><mi>I</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">z.left = NIL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.8889em; vertical-align: -0.1944em;"></span><span class="mord mathnormal" style="margin-right: 0.044em;">z</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right: 0.0197em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right: 0.1076em;">f</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.6833em;"></span><span class="mord mathnormal" style="margin-right: 0.109em;">N</span><span class="mord mathnormal" style="margin-right: 0.0785em;">I</span><span class="mord mathnormal">L</span></span></span></span></span>, and <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mi mathvariant="normal">.</mi><mi>r</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi><mo>=</mo><mi>N</mi><mi>I</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">z.right = NIL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.8889em; vertical-align: -0.1944em;"></span><span class="mord mathnormal" style="margin-right: 0.044em;">z</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right: 0.0278em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right: 0.0359em;">g</span><span class="mord mathnormal">h</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.6833em;"></span><span class="mord mathnormal" style="margin-right: 0.109em;">N</span><span class="mord mathnormal" style="margin-right: 0.0785em;">I</span><span class="mord mathnormal">L</span></span></span></span></span>. The procedure modifies <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6833em;"></span><span class="mord mathnormal" style="margin-right: 0.1389em;">T</span></span></span></span></span> and some of the fields of <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.4306em;"></span><span class="mord mathnormal" style="margin-right: 0.044em;">z</span></span></span></span></span> in such a way that <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.4306em;"></span><span class="mord mathnormal" style="margin-right: 0.044em;">z</span></span></span></span></span> is inserted into an appropriate position in the tree.
+</p>
+
+<pre>1 insert(T, z)
+2     y = NIL // parent of x
+3     x = 'the root of T'
+4     while x ≠ NIL
+5         y = x // set the parent
+6         if z.key &lt; x.key
+7             x = x.left // move to the left child
+8         else 
+9             x = x.right // move to the right child
+10    z.p = y
+11
+12    if y == NIL // T is empty
+13        'the root of T' = z
+14    else if z.key &lt; y.key
+15        y.left = z // z is the left child of y
+16    else 
+17        y.right = z // z is the right child of y
+</pre>
+
+<p>
+  Write a program which performs the following operations to a binary search tree <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6833em;"></span><span class="mord mathnormal" style="margin-right: 0.1389em;">T</span></span></span></span></span>.
+</p>
+
+<ul>
+<li><span>insert </span> <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6944em;"></span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span></span></span></span></span>: Insert a node containing <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6944em;"></span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span></span></span></span></span> as key into <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6833em;"></span><span class="mord mathnormal" style="margin-right: 0.1389em;">T</span></span></span></span></span>.</li>
+<li><span>print</span>: Print the keys of the binary search tree by inorder tree walk and  preorder tree walk respectively.</li>
+</ul>
+
+<p>
+  You should use the above pseudo code to implement the insert operation. <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6833em;"></span><span class="mord mathnormal" style="margin-right: 0.1389em;">T</span></span></span></span></span> is empty at the initial state.
+</p>
+
+<h2>Input</h2>
+
+<p>
+  In the first line, the number of operations <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span> is given. In the following <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span> lines, operations represented by <span>insert </span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6944em;"></span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span></span></span></span></span> or <span>print</span> are given.
+</p>
+
+
+<h2>Output</h2>
+
+<p>
+  For each <span>print</span> operation, print a list of keys obtained by inorder tree walk and preorder tree walk in a line respectively. Put a space character <u>before each key</u>.
+</p>
+
+<h2>Constraints</h2>
+
+<ul>
+<li>The number of operations <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mn>500</mn><mo separator="true">,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">\leq 500,000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.7719em; vertical-align: -0.136em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.8389em; vertical-align: -0.1944em;"></span><span class="mord">500</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">000</span></span></span></span></span></li>
+<li>The number of print operations <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">\leq 10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.7719em; vertical-align: -0.136em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">10</span></span></span></span></span>.</li>
+<li><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>2</mn><mo separator="true">,</mo><mn>000</mn><mo separator="true">,</mo><mn>000</mn><mo separator="true">,</mo><mn>000</mn><mo>≤</mo><mi>k</mi><mi>e</mi><mi>y</mi><mo>≤</mo><mn>2</mn><mo separator="true">,</mo><mn>000</mn><mo separator="true">,</mo><mn>000</mn><mo separator="true">,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">-2,000,000,000 \leq key \leq 2,000,000,000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.8389em; vertical-align: -0.1944em;"></span><span class="mord">−</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">000</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">000</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">000</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.8889em; vertical-align: -0.1944em;"></span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span><span class="mord mathnormal" style="margin-right: 0.0359em;">ey</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.8389em; vertical-align: -0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">000</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">000</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">000</span></span></span></span></span></li>
+<li>The height of the binary tree does not exceed 100 if you employ the above pseudo code.</li>
+<li>The keys in the binary search tree are all different.</li>
+</ul>
+
+<table class="vjudge_sample">
+<thead>
+  <tr>
+    <th>Input</th>
+    <th>Output</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><pre>8
+insert 30
+insert 88
+insert 12
+insert 1
+insert 20
+insert 17
+insert 25
+print
+</pre><span class="sample-cell-copier">Copy</span></td>
+    <td><pre> 1 12 17 20 25 30 88
+ 30 12 1 20 17 25 88
+</pre><span class="sample-cell-copier">Copy</span></td>
+  </tr>
+</tbody>
+</table>
+
+
+<h2>Reference</h2>
+
+<p>
+Introduction to Algorithms, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. The MIT Press.
+</p>
+</div></dd></div>
+<textarea class="data-json-container" style="display: none">{"lang":"en","trustable":true,"sections":[{"title":"","value":{"format":"HTML","content":"\u003ch1\u003e\u003c/h1\u003e\n\n\u003cp\u003e\n Search trees are data structures that support dynamic set operations including insert, search, delete and so on. Thus a search tree can be used both as a dictionary and as a priority queue. \n\u003c/p\u003e\n\n\u003cp\u003e\n  Binary search tree is one of fundamental search trees. The keys in a binary search tree are always stored in such a way as to satisfy the following binary search tree property:\n\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003e Let $x$ be a node in a binary search tree. If $y$ is a node in the left subtree of $x$, then $y.key \\leq x.key$. If $y$ is a node in the right subtree of $x$, then $x.key \\leq y.key$.\n\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003e\n  The following figure shows an example of the binary search tree.\n\u003c/p\u003e\n\n\u003ccenter\u003e\n\u003cimg src\u003d\"CDN_BASE_URL/fef1ead19f3f50601b88ec103def0fb6\"\u003e\n\u003c/center\u003e\n\u003cbr\u003e\n\n\u003cp\u003e\n  For example, keys of nodes which belong to the left sub-tree of the node containing 80 are less than or equal to 80, and keys of nodes which belong to the right sub-tree are more than or equal to 80. The binary search tree property allows us to print out all the keys in the tree in sorted order by an inorder tree walk.\n\u003c/p\u003e\n\n\u003cp\u003e\n  A binary search tree should be implemented in such a way that the binary search tree property continues to hold after modifications by insertions and deletions. A binary search tree can be represented by a linked data structure in which each node is an object. In addition to a key field and satellite data, each node contains fields \u003ci\u003eleft\u003c/i\u003e, \u003ci\u003eright\u003c/i\u003e, and \u003ci\u003ep\u003c/i\u003e that point to the nodes corresponding to its left child, its right child, and its parent, respectively.\n\u003c/p\u003e\n\n\u003cp\u003e\n  To insert a new value $v$ into a binary search tree $T$, we can use the procedure insert as shown in the following pseudo code. The insert procedure is passed a node $z$ for which $z.key \u003d v$, $z.left \u003d NIL$, and $z.right \u003d NIL$. The procedure modifies $T$ and some of the fields of $z$ in such a way that $z$ is inserted into an appropriate position in the tree.\n\u003c/p\u003e\n\n\u003cpre\u003e1 insert(T, z)\n2     y \u003d NIL // parent of x\n3     x \u003d \u0027the root of T\u0027\n4     while x ≠ NIL\n5         y \u003d x // set the parent\n6         if z.key \u0026lt; x.key\n7             x \u003d x.left // move to the left child\n8         else \n9             x \u003d x.right // move to the right child\n10    z.p \u003d y\n11\n12    if y \u003d\u003d NIL // T is empty\n13        \u0027the root of T\u0027 \u003d z\n14    else if z.key \u0026lt; y.key\n15        y.left \u003d z // z is the left child of y\n16    else \n17        y.right \u003d z // z is the right child of y\n\u003c/pre\u003e\n\n\u003cp\u003e\n  Write a program which performs the following operations to a binary search tree $T$.\n\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003e\u003cspan\u003einsert \u003c/span\u003e $k$: Insert a node containing $k$ as key into $T$.\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eprint\u003c/span\u003e: Print the keys of the binary search tree by inorder tree walk and  preorder tree walk respectively.\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003e\n  You should use the above pseudo code to implement the insert operation. $T$ is empty at the initial state.\n\u003c/p\u003e\n\n\u003ch2\u003eInput\u003c/h2\u003e\n\n\u003cp\u003e\n  In the first line, the number of operations $m$ is given. In the following $m$ lines, operations represented by \u003cspan\u003einsert \u003c/span\u003e$k$ or \u003cspan\u003eprint\u003c/span\u003e are given.\n\u003c/p\u003e\n\n\n\u003ch2\u003eOutput\u003c/h2\u003e\n\n\u003cp\u003e\n  For each \u003cspan\u003eprint\u003c/span\u003e operation, print a list of keys obtained by inorder tree walk and preorder tree walk in a line respectively. Put a space character \u003cu\u003ebefore each key\u003c/u\u003e.\n\u003c/p\u003e\n\n\u003ch2\u003eConstraints\u003c/h2\u003e\n\n\u003cul\u003e\n\u003cli\u003eThe number of operations $\\leq 500,000$\u003c/li\u003e\n\u003cli\u003eThe number of print operations $\\leq 10$.\u003c/li\u003e\n\u003cli\u003e$-2,000,000,000 \\leq key \\leq 2,000,000,000$\u003c/li\u003e\n\u003cli\u003eThe height of the binary tree does not exceed 100 if you employ the above pseudo code.\u003c/li\u003e\n\u003cli\u003eThe keys in the binary search tree are all different.\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003ctable class\u003d\u0027vjudge_sample\u0027\u003e\n\u003cthead\u003e\n  \u003ctr\u003e\n    \u003cth\u003eInput\u003c/th\u003e\n    \u003cth\u003eOutput\u003c/th\u003e\n  \u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n  \u003ctr\u003e\n    \u003ctd\u003e\u003cpre\u003e8\ninsert 30\ninsert 88\ninsert 12\ninsert 1\ninsert 20\ninsert 17\ninsert 25\nprint\n\u003c/pre\u003e\u003c/td\u003e\n    \u003ctd\u003e\u003cpre\u003e 1 12 17 20 25 30 88\n 30 12 1 20 17 25 88\n\u003c/pre\u003e\u003c/td\u003e\n  \u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\n\n\u003ch2\u003eReference\u003c/h2\u003e\n\n\u003cp\u003e\nIntroduction to Algorithms, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. The MIT Press.\n\u003c/p\u003e\n"}}]}</textarea>
+
+<script type="text/javascript">basePath = "";</script>
+<script type="module" src="./vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;cbda702c6a634090aafa4717574879a5&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+
+
+</body></html>

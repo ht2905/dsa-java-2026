@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)https://vjudge.net/problem/description/303372573100511?3542030759565 -->
+<html data-bs-theme="dark" style="color-scheme: dark;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title></title>
+    <script>
+  (function () {
+    try {
+      const storedTheme = localStorage.getItem('theme') || 'auto';
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const effectiveTheme = storedTheme === 'auto'
+          ? (prefersDark ? 'dark' : 'light')
+          : storedTheme;
+      document.documentElement.setAttribute('data-bs-theme', effectiveTheme);
+      document.documentElement.style.setProperty('color-scheme', effectiveTheme);
+    } catch (e) {
+    }
+  })();
+</script>
+
+<script defer="" src="./efa7d47ed567ce6ec4fd.js"></script><script defer="" src="./72f19044b39cee1af034.js"></script><script defer="" src="./a58f481315d7a9617f38.js"></script><script defer="" src="./28cd6113d3c0123fe077.js"></script><script defer="" src="./e146438a76820eb69ccd.js"></script><script defer="" src="./a563b3ccbe1d371400e9.js"></script><script defer="" src="./8a58156bda78b245f556.js"></script><script defer="" src="./e1efb8287e5d38513169.js"></script><link href="./e9dc855184be8526c1d6.css" rel="stylesheet"><link href="./1cc39c5f99ce0722b157.css" rel="stylesheet"><link href="./a2d6def48179e2e5097c.css" rel="stylesheet"></head>
+
+<body>
+<div class="container" id="description-container" dir="ltr" lang="en"><dd style="padding-top: 20px"><div style="padding: 0px 20px 20px;"><h1></h1>
+
+
+
+
+<p>
+Binary trees are defined recursively. A binary tree <i>T</i> is a structure defined on a finite set of nodes that either
+</p>
+
+<ul>
+<li>contains no nodes, or</li>
+<li>is composed of three disjoint sets of nodes:<br>
+
+- a root node.<br>
+- a binary tree called its left subtree.<br>
+- a binary tree called its right subtree.<br>
+
+</li>
+</ul>
+
+<p>
+Your task is to write a program which perform tree walks (systematically traverse all nodes in a tree) based on the following algorithms:
+</p>
+
+
+<ol>
+<li>Print the root, the left subtree and right subtree (preorder).</li>
+<li>Print the left subtree, the root and right subtree (inorder).</li>
+<li>Print the left subtree, right subtree and the root (postorder).</li>
+</ol>
+
+<p>
+Here, the given binary tree consists of <i>n</i> nodes and evey node has a unique ID from 0 to <i>n</i>-1.
+</p>
+
+
+<h2>Input</h2>
+
+<p>
+The first line of the input includes an integer <i>n</i>, the number of nodes of the tree.
+</p>
+<p>
+In the next <i>n</i> linen, the information of each node is given in the following format:
+</p>
+
+<p>
+<i>id left right</i>
+</p>
+
+<p>
+<i>id</i> is the node ID, <i>left</i> is ID of the left child and <i>right</i> is ID of the right child. If the node does not have the left (right) child, the <i>left</i>(<i>right</i>) is indicated by <span>-1</span>
+</p>
+
+
+<h2>Output</h2>
+
+<p>
+In the 1st line, print "<span>Preorder</span>", and in the 2nd line print a list of node IDs obtained by the preorder tree walk.
+</p>
+
+<p>
+In the 3rd line, print "<span>Inorder</span>", and in the 4th line print a list of node IDs obtained by the inorder tree walk.
+</p>
+
+<p>
+In the 5th line, print "<span>Postorder</span>", and in the 6th line print a list of node IDs obtained by the postorder tree walk.
+</p>
+
+<p>
+Print a space character before each node ID.
+</p>
+
+
+<h2>Constraints</h2>
+
+<ul>
+<li>1 ≤ <i>n</i> ≤ 25</li>
+</ul>
+
+<table class="vjudge_sample">
+<thead>
+  <tr>
+    <th>Input</th>
+    <th>Output</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><pre>9
+0 1 4
+1 2 3
+2 -1 -1
+3 -1 -1
+4 5 8
+5 6 7
+6 -1 -1
+7 -1 -1
+8 -1 -1
+</pre><span class="sample-cell-copier">Copy</span></td>
+    <td><pre>Preorder
+ 0 1 2 3 4 5 6 7 8
+Inorder
+ 2 1 3 0 6 5 7 4 8
+Postorder
+ 2 3 1 6 7 5 8 4 0
+</pre><span class="sample-cell-copier">Copy</span></td>
+  </tr>
+</tbody>
+</table>
+
+
+
+
+<center>
+<img src="./dadcc7d0cc1b9c1d92c26bc88f5079b8"><br>
+</center>
+
+
+
+
+<h2>Reference</h2>
+
+<p>
+Introduction to Algorithms, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. The MIT Press.
+</p>
+</div></dd></div>
+<textarea class="data-json-container" style="display: none">{"lang":"en","trustable":true,"sections":[{"title":"","value":{"format":"HTML","content":"\u003ch1\u003e\u003c/h1\u003e\n\n\n\n\n\u003cp\u003e\nBinary trees are defined recursively. A binary tree \u003ci\u003eT\u003c/i\u003e is a structure defined on a finite set of nodes that either\n\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003econtains no nodes, or\u003c/li\u003e\n\u003cli\u003eis composed of three disjoint sets of nodes:\u003cbr\u003e\n\n- a root node.\u003cbr\u003e\n- a binary tree called its left subtree.\u003cbr\u003e\n- a binary tree called its right subtree.\u003cbr\u003e\n\n\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003e\nYour task is to write a program which perform tree walks (systematically traverse all nodes in a tree) based on the following algorithms:\n\u003c/p\u003e\n\n\n\u003col\u003e\n\u003cli\u003ePrint the root, the left subtree and right subtree (preorder).\u003c/li\u003e\n\u003cli\u003ePrint the left subtree, the root and right subtree (inorder).\u003c/li\u003e\n\u003cli\u003ePrint the left subtree, right subtree and the root (postorder).\u003c/li\u003e\n\u003c/ol\u003e\n\n\u003cp\u003e\nHere, the given binary tree consists of \u003ci\u003en\u003c/i\u003e nodes and evey node has a unique ID from 0 to \u003ci\u003en\u003c/i\u003e-1.\n\u003c/p\u003e\n\n\n\u003ch2\u003eInput\u003c/h2\u003e\n\n\u003cp\u003e\nThe first line of the input includes an integer \u003ci\u003en\u003c/i\u003e, the number of nodes of the tree.\n\u003c/p\u003e\n\u003cp\u003e\nIn the next \u003ci\u003en\u003c/i\u003e linen, the information of each node is given in the following format:\n\u003c/p\u003e\n\n\u003cp\u003e\n\u003ci\u003eid left right\u003c/i\u003e\n\u003c/p\u003e\n\n\u003cp\u003e\n\u003ci\u003eid\u003c/i\u003e is the node ID, \u003ci\u003eleft\u003c/i\u003e is ID of the left child and \u003ci\u003eright\u003c/i\u003e is ID of the right child. If the node does not have the left (right) child, the \u003ci\u003eleft\u003c/i\u003e(\u003ci\u003eright\u003c/i\u003e) is indicated by \u003cspan\u003e-1\u003c/span\u003e\n\u003c/p\u003e\n\n\n\u003ch2\u003eOutput\u003c/h2\u003e\n\n\u003cp\u003e\nIn the 1st line, print \"\u003cspan\u003ePreorder\u003c/span\u003e\", and in the 2nd line print a list of node IDs obtained by the preorder tree walk.\n\u003c/p\u003e\n\n\u003cp\u003e\nIn the 3rd line, print \"\u003cspan\u003eInorder\u003c/span\u003e\", and in the 4th line print a list of node IDs obtained by the inorder tree walk.\n\u003c/p\u003e\n\n\u003cp\u003e\nIn the 5th line, print \"\u003cspan\u003ePostorder\u003c/span\u003e\", and in the 6th line print a list of node IDs obtained by the postorder tree walk.\n\u003c/p\u003e\n\n\u003cp\u003e\nPrint a space character before each node ID.\n\u003c/p\u003e\n\n\n\u003ch2\u003eConstraints\u003c/h2\u003e\n\n\u003cul\u003e\n\u003cli\u003e1 ≤ \u003ci\u003en\u003c/i\u003e ≤ 25\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003ctable class\u003d\u0027vjudge_sample\u0027\u003e\n\u003cthead\u003e\n  \u003ctr\u003e\n    \u003cth\u003eInput\u003c/th\u003e\n    \u003cth\u003eOutput\u003c/th\u003e\n  \u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n  \u003ctr\u003e\n    \u003ctd\u003e\u003cpre\u003e9\n0 1 4\n1 2 3\n2 -1 -1\n3 -1 -1\n4 5 8\n5 6 7\n6 -1 -1\n7 -1 -1\n8 -1 -1\n\u003c/pre\u003e\u003c/td\u003e\n    \u003ctd\u003e\u003cpre\u003ePreorder\n 0 1 2 3 4 5 6 7 8\nInorder\n 2 1 3 0 6 5 7 4 8\nPostorder\n 2 3 1 6 7 5 8 4 0\n\u003c/pre\u003e\u003c/td\u003e\n  \u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\n\n\n\n\u003ccenter\u003e\n\u003cimg src\u003d\"CDN_BASE_URL/dadcc7d0cc1b9c1d92c26bc88f5079b8\"\u003e\u003cbr\u003e\n\u003c/center\u003e\n\n\n\n\n\u003ch2\u003eReference\u003c/h2\u003e\n\n\u003cp\u003e\nIntroduction to Algorithms, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. The MIT Press.\n\u003c/p\u003e\n"}}]}</textarea>
+
+<script type="text/javascript">basePath = "";</script>
+<script type="module" src="./vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;cbda702c6a634090aafa4717574879a5&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+
+
+</body></html>

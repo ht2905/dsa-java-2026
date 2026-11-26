@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://vjudge.net/problem/Aizu-ALDS1_7_D -->
+<html data-bs-theme="dark" style="color-scheme: dark;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  (function () {
+    try {
+      const storedTheme = localStorage.getItem('theme') || 'auto';
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const effectiveTheme = storedTheme === 'auto'
+          ? (prefersDark ? 'dark' : 'light')
+          : storedTheme;
+      document.documentElement.setAttribute('data-bs-theme', effectiveTheme);
+      document.documentElement.style.setProperty('color-scheme', effectiveTheme);
+    } catch (e) {
+    }
+  })();
+</script>
+
+
+
+  <script async="" src="./task-g_vjudge_files/js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-374JLX1715', {
+      
+        'user_id': 'ht2905'
+      
+    });
+  </script>
+
+
+
+    <script async="" src="./task-g_vjudge_files/f.txt" crossorigin="anonymous"></script>
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="keywords" content="Online Judge, vjudge, OJ, Virtual Judge, ICPC, OnlineJudge">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/x-icon" href="https://vjudge.net/static/favicon.ico">
+
+    <title>Reconstruction of a Tree - Aizu ALDS1_7_D - Virtual Judge</title>
+
+    <meta property="og:url" content="https://vjudge.net/problem/Aizu-ALDS1_7_D">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Reconstruction of a Tree - Virtual Judge">
+    <meta property="og:description" content="Contest [Reconstruction of a Tree] in Virtual Judge">
+<script defer="" src="./task-g_vjudge_files/efa7d47ed567ce6ec4fd.js"></script><script defer="" src="./task-g_vjudge_files/72f19044b39cee1af034.js"></script><script defer="" src="./task-g_vjudge_files/a58f481315d7a9617f38.js"></script><script defer="" src="./task-g_vjudge_files/aa36a71f83cac2d8538d.js"></script><script defer="" src="./task-g_vjudge_files/433b5996d77c9bca7f8d.js"></script><script defer="" src="./task-g_vjudge_files/c6cc160629c5e1b2b6d7.js"></script><script defer="" src="./task-g_vjudge_files/2fcd459795723c1b4af6.js"></script><script defer="" src="./task-g_vjudge_files/7cb06d79514a76327e2f.js"></script><script defer="" src="./task-g_vjudge_files/a563b3ccbe1d371400e9.js"></script><script defer="" src="./task-g_vjudge_files/8a58156bda78b245f556.js"></script><script defer="" src="./task-g_vjudge_files/817ddf6453c7b5818b0c.js"></script><script defer="" src="./task-g_vjudge_files/3c6b10514d4386108f00.js"></script><script defer="" src="./task-g_vjudge_files/c6381f5cf24b157a305b.js"></script><script defer="" src="./task-g_vjudge_files/7677798234a96b0c3da9.js"></script><script defer="" src="./task-g_vjudge_files/c4cf3ab02b2a72241ace.js"></script><script defer="" src="./task-g_vjudge_files/9b7d7ea59bed9a770a0a.js"></script><script defer="" src="./task-g_vjudge_files/0944f883d88384292f95.js"></script><link href="./task-g_vjudge_files/e9dc855184be8526c1d6.css" rel="stylesheet"><link href="./task-g_vjudge_files/54cc09eb99da70129789.css" rel="stylesheet"><link href="./task-g_vjudge_files/3c560bb592a17bcd0086.css" rel="stylesheet"><link href="./task-g_vjudge_files/df8e02b21dd8f60cfe0d.css" rel="stylesheet"><link href="./task-g_vjudge_files/1cc39c5f99ce0722b157.css" rel="stylesheet"><link href="./task-g_vjudge_files/5b369a3b0927a95ebdb2.css" rel="stylesheet"></head>
+
+<body class="page-panel-toggle-md-collapse">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark prod" id="top-nav">
+    <button class="navbar-toggler d-sm-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <a class="navbar-brand" href="https://vjudge.net/">
+            <img src="./task-g_vjudge_files/11b24ab2156955d8f3fa.ico" height="30">
+            <span data-i18n="top.nav.home">Home</span>
+        </a>
+        <ul class="navbar-nav top-nav-primary">
+            <li class="nav-item active" id="nav-problem">
+                <a class="nav-link" href="https://vjudge.net/problem" data-i18n="top.nav.problem">Problem</a>
+            </li>
+            <li class="nav-item" id="nav-status">
+                <a class="nav-link" href="https://vjudge.net/status" data-i18n="top.nav.status">Status</a>
+            </li>
+            <li class="nav-item" id="nav-contest">
+                <a class="nav-link" href="https://vjudge.net/contest" data-i18n="top.nav.contest">Contest</a>
+            </li>
+            <li class="nav-item" id="nav-workbook">
+                <a class="nav-link" href="https://vjudge.net/workbook" data-i18n="top.nav.workbook">Workbook</a>
+            </li>
+            <li class="nav-item" id="nav-user">
+                <a class="nav-link" href="https://vjudge.net/user" data-i18n="top.nav.user">User</a>
+            </li>
+            <li class="nav-item" id="nav-group">
+                <a class="nav-link" href="https://vjudge.net/group" data-i18n="top.nav.group">Group</a>
+            </li>
+            <li class="nav-item" id="nav-article">
+                <a class="nav-link" href="https://vjudge.net/article" data-i18n="top.nav.article">Article</a>
+            </li>
+            <li class="nav-item" id="nav-comment">
+                <a class="nav-link" href="https://vjudge.net/comment" data-i18n="top.nav.forum">Forum</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="helpDropdown" data-bs-toggle="dropdown" data-i18n="top.nav.help">Help</a>
+                <div class="dropdown-menu dropdown-menu-start">
+                    <a class="dropdown-item" href="https://vjudge.net/article/2771">
+                        <i class="fa fa-question-circle-o"></i>
+                        <span data-i18n="top.nav.faq">Frequently Asked Questions</span>
+                    </a>
+                    <a class="dropdown-item" href="https://vjudge.net/article/97">
+                        <i class="fa fa-bug"></i>
+                        <span data-i18n="top.nav.bf">Bugs Feedback</span>
+                    </a>
+                    <a class="dropdown-item" href="https://vjudge.net/article/96">
+                        <i class="fa fa-lightbulb-o"></i>
+                        <span data-i18n="top.nav.suggestions">Suggestions</span>
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)" id="contact-us">
+                        <i class="fa fa-headphones"></i>
+                        <span data-i18n="top.nav.contact">Contact Us</span>
+                    </a>
+                </div>
+            </li>
+            
+        </ul>
+        <ul class="navbar-nav top-nav-secondary ms-sm-auto">
+            <li class="nav-item top-nav-theme-item">
+                <a class="nav-link" href="javascript:void(0)" id="switchTheme" title="Auto Mode" aria-label="Auto Mode"><i class="fa fa-desktop"></i></a>
+            </li>
+            <li class="nav-item dropdown top-nav-locale-item">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="switchLocale" data-bs-toggle="dropdown" data-i18n="top.nav.locale">Language</a>
+                <div class="dropdown-menu dropdown-menu-end switch-locale-dropdown"><a class="dropdown-item active" href="javascript:void(0)" data-locale="en" lang="en" aria-current="true">English</a><a class="dropdown-item" href="javascript:void(0)" data-locale="zh-Hans" lang="zh-Hans">简体中文</a><a class="dropdown-item" href="javascript:void(0)" data-locale="zh-Hant" lang="zh-Hant">繁體中文</a><a class="dropdown-item" href="javascript:void(0)" data-locale="ja" lang="ja">日本語</a><a class="dropdown-item" href="javascript:void(0)" data-locale="ko" lang="ko">한국어</a><a class="dropdown-item" href="javascript:void(0)" data-locale="ar" lang="ar">اَلْعَرَبِيَّةُ</a><a class="dropdown-item" href="javascript:void(0)" data-locale="bn" lang="bn">বাংলা</a><a class="dropdown-item" href="javascript:void(0)" data-locale="hi" lang="hi">हिन्दी</a><a class="dropdown-item" href="javascript:void(0)" data-locale="vi" lang="vi">Tiếng Việt</a><a class="dropdown-item" href="javascript:void(0)" data-locale="es" lang="es">Español</a><a class="dropdown-item" href="javascript:void(0)" data-locale="pt" lang="pt">português</a><a class="dropdown-item" href="javascript:void(0)" data-locale="ru" lang="ru">русский язык</a><a class="dropdown-item" href="javascript:void(0)" data-locale="kk" lang="kk">Қазақ тілі</a></div>
+            </li>
+            
+                
+                    <li class="nav-item dropdown top-nav-user-item">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="userNameDropdown" data-bs-toggle="dropdown">ht2905</a>
+                        <div class="dropdown-menu dropdown-menu-end user-dropdown">
+                            <a class="dropdown-item" href="https://vjudge.net/user/ht2905" data-i18n="top.nav.profile">Profile</a>
+                            <a class="dropdown-item" href="https://vjudge.net/user/remoteAccounts?oj=CodeForces" data-i18n="top.nav.manage_accounts">Manage Accounts</a>
+                            <a class="dropdown-item" href="https://vjudge.net/team/mine" data-i18n="team.mine">My Teams</a>
+                            <a class="dropdown-item message" href="https://vjudge.net/message" data-i18n="top.nav.message">Message</a>
+                        </div>
+                    </li>
+                    <li class="nav-item top-nav-logout-item">
+                        <a class="nav-link logout" href="javascript:void(0)" data-i18n="top.nav.logout">Logout</a>
+                    </li>
+                
+                
+            
+        </ul>
+    </div>
+</nav>
+<div id="page-panel-toggle-slot"><button type="button" class="btn btn-outline-light page-panel-toggle problem-panels-toggle" data-bs-toggle="offcanvas" data-bs-target="#prob-left-panel" aria-controls="prob-left-panel">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </button></div>
+
+
+<div class="page-panel-toggle-host d-none">
+    
+</div>
+
+<div class="container-md">
+    <div class="row fixed-left-panel-layout page-panel-desktop-enabled">
+        <div class="offcanvas-md offcanvas-start problem-side-panel-column fixed-left-panel" id="prob-left-panel" tabindex="-1" aria-labelledby="problem-panels-title">
+            <div class="offcanvas-header d-md-none">
+                <h5 class="offcanvas-title" id="problem-panels-title" data-i18n="button.panels">Panels</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#prob-left-panel" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body problem-side-panel-body">
+            <div class="alert alert-danger problem-side-panel-alert" role="alert" id="prob-alert" style="display: none"></div>
+
+            <div id="prob-operation" class="problem-side-panel-section">
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-outline-primary" id="btn-submit" data-bs-toggle="tooltip"><i class="fa fa-upload"></i> Submit</button>
+                    </div>
+                </div>
+
+                
+
+                <div class="row">
+                    <div class="col-6">
+                        <a href="https://vjudge.net/status#un=&amp;OJId=Aizu&amp;probNum=ALDS1_7_D&amp;res=all&amp;orderBy=run_id&amp;language=" target="_blank" class="btn btn-secondary" id="btn-problem-status">
+                            <i class="fa fa-list"></i>
+                            <span data-i18n="status._">Status</span>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="btn btn-secondary" id="btn-leader-board">
+                            <i class="fa fa-list-ol"></i>
+                            <span data-i18n="problem.view.leaderboard">Leaderboard</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-secondary" id="btn-solutions">
+                            <span class="solution-count"><i class="fa fa-lightbulb-o"></i></span>
+                            <span data-i18n="problem.view.solutions">Solutions</span>
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="btn btn-secondary" id="btn-used-in-contests">
+                            <i class="fa fa-trophy"></i>
+                            <span data-i18n="problem.view.used_in_contests.button">Contests</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <a href="javascript:void(0)" data-bs-toggle="tooltip" class="recrawl btn btn-secondary">
+                            <i class="fa fa-refresh"></i>
+                            <span data-i18n="problem.view.recrawl">Recrawl</span>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="javascript:void(0)" class="gpt_translate btn btn-secondary" data-i18n-title="problem.view.translation_tip" data-bs-original-title="Request LLM translation">
+                            <img src="./task-g_vjudge_files/21463976b30d84e25348.svg" style="fill: blue; height: 14px; margin-bottom: 3px;">
+                            <span data-i18n="problem.view.translation">Translation</span>
+                        </a>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <div id="prob-properties" class="problem-side-panel-section">
+                <dl class="card row"><dt class="col-4">Time Limit</dt><dd class="col-8">1000 ms</dd><dt class="col-4">Mem Limit</dt><dd class="col-8">131072 kB</dd><dt class="col-4">OS</dt><dd class="col-8">Linux</dd></dl>
+            </div>
+
+            <div id="prob-statistics" class="problem-side-panel-section">
+                <dl class="card row"><dt class="col-4">Users</dt><dd class="col-8"><span data-bs-original-title="Local">314 / 421</span></dd></dl>
+            </div>
+
+            
+
+            <div id="prob-descriptions" class="problem-side-panel-section">
+                <div id="prob-descs-toolbar">
+    <button type="button" class="problem-description-list-header d-flex align-items-center justify-content-between w-100" aria-controls="prob-desc-filter-panel" aria-expanded="false" title="Filter statements">
+      <span>Statements</span>
+      <span class="d-inline-flex flex-shrink-0 align-items-center gap-2 ms-2">
+        <span class="problem-description-filter-hidden-count d-none text-secondary fw-semibold text-nowrap"></span>
+        <i class="fa fa-caret-right" aria-hidden="true"></i>
+      </span>
+    </button>
+    <div id="prob-desc-filter-panel" class="problem-description-filter-panel d-none">
+      <div class="row g-2">
+        <div class="dropdown problem-description-filter-field col-4" data-filter-kind="type">
+      <button class="btn btn-outline-secondary btn-sm dropdown-toggle d-flex align-items-center justify-content-between gap-2 w-100" type="button" id="prob-desc-type-filter" data-bs-toggle="dropdown" data-bs-display="static" data-bs-auto-close="outside" aria-expanded="false"><span>Type</span><span class="text-secondary fw-semibold" data-filter-summary="type">All</span></button>
+      <div class="dropdown-menu problem-description-filter-menu" aria-labelledby="prob-desc-type-filter">
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="type" value="official">
+        <span class="text-truncate">Official (1)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="type" value="translator">
+        <span class="text-truncate">Translation (1)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="type" value="user">
+        <span class="text-truncate">User (1)</span>
+      </label></div>
+    </div>
+        <div class="dropdown problem-description-filter-field col-8" data-filter-kind="lang">
+      <button class="btn btn-outline-secondary btn-sm dropdown-toggle d-flex align-items-center justify-content-between gap-2 w-100" type="button" id="prob-desc-lang-filter" data-bs-toggle="dropdown" data-bs-display="static" data-bs-auto-close="outside" aria-expanded="false"><span>Lang</span><span class="text-secondary fw-semibold" data-filter-summary="lang">All</span></button>
+      <div class="dropdown-menu problem-description-filter-menu" aria-labelledby="prob-desc-lang-filter">
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="en">
+        <span class="text-truncate">English (1)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="zh">
+        <span class="text-truncate">中文 (2)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="ja">
+        <span class="text-truncate">日本語 (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="ru">
+        <span class="text-truncate">русский язык (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="es">
+        <span class="text-truncate">Español (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="vi">
+        <span class="text-truncate">Tiếng Việt (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="ar">
+        <span class="text-truncate">اَلْعَرَبِيَّةُ (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="pt">
+        <span class="text-truncate">português (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="id">
+        <span class="text-truncate">Bahasa Indonesia (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="ko">
+        <span class="text-truncate">한국어 (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="kk">
+        <span class="text-truncate">Қазақ тілі (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="az">
+        <span class="text-truncate">Azərbaycan (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="bn">
+        <span class="text-truncate">বাংলা (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="de">
+        <span class="text-truncate">Deutsch (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="fa">
+        <span class="text-truncate">فارسی (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="fr">
+        <span class="text-truncate">Français (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="hi">
+        <span class="text-truncate">हिन्दी (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="it">
+        <span class="text-truncate">Italiano (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="pl">
+        <span class="text-truncate">Polski (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="ro">
+        <span class="text-truncate">Română (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="th">
+        <span class="text-truncate">ไทย (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="tr">
+        <span class="text-truncate">Türkçe (0)</span>
+      </label>
+      <label class="dropdown-item d-flex align-items-center gap-2 problem-description-filter-option-row is-empty">
+        <input class="form-check-input flex-shrink-0 problem-description-filter-option" type="checkbox" data-filter-kind="lang" value="uk">
+        <span class="text-truncate">Українська (0)</span>
+      </label></div>
+    </div>
+      </div>
+    </div></div>
+                <ul class="list-group" id="prob-descs"><li class="list-group-item problem-description-item active" data-key="303372812040574" data-version="1746289452000" data-author="main" data-author-name="System" data-type="main" data-lang="en" data-main-official="true"><img class="problem-description-item-avatar" src="./task-g_vjudge_files/11b24ab2156955d8f3fa.ico" alt=""><div class="problem-description-item-main"><div class="statement-author-row"><span data-bs-toggle="tooltip" data-bs-original-title="Initialization.">System</span><span class="statement-badge statement-badge-official">Official</span><span class="statement-badge statement-badge-lang">English</span></div><div class="problem-description-item-meta"><time class="statement-update-time" datetime="2025-05-04">2025-05-04</time><div class="problem-description-item-actions">
+      <a href="https://vjudge.net/problem/description/303372812040574?3541867177565" target="_blank" class="js-desc-open">
+        <i class="fa fa-external-link text-primary" data-bs-toggle="tooltip" data-i18n-title="problem.view.open_in_new_tab" aria-label="Open in new tab" data-bs-original-title="Open in new tab">&nbsp;</i>
+      </a>
+      
+      <i class="fa fa-code-fork text-primary" data-mode="fork" data-did="303372812040574" data-pid="156037" data-bs-toggle="tooltip" data-i18n-title="problem.view.fork_this_statement" aria-label="Fork this statement" data-bs-original-title="Fork this statement">&nbsp;</i>
+      
+      <a href="javascript:void(0)" class="feedback" data-author="main" data-type="main" data-author-name="System">
+        <i class="fa fa-exclamation-triangle text-warning" data-bs-toggle="tooltip" data-i18n-title="problem.view.feedback_of_statement_issues" aria-label="Feedback of statement issues" data-bs-original-title="Feedback of statement issues">&nbsp;</i>
+      </a>
+      
+    </div></div></div></li><li class="list-group-item problem-description-item" data-key="389796694639945" data-version="1770000490000" data-author="translator:1281309:zh" data-author-name="GPT" data-author-id="1281309" data-type="translator" data-lang="zh"><img class="problem-description-item-avatar" src="./task-g_vjudge_files/1281309" alt=""><div class="problem-description-item-main"><div class="statement-author-row"><a href="https://vjudge.net/user/GPT" data-bs-toggle="tooltip" target="_blank" data-bs-original-title="[简体中文] translation by LLM (gpt-4.1-mini)">GPT</a><span class="statement-badge statement-badge-lang">中文</span></div><div class="problem-description-item-meta"><time class="statement-update-time" datetime="2026-02-02">2026-02-02</time><div class="problem-description-item-actions">
+      <a href="https://vjudge.net/problem/description/389796694639945?3565578215565" target="_blank" class="js-desc-open">
+        <i class="fa fa-external-link text-primary" data-bs-toggle="tooltip" data-i18n-title="problem.view.open_in_new_tab" aria-label="Open in new tab" data-bs-original-title="Open in new tab">&nbsp;</i>
+      </a>
+      
+      <i class="fa fa-code-fork text-primary" data-mode="fork" data-did="389796694639945" data-pid="156037" data-bs-toggle="tooltip" data-i18n-title="problem.view.fork_this_statement" aria-label="Fork this statement" data-bs-original-title="Fork this statement">&nbsp;</i>
+      <i class="fa fa-refresh text-primary" data-mode="retranslate" data-lang="zh" data-bs-toggle="tooltip" data-i18n-title="problem.view.retranslate_this_statement" aria-label="Retranslate" data-bs-original-title="Retranslate">&nbsp;</i>
+      <a href="javascript:void(0)" class="feedback" data-author="translator:1281309:zh" data-type="translator" data-author-name="GPT">
+        <i class="fa fa-exclamation-triangle text-warning" data-bs-toggle="tooltip" data-i18n-title="problem.view.feedback_of_statement_issues" aria-label="Feedback of statement issues" data-bs-original-title="Feedback of statement issues">&nbsp;</i>
+      </a>
+      
+    </div></div></div></li><li class="list-group-item problem-description-item" data-key="282876853233554" data-version="1531485680000" data-author="user:175817" data-author-name="cxlm" data-author-id="175817" data-type="user" data-lang="zh"><img class="problem-description-item-avatar" src="./task-g_vjudge_files/ca4dff3f2c6e9058319567f9af14acb0" alt=""><div class="problem-description-item-main"><div class="statement-author-row"><a href="https://vjudge.net/user/cxlm" data-bs-toggle="tooltip" target="_blank" data-bs-original-title="关于 Judge Not Available">cxlm</a><span class="statement-badge statement-badge-lang">中文</span></div><div class="problem-description-item-meta"><time class="statement-update-time" datetime="2018-07-13">2018-07-13</time><div class="problem-description-item-actions">
+      <a href="https://vjudge.net/problem/description/282876853233554?3327063405565" target="_blank" class="js-desc-open">
+        <i class="fa fa-external-link text-primary" data-bs-toggle="tooltip" data-i18n-title="problem.view.open_in_new_tab" aria-label="Open in new tab" data-bs-original-title="Open in new tab">&nbsp;</i>
+      </a>
+      
+      <i class="fa fa-code-fork text-primary" data-mode="fork" data-did="282876853233554" data-pid="156037" data-bs-toggle="tooltip" data-i18n-title="problem.view.fork_this_statement" aria-label="Fork this statement" data-bs-original-title="Fork this statement">&nbsp;</i>
+      
+      <a href="javascript:void(0)" class="feedback" data-author="user:175817" data-type="user" data-author-name="cxlm">
+        <i class="fa fa-exclamation-triangle text-warning" data-bs-toggle="tooltip" data-i18n-title="problem.view.feedback_of_statement_issues" aria-label="Feedback of statement issues" data-bs-original-title="Feedback of statement issues">&nbsp;</i>
+      </a>
+      
+    </div></div></div></li></ul>
+            </div>
+
+            <div class="row" style="margin-top: 20px;">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9098591903020457" data-ad-slot="9316078395" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            </div>
+
+        </div><button type="button" class="page-panel-desktop-toggle" data-panel-mode="docked" aria-label="Collapse side panel"><i class="page-panel-desktop-toggle-icon fa fa-angle-left" aria-hidden="true"></i></button>
+
+        <div class="fixed-main-panel" id="prob-right-panel">
+            <div class="row">
+                <div id="prob-title">
+                    <h2><i id="btn-fav" class="fa fa-star-o"></i> Reconstruction of a Tree</h2>
+                    <span id="problem-visibility-badge" class="badge problem-title-badge problem-title-badge-private d-none" data-i18n="problem.view.title_badges.private">Private</span>
+                    <span id="problem-owner-badge" class="badge problem-title-badge problem-title-badge-owner d-none" data-i18n="problem.view.title_badges.owner">Owner</span>
+                    <span class="origin">
+                        <a href="https://vjudge.net/problem/Aizu-ALDS1_7_D/origin" target="_blank">
+                            Aizu - ALDS1_7_D
+                            <i class="fa fa-external-link"></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <iframe id="frame-description" width="100%" height="2048px" frameborder="0" scrolling="no" src="./task-g_vjudge_files/303372812040574.html" style="height: 1024px;">
+                </iframe>
+            </div>
+
+            <div id="problem_discuss" class="row"><div class="comment-posts-container">
+
+    <div class="show-comment-edit" data-i18n="comment.view.leave_a_comment">Leave a comment</div>
+    <div class="comments-loader">
+        <i class="fa fa-2x fa-refresh fa-spin"></i> <span data-i18n="comment.view.loading_comments">Loading comments...</span>
+    </div>
+    <div class="show-spam" style="display: none;" data-i18n="comment.view.show_spam">Show Spam</div>
+    <div class="load-all-replies" style="display: none;">
+        <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+        <span data-i18n="comment.view.load_all_replies">Load all replies</span>
+    </div>
+
+    <li class="comment-post-templ comment-post" style="display: none;">
+        <table style="width: 100%; table-layout: fixed;">
+            <tbody><tr>
+                <td style="width: 60px; padding: 10px">
+                    <a target="_blank" class="author-avatar">
+                        <img alt="">
+                    </a>
+                </td>
+                <td>
+                    <div class="info">
+                        <span class="author"></span>
+                        <span class="comment-top badge text-bg-secondary" style="display: none" data-i18n="comment.view.top_tag">Top</span>
+                        <span> • </span>
+                        <span class="time"></span>
+                        <span class="vote">
+                            <i class="fa fa-thumbs-up text-success like"></i>
+                            <i class="fa fa-thumbs-o-up text-success o like"></i>
+                            <span>&nbsp;</span>
+                            <i class="fa fa-thumbs-down text-danger dislike"></i>
+                            <i class="fa fa-thumbs-o-down text-danger o dislike"></i>
+                        </span>
+                        <span class="operation">
+                            <a href="javascript:void(0)" class="reply" data-i18n="comment.view.reply">Reply</a>
+                            <span style="display: none"> • <a href="javascript:void(0)" class="edit" data-i18n="comment.view.edit">Edit</a></span>
+                            <span style="display: none"> • <a href="javascript:void(0)" class="delete" data-i18n="comment.view.delete">Delete</a></span>
+                            <span style="display: none"> • <a href="javascript:void(0)" class="toggle-top" data-i18n="comment.view.top">Pin</a></span>
+                            <span style="display: none"> • <a href="javascript:void(0)" class="toggle-spam" data-i18n="comment.view.spam">Spam</a></span>
+                            <span class="collapse-comment"> • <a href="javascript:void(0)" data-i18n="comment.view.collapse">Collapse</a></span>
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div style="height: 300px"></div>
+                    </div>
+                </td>
+            </tr>
+        </tbody></table>
+        <ul class="replies"></ul>
+    </li>
+
+</div></div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<textarea style="display: none" name="dataJson">{"isProblemOwner":false,"prob":"ALDS1_7_D","visibility":"PUBLIC","canManageProblem":false,"accepted":false,"isFav":false,"solutionCount":0,"hasStatementAccess":true,"oj":"Aizu","crawling":false,"attempted":false,"problemId":156037,"descBriefs":[{"key":303372812040574,"updateDate":"2025-05-04","version":1746289452000,"author":"System","authorKey":"main","type":"main","lang":"en","langDisplay":"English","official":true,"mainOfficial":true,"publicVisible":true,"remarks":"Initialization."},{"key":389796694639945,"updateDate":"2026-02-02","version":1770000490000,"author":"GPT","authorKey":"translator:1281309:zh","authorUserId":1281309,"type":"translator","statementKey":"zh","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"[简体中文] translation by LLM (gpt-4.1-mini)"},{"key":282876853233554,"updateDate":"2018-07-13","version":1531485680000,"author":"cxlm","authorKey":"user:175817","authorUserId":175817,"type":"user","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/ca4dff3f2c6e9058319567f9af14acb0?d\u003dretro","remarks":"关于 Judge Not Available"}],"properties":[{"title":"time_limit","content":"1000 ms","spoiler":false},{"title":"mem_limit","content":"131072 kB","spoiler":false},{"title":"os","content":"Linux","spoiler":false}],"submitMethods":[true,false,false],"status":0,"statistics":[["users","\u003cspan title\u003d\u0027Local\u0027\u003e314 / 421\u003c/span\u003e"]],"username":"ht2905","mySols":[]}</textarea>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="body-footer">
+    <div style="margin-bottom: 8px">
+        <a href="mailto:is.un@qq.com" target="_blank">
+            <img src="./task-g_vjudge_files/a7b7e5c7e94c918596f2.svg">
+        </a>
+        <img src="./task-g_vjudge_files/fdbb90aaddd32a5ab4ad.png" class="qq" data-bs-toggle="popover" data-bs-placement="top">
+        <a href="https://weibo.com/u/5340553087" target="_blank">
+            <img src="./task-g_vjudge_files/aae271671b3d18e15b40.svg">
+        </a>
+        <a href="https://space.bilibili.com/3056509/lists/3909505" target="_blank">
+            <img src="./task-g_vjudge_files/ad1d62977bf56d0e0010.png">
+        </a>
+        <a href="https://t.me/joinchat/Erw7nRGwXN3iSCoKguVW3w" target="_blank">
+            <img src="./task-g_vjudge_files/7182da66feaf3e99632a.svg">
+        </a>
+        <a href="https://www.facebook.com/virtualjudge/" target="_blank">
+            <img src="./task-g_vjudge_files/c2687d1cf1f3e06984eb.svg">
+        </a>
+    </div>
+    <div id="footer-info">
+        All Copyright Reserved © 2010-2026<br>
+        <span data-i18n="bottom.server_time">Server Time</span>: <span class="currentTimeTZ">2026-11-26 08:31:46 UTC+7</span>
+    </div>
+</div>
+
+
+<input name="systemVersion" type="hidden" value="1795577725565">
+<input name="gaId" type="hidden" value="G-374JLX1715">
+
+    <input id="visitor_username" name="username" type="hidden" value="ht2905">
+    <input id="visitor_userId" name="userId" type="hidden" value="1339064">
+    <input id="visitor_sup" name="sup" type="hidden" value="0">
+    <input id="newMessage" name="newMessage" type="hidden" value="false">
+
+
+
+
+
+<script type="text/javascript">basePath = "";</script>
+
+
+<script type="module" src="./task-g_vjudge_files/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;cbda702c6a634090aafa4717574879a5&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+
+
+</body></html>

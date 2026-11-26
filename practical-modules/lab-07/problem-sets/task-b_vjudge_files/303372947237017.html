@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)https://vjudge.net/problem/description/303372947237017?3591198916565 -->
+<html data-bs-theme="dark" style="color-scheme: dark;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title></title>
+    <script>
+  (function () {
+    try {
+      const storedTheme = localStorage.getItem('theme') || 'auto';
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const effectiveTheme = storedTheme === 'auto'
+          ? (prefersDark ? 'dark' : 'light')
+          : storedTheme;
+      document.documentElement.setAttribute('data-bs-theme', effectiveTheme);
+      document.documentElement.style.setProperty('color-scheme', effectiveTheme);
+    } catch (e) {
+    }
+  })();
+</script>
+
+<script defer="" src="./efa7d47ed567ce6ec4fd.js"></script><script defer="" src="./72f19044b39cee1af034.js"></script><script defer="" src="./a58f481315d7a9617f38.js"></script><script defer="" src="./28cd6113d3c0123fe077.js"></script><script defer="" src="./e146438a76820eb69ccd.js"></script><script defer="" src="./a563b3ccbe1d371400e9.js"></script><script defer="" src="./8a58156bda78b245f556.js"></script><script defer="" src="./e1efb8287e5d38513169.js"></script><link href="./e9dc855184be8526c1d6.css" rel="stylesheet"><link href="./1cc39c5f99ce0722b157.css" rel="stylesheet"><link href="./a2d6def48179e2e5097c.css" rel="stylesheet"></head>
+
+<body>
+<div class="container" id="description-container" dir="ltr" lang="en"><dd style="padding-top: 20px"><div style="padding: 0px 20px 20px;"><h1></h1>
+
+
+
+<p>
+A graph <i>G</i> = (<i>V</i>, <i>E</i>) is a data structure where <i>V</i> is a finite set of vertices and <i>E</i> is a binary relation on <i>V</i> represented by a set of edges. Fig. 1 illustrates an example of a graph (or graphs).
+</p>
+
+<center>
+<img src="./7706a14f3c85b1d6c9f1a22b918b3873"><br>
+<b>Fig. 1</b>
+</center>
+
+<p>
+A free tree is a connnected, acyclic, undirected graph. A rooted tree is a free tree in which one of the vertices is distinguished from the others. A vertex of a rooted tree is called "node."
+</p>
+
+
+<p>
+Your task is to write a program which reports the following information for each node <i>u</i> of a given rooted tree <i>T</i>:
+</p>
+
+<ul>
+<li>node ID of <i>u</i></li>
+<li>parent of <i>u</i></li>
+<li>depth of <i>u</i></li>
+<li>node type (root, internal node or leaf)</li>
+<li>a list of chidlren of <i>u</i></li>
+</ul>
+
+
+<p>
+If the last edge on the path from the root <i>r</i> of a tree <i>T</i> to a node <i>x</i> is (<i>p</i>, <i>x</i>), then <i>p</i> is the <b>parent</b> of <i>x</i>, and <i>x</i> is a <b>child</b> of <i>p</i>. The root is the only node in <i>T</i> with no parent.
+</p>
+
+<!--
+<p>
+If two nodes have the same parent, they are <b>siblings</b>.
+</p>
+-->
+
+<p>
+A node with no children is an <b>external node</b> or <b>leaf</b>. A nonleaf node is an <b>internal node</b>
+</p>
+
+<p>
+The number of children of a node <i>x</i> in a rooted tree <i>T</i> is called the <b>degree</b> of <i>x</i>.
+</p>
+
+<p>
+The length of the path from the root <i>r</i> to a node <i>x</i> is the <b>depth</b> of <i>x</i> in <i>T</i>.
+</p>
+
+
+
+<p>
+Here, the given tree consists of <i>n</i> nodes and evey node has a unique ID from 0 to <i>n</i>-1.
+</p>
+
+<p>
+Fig. 2 shows an example of rooted trees where ID of each node is indicated by a number in a circle (node). The example corresponds to the first sample input.
+</p>
+
+<center>
+<img src="./361a9b0092cdfee172eecacd7ce907f6"><br>
+<b>Fig. 2</b>
+</center>
+
+
+
+<h2>Input</h2>
+
+<p>
+The first line of the input includes an integer <i>n</i>, the number of nodes of the tree.
+</p>
+<p>
+In the next <i>n</i> lines, the information of each node <i>u</i> is given in the following format:
+</p>
+
+<p>
+<i>id</i> <i>k</i> <i>c</i><sub>1</sub> <i>c</i><sub>2</sub> ... <i>c<sub>k</sub></i>
+</p>
+
+<p>
+where <i>id</i> is the node ID of <i>u</i>, <i>k</i> is the degree of <i>u</i>, <i>c</i><sub>1</sub> ... <i>c<sub>k</sub></i> are node IDs of 1st, ... <i>k</i>th child of <i>u</i>. If the node does not have a child, the <i>k</i> is 0.
+</p>
+
+
+<h2>Output</h2>
+
+<p>
+Print the information of each node in the following format ordered by IDs:
+</p>
+
+<p>
+<span>node</span> <i>id</i><span>: </span><span>parent = </span><i>p</i><span>, depth = </span><i>d</i><span>, <i>type</i><span>, [</span><i>c</i><sub>1</sub>...<i>c<sub>k</sub></i><span>]</span>
+</span></p>
+
+<p>
+<i>p</i> is ID of its parent. If the node does not have a parent, print <spna>-1.
+</spna></p>
+<p>
+<i>d</i> is depth of the node.
+</p>
+
+<p>
+<i>type</i> is a type of nodes represented by a string (<span>root</span>, <span>internal node</span> or <span>leaf</span>). If the root can be considered as a leaf or an internal node, print <span>root</span>.
+</p>
+
+<p>
+<i>c</i><sub>1</sub>...<i>c<sub>k</sub></i> is the list of children as a ordered tree.
+</p>
+
+
+<p>
+Please follow the format presented in a sample output below.
+</p>
+
+
+<h2>Constraints</h2>
+
+<ul>
+<li>1 ≤ <i>n</i> ≤ 100000</li>
+</ul>
+
+<table class="vjudge_sample">
+<thead>
+  <tr>
+    <th>Input</th>
+    <th>Output</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><pre>13
+0 3 1 4 10
+1 2 2 3
+2 0
+3 0
+4 3 5 6 7
+5 0
+6 0
+7 2 8 9
+8 0
+9 0
+10 2 11 12
+11 0
+12 0
+</pre><span class="sample-cell-copier">Copy</span></td>
+    <td><pre>node 0: parent = -1, depth = 0, root, [1, 4, 10]
+node 1: parent = 0, depth = 1, internal node, [2, 3]
+node 2: parent = 1, depth = 2, leaf, []
+node 3: parent = 1, depth = 2, leaf, []
+node 4: parent = 0, depth = 1, internal node, [5, 6, 7]
+node 5: parent = 4, depth = 2, leaf, []
+node 6: parent = 4, depth = 2, leaf, []
+node 7: parent = 4, depth = 2, internal node, [8, 9]
+node 8: parent = 7, depth = 3, leaf, []
+node 9: parent = 7, depth = 3, leaf, []
+node 10: parent = 0, depth = 1, internal node, [11, 12]
+node 11: parent = 10, depth = 2, leaf, []
+node 12: parent = 10, depth = 2, leaf, []
+</pre><span class="sample-cell-copier">Copy</span></td>
+  </tr>
+</tbody>
+</table>
+
+
+
+<table class="vjudge_sample">
+<thead>
+  <tr>
+    <th>Input</th>
+    <th>Output</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><pre>4
+1 3 3 2 0
+0 0
+3 0
+2 0
+</pre><span class="sample-cell-copier">Copy</span></td>
+    <td><pre>node 0: parent = 1, depth = 1, leaf, []
+node 1: parent = -1, depth = 0, root, [3, 2, 0]
+node 2: parent = 1, depth = 1, leaf, []
+node 3: parent = 1, depth = 1, leaf, []
+</pre><span class="sample-cell-copier">Copy</span></td>
+  </tr>
+</tbody>
+</table>
+
+
+<h2>Note</h2>
+<p>
+You can use a <b>left-child, right-sibling representation</b> to implement a tree which has the following data:
+</p>
+
+<ul>
+<li>the parent of <i>u</i></li>
+<li>the leftmost child of <i>u</i></li>
+<li>the immediate right sibling of <i>u</i></li>
+</ul>
+
+<!--
+<p>
+<a href="template/ALDS1_7_A_template.c">Template in C</a>
+</p>
+-->
+
+<h2>Reference</h2>
+
+<p>
+Introduction to Algorithms, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. The MIT Press.
+</p>
+
+
+</div></dd></div>
+<textarea class="data-json-container" style="display: none">{"lang":"en","trustable":true,"sections":[{"title":"","value":{"format":"HTML","content":"\u003ch1\u003e\u003c/h1\u003e\n\n\n\n\u003cp\u003e\nA graph \u003ci\u003eG\u003c/i\u003e \u003d (\u003ci\u003eV\u003c/i\u003e, \u003ci\u003eE\u003c/i\u003e) is a data structure where \u003ci\u003eV\u003c/i\u003e is a finite set of vertices and \u003ci\u003eE\u003c/i\u003e is a binary relation on \u003ci\u003eV\u003c/i\u003e represented by a set of edges. Fig. 1 illustrates an example of a graph (or graphs).\n\u003c/p\u003e\n\n\u003ccenter\u003e\n\u003cimg src\u003d\"CDN_BASE_URL/7706a14f3c85b1d6c9f1a22b918b3873?39\"\u003e\u003cbr\u003e\n\u003cb\u003eFig. 1\u003c/b\u003e\n\u003c/center\u003e\n\n\u003cp\u003e\nA free tree is a connnected, acyclic, undirected graph. A rooted tree is a free tree in which one of the vertices is distinguished from the others. A vertex of a rooted tree is called \"node.\"\n\u003c/p\u003e\n\n\n\u003cp\u003e\nYour task is to write a program which reports the following information for each node \u003ci\u003eu\u003c/i\u003e of a given rooted tree \u003ci\u003eT\u003c/i\u003e:\n\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003enode ID of \u003ci\u003eu\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eparent of \u003ci\u003eu\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003edepth of \u003ci\u003eu\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003enode type (root, internal node or leaf)\u003c/li\u003e\n\u003cli\u003ea list of chidlren of \u003ci\u003eu\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\n\n\u003cp\u003e\nIf the last edge on the path from the root \u003ci\u003er\u003c/i\u003e of a tree \u003ci\u003eT\u003c/i\u003e to a node \u003ci\u003ex\u003c/i\u003e is (\u003ci\u003ep\u003c/i\u003e, \u003ci\u003ex\u003c/i\u003e), then \u003ci\u003ep\u003c/i\u003e is the \u003cb\u003eparent\u003c/b\u003e of \u003ci\u003ex\u003c/i\u003e, and \u003ci\u003ex\u003c/i\u003e is a \u003cb\u003echild\u003c/b\u003e of \u003ci\u003ep\u003c/i\u003e. The root is the only node in \u003ci\u003eT\u003c/i\u003e with no parent.\n\u003c/p\u003e\n\n\u003c!--\n\u003cp\u003e\nIf two nodes have the same parent, they are \u003cb\u003esiblings\u003c/b\u003e.\n\u003c/p\u003e\n--\u003e\n\n\u003cp\u003e\nA node with no children is an \u003cb\u003eexternal node\u003c/b\u003e or \u003cb\u003eleaf\u003c/b\u003e. A nonleaf node is an \u003cb\u003einternal node\u003c/b\u003e\n\u003c/p\u003e\n\n\u003cp\u003e\nThe number of children of a node \u003ci\u003ex\u003c/i\u003e in a rooted tree \u003ci\u003eT\u003c/i\u003e is called the \u003cb\u003edegree\u003c/b\u003e of \u003ci\u003ex\u003c/i\u003e.\n\u003c/p\u003e\n\n\u003cp\u003e\nThe length of the path from the root \u003ci\u003er\u003c/i\u003e to a node \u003ci\u003ex\u003c/i\u003e is the \u003cb\u003edepth\u003c/b\u003e of \u003ci\u003ex\u003c/i\u003e in \u003ci\u003eT\u003c/i\u003e.\n\u003c/p\u003e\n\n\n\n\u003cp\u003e\nHere, the given tree consists of \u003ci\u003en\u003c/i\u003e nodes and evey node has a unique ID from 0 to \u003ci\u003en\u003c/i\u003e-1.\n\u003c/p\u003e\n\n\u003cp\u003e\nFig. 2 shows an example of rooted trees where ID of each node is indicated by a number in a circle (node). The example corresponds to the first sample input.\n\u003c/p\u003e\n\n\u003ccenter\u003e\n\u003cimg src\u003d\"CDN_BASE_URL/361a9b0092cdfee172eecacd7ce907f6?39\"\u003e\u003cbr\u003e\n\u003cb\u003eFig. 2\u003c/b\u003e\n\u003c/center\u003e\n\n\n\n\u003ch2\u003eInput\u003c/h2\u003e\n\n\u003cp\u003e\nThe first line of the input includes an integer \u003ci\u003en\u003c/i\u003e, the number of nodes of the tree.\n\u003c/p\u003e\n\u003cp\u003e\nIn the next \u003ci\u003en\u003c/i\u003e lines, the information of each node \u003ci\u003eu\u003c/i\u003e is given in the following format:\n\u003c/p\u003e\n\n\u003cp\u003e\n\u003ci\u003eid\u003c/i\u003e \u003ci\u003ek\u003c/i\u003e \u003ci\u003ec\u003c/i\u003e\u003csub\u003e1\u003c/sub\u003e \u003ci\u003ec\u003c/i\u003e\u003csub\u003e2\u003c/sub\u003e ... \u003ci\u003ec\u003csub\u003ek\u003c/sub\u003e\u003c/i\u003e\n\u003c/p\u003e\n\n\u003cp\u003e\nwhere \u003ci\u003eid\u003c/i\u003e is the node ID of \u003ci\u003eu\u003c/i\u003e, \u003ci\u003ek\u003c/i\u003e is the degree of \u003ci\u003eu\u003c/i\u003e, \u003ci\u003ec\u003c/i\u003e\u003csub\u003e1\u003c/sub\u003e ... \u003ci\u003ec\u003csub\u003ek\u003c/sub\u003e\u003c/i\u003e are node IDs of 1st, ... \u003ci\u003ek\u003c/i\u003eth child of \u003ci\u003eu\u003c/i\u003e. If the node does not have a child, the \u003ci\u003ek\u003c/i\u003e is 0.\n\u003c/p\u003e\n\n\n\u003ch2\u003eOutput\u003c/h2\u003e\n\n\u003cp\u003e\nPrint the information of each node in the following format ordered by IDs:\n\u003c/p\u003e\n\n\u003cp\u003e\n\u003cspan\u003enode\u003c/span\u003e \u003ci\u003eid\u003c/i\u003e\u003cspan\u003e: \u003c/span\u003e\u003cspan\u003eparent \u003d \u003c/span\u003e\u003ci\u003ep\u003c/i\u003e\u003cspan\u003e, depth \u003d \u003c/span\u003e\u003ci\u003ed\u003c/i\u003e\u003cspan\u003e, \u003ci\u003etype\u003c/i\u003e\u003cspan\u003e, [\u003c/span\u003e\u003ci\u003ec\u003c/i\u003e\u003csub\u003e1\u003c/sub\u003e...\u003ci\u003ec\u003csub\u003ek\u003c/sub\u003e\u003c/i\u003e\u003cspan\u003e]\u003c/span\u003e\n\u003c/span\u003e\u003c/p\u003e\n\n\u003cp\u003e\n\u003ci\u003ep\u003c/i\u003e is ID of its parent. If the node does not have a parent, print \u003cspna\u003e-1.\n\u003c/spna\u003e\u003c/p\u003e\n\u003cp\u003e\n\u003ci\u003ed\u003c/i\u003e is depth of the node.\n\u003c/p\u003e\n\n\u003cp\u003e\n\u003ci\u003etype\u003c/i\u003e is a type of nodes represented by a string (\u003cspan\u003eroot\u003c/span\u003e, \u003cspan\u003einternal node\u003c/span\u003e or \u003cspan\u003eleaf\u003c/span\u003e). If the root can be considered as a leaf or an internal node, print \u003cspan\u003eroot\u003c/span\u003e.\n\u003c/p\u003e\n\n\u003cp\u003e\n\u003ci\u003ec\u003c/i\u003e\u003csub\u003e1\u003c/sub\u003e...\u003ci\u003ec\u003csub\u003ek\u003c/sub\u003e\u003c/i\u003e is the list of children as a ordered tree.\n\u003c/p\u003e\n\n\n\u003cp\u003e\nPlease follow the format presented in a sample output below.\n\u003c/p\u003e\n\n\n\u003ch2\u003eConstraints\u003c/h2\u003e\n\n\u003cul\u003e\n\u003cli\u003e1 ≤ \u003ci\u003en\u003c/i\u003e ≤ 100000\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003ctable class\u003d\u0027vjudge_sample\u0027\u003e\n\u003cthead\u003e\n  \u003ctr\u003e\n    \u003cth\u003eInput\u003c/th\u003e\n    \u003cth\u003eOutput\u003c/th\u003e\n  \u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n  \u003ctr\u003e\n    \u003ctd\u003e\u003cpre\u003e13\n0 3 1 4 10\n1 2 2 3\n2 0\n3 0\n4 3 5 6 7\n5 0\n6 0\n7 2 8 9\n8 0\n9 0\n10 2 11 12\n11 0\n12 0\n\u003c/pre\u003e\u003c/td\u003e\n    \u003ctd\u003e\u003cpre\u003enode 0: parent \u003d -1, depth \u003d 0, root, [1, 4, 10]\nnode 1: parent \u003d 0, depth \u003d 1, internal node, [2, 3]\nnode 2: parent \u003d 1, depth \u003d 2, leaf, []\nnode 3: parent \u003d 1, depth \u003d 2, leaf, []\nnode 4: parent \u003d 0, depth \u003d 1, internal node, [5, 6, 7]\nnode 5: parent \u003d 4, depth \u003d 2, leaf, []\nnode 6: parent \u003d 4, depth \u003d 2, leaf, []\nnode 7: parent \u003d 4, depth \u003d 2, internal node, [8, 9]\nnode 8: parent \u003d 7, depth \u003d 3, leaf, []\nnode 9: parent \u003d 7, depth \u003d 3, leaf, []\nnode 10: parent \u003d 0, depth \u003d 1, internal node, [11, 12]\nnode 11: parent \u003d 10, depth \u003d 2, leaf, []\nnode 12: parent \u003d 10, depth \u003d 2, leaf, []\n\u003c/pre\u003e\u003c/td\u003e\n  \u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\n\n\n\u003ctable class\u003d\u0027vjudge_sample\u0027\u003e\n\u003cthead\u003e\n  \u003ctr\u003e\n    \u003cth\u003eInput\u003c/th\u003e\n    \u003cth\u003eOutput\u003c/th\u003e\n  \u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n  \u003ctr\u003e\n    \u003ctd\u003e\u003cpre\u003e4\n1 3 3 2 0\n0 0\n3 0\n2 0\n\u003c/pre\u003e\u003c/td\u003e\n    \u003ctd\u003e\u003cpre\u003enode 0: parent \u003d 1, depth \u003d 1, leaf, []\nnode 1: parent \u003d -1, depth \u003d 0, root, [3, 2, 0]\nnode 2: parent \u003d 1, depth \u003d 1, leaf, []\nnode 3: parent \u003d 1, depth \u003d 1, leaf, []\n\u003c/pre\u003e\u003c/td\u003e\n  \u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\n\n\u003ch2\u003eNote\u003c/h2\u003e\n\u003cp\u003e\nYou can use a \u003cb\u003eleft-child, right-sibling representation\u003c/b\u003e to implement a tree which has the following data:\n\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003ethe parent of \u003ci\u003eu\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003ethe leftmost child of \u003ci\u003eu\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003ethe immediate right sibling of \u003ci\u003eu\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c!--\n\u003cp\u003e\n\u003ca href\u003d\"template/ALDS1_7_A_template.c\"\u003eTemplate in C\u003c/a\u003e\n\u003c/p\u003e\n--\u003e\n\n\u003ch2\u003eReference\u003c/h2\u003e\n\n\u003cp\u003e\nIntroduction to Algorithms, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. The MIT Press.\n\u003c/p\u003e\n\n\n"}}]}</textarea>
+
+<script type="text/javascript">basePath = "";</script>
+<script type="module" src="./vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;cbda702c6a634090aafa4717574879a5&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+
+
+</body></html>

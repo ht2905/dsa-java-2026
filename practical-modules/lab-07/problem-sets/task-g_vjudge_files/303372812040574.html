@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)https://vjudge.net/problem/description/303372812040574?3541867177565 -->
+<html data-bs-theme="dark" style="color-scheme: dark;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title></title>
+    <script>
+  (function () {
+    try {
+      const storedTheme = localStorage.getItem('theme') || 'auto';
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const effectiveTheme = storedTheme === 'auto'
+          ? (prefersDark ? 'dark' : 'light')
+          : storedTheme;
+      document.documentElement.setAttribute('data-bs-theme', effectiveTheme);
+      document.documentElement.style.setProperty('color-scheme', effectiveTheme);
+    } catch (e) {
+    }
+  })();
+</script>
+
+<script defer="" src="./efa7d47ed567ce6ec4fd.js"></script><script defer="" src="./72f19044b39cee1af034.js"></script><script defer="" src="./a58f481315d7a9617f38.js"></script><script defer="" src="./28cd6113d3c0123fe077.js"></script><script defer="" src="./e146438a76820eb69ccd.js"></script><script defer="" src="./a563b3ccbe1d371400e9.js"></script><script defer="" src="./8a58156bda78b245f556.js"></script><script defer="" src="./e1efb8287e5d38513169.js"></script><link href="./e9dc855184be8526c1d6.css" rel="stylesheet"><link href="./1cc39c5f99ce0722b157.css" rel="stylesheet"><link href="./a2d6def48179e2e5097c.css" rel="stylesheet"></head>
+
+<body>
+<div class="container" id="description-container" dir="ltr" lang="en"><dd style="padding-top: 20px"><div style="padding: 0px 20px 20px;"><h1></h1>
+
+<p>
+  Write a program which reads two sequences of nodes obtained by the preorder tree walk and the inorder tree walk on a binary tree respectively, and prints a sequence of the nodes obtained by the postorder tree walk on the binary tree.
+</p>
+
+<h2>Input</h2>
+
+<p>
+  In the first line, an integer <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>, which is the number of nodes in the binary tree, is given.<br>
+  In the second line, the sequence of node IDs obtained by the preorder tree walk is given separated by space characters.<br>
+    In the second line, the sequence of node IDs obtained by the inorder tree walk is given separated by space characters.
+</p>
+
+<p>
+  Every node has a unique ID from <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">1</span></span></span></span></span> to <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>. Note that the root does not always correspond to <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">1</span></span></span></span></span>.
+</p>
+
+<h2>Output</h2>
+
+<p>
+Print the sequence of node IDs obtained by the postorder tree walk in a line. Put a single space character between adjacent IDs.
+</p>
+
+<h2>Constraints</h2>
+
+<ul>
+<li><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">1 \leq n \leq 40</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.7804em; vertical-align: -0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.7719em; vertical-align: -0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">40</span></span></span></span></span></li>
+</ul>
+
+<table class="vjudge_sample">
+<thead>
+  <tr>
+    <th>Input</th>
+    <th>Output</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><pre>5
+1 2 3 4 5
+3 2 4 1 5
+</pre><span class="sample-cell-copier">Copy</span></td>
+    <td><pre>3 4 2 5 1
+</pre><span class="sample-cell-copier">Copy</span></td>
+  </tr>
+</tbody>
+</table>
+
+
+
+<table class="vjudge_sample">
+<thead>
+  <tr>
+    <th>Input</th>
+    <th>Output</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><pre>4
+1 2 3 4
+1 2 3 4
+</pre><span class="sample-cell-copier">Copy</span></td>
+    <td><pre>4 3 2 1
+</pre><span class="sample-cell-copier">Copy</span></td>
+  </tr>
+</tbody>
+</table>
+
+</div></dd></div>
+<textarea class="data-json-container" style="display: none">{"lang":"en","trustable":true,"sections":[{"title":"","value":{"format":"HTML","content":"\u003ch1\u003e\u003c/h1\u003e\n\n\u003cp\u003e\n  Write a program which reads two sequences of nodes obtained by the preorder tree walk and the inorder tree walk on a binary tree respectively, and prints a sequence of the nodes obtained by the postorder tree walk on the binary tree.\n\u003c/p\u003e\n\n\u003ch2\u003eInput\u003c/h2\u003e\n\n\u003cp\u003e\n  In the first line, an integer $n$, which is the number of nodes in the binary tree, is given.\u003cbr\u003e\n  In the second line, the sequence of node IDs obtained by the preorder tree walk is given separated by space characters.\u003cbr\u003e\n    In the second line, the sequence of node IDs obtained by the inorder tree walk is given separated by space characters.\n\u003c/p\u003e\n\n\u003cp\u003e\n  Every node has a unique ID from $1$ to $n$. Note that the root does not always correspond to $1$.\n\u003c/p\u003e\n\n\u003ch2\u003eOutput\u003c/h2\u003e\n\n\u003cp\u003e\nPrint the sequence of node IDs obtained by the postorder tree walk in a line. Put a single space character between adjacent IDs.\n\u003c/p\u003e\n\n\u003ch2\u003eConstraints\u003c/h2\u003e\n\n\u003cul\u003e\n\u003cli\u003e$1 \\leq n \\leq 40$\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003ctable class\u003d\u0027vjudge_sample\u0027\u003e\n\u003cthead\u003e\n  \u003ctr\u003e\n    \u003cth\u003eInput\u003c/th\u003e\n    \u003cth\u003eOutput\u003c/th\u003e\n  \u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n  \u003ctr\u003e\n    \u003ctd\u003e\u003cpre\u003e5\n1 2 3 4 5\n3 2 4 1 5\n\u003c/pre\u003e\u003c/td\u003e\n    \u003ctd\u003e\u003cpre\u003e3 4 2 5 1\n\u003c/pre\u003e\u003c/td\u003e\n  \u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\n\n\n\u003ctable class\u003d\u0027vjudge_sample\u0027\u003e\n\u003cthead\u003e\n  \u003ctr\u003e\n    \u003cth\u003eInput\u003c/th\u003e\n    \u003cth\u003eOutput\u003c/th\u003e\n  \u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n  \u003ctr\u003e\n    \u003ctd\u003e\u003cpre\u003e4\n1 2 3 4\n1 2 3 4\n\u003c/pre\u003e\u003c/td\u003e\n    \u003ctd\u003e\u003cpre\u003e4 3 2 1\n\u003c/pre\u003e\u003c/td\u003e\n  \u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\n"}}]}</textarea>
+
+<script type="text/javascript">basePath = "";</script>
+<script type="module" src="./vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;cbda702c6a634090aafa4717574879a5&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+
+
+</body></html>

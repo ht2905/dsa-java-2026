@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)https://vjudge.net/problem/description/291627589837186?3540260457565 -->
+<html data-bs-theme="dark" style="color-scheme: dark;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title></title>
+    <script>
+  (function () {
+    try {
+      const storedTheme = localStorage.getItem('theme') || 'auto';
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const effectiveTheme = storedTheme === 'auto'
+          ? (prefersDark ? 'dark' : 'light')
+          : storedTheme;
+      document.documentElement.setAttribute('data-bs-theme', effectiveTheme);
+      document.documentElement.style.setProperty('color-scheme', effectiveTheme);
+    } catch (e) {
+    }
+  })();
+</script>
+
+<script defer="" src="./efa7d47ed567ce6ec4fd.js"></script><script defer="" src="./72f19044b39cee1af034.js"></script><script defer="" src="./a58f481315d7a9617f38.js"></script><script defer="" src="./28cd6113d3c0123fe077.js"></script><script defer="" src="./e146438a76820eb69ccd.js"></script><script defer="" src="./a563b3ccbe1d371400e9.js"></script><script defer="" src="./8a58156bda78b245f556.js"></script><script defer="" src="./e1efb8287e5d38513169.js"></script><link href="./e9dc855184be8526c1d6.css" rel="stylesheet"><link href="./1cc39c5f99ce0722b157.css" rel="stylesheet"><link href="./a2d6def48179e2e5097c.css" rel="stylesheet"></head>
+
+<body>
+<div class="container" id="description-container" dir="ltr" lang="en"><dd style="padding-top: 20px"><div style="padding: 0px 20px 20px;"><h1></h1>
+
+<p>
+Write a program which performs the following operations to a binary search tree <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6833em;"></span><span class="mord mathnormal" style="margin-right: 0.1389em;">T</span></span></span></span></span> by adding the find operation to A: Binary Search Tree I.
+</p>
+
+<ul>
+  <li><span>insert </span> <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6944em;"></span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span></span></span></span></span>: Insert a node containing <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6944em;"></span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span></span></span></span></span> as key into <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6833em;"></span><span class="mord mathnormal" style="margin-right: 0.1389em;">T</span></span></span></span></span>.</li>
+  <li><span>find </span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6944em;"></span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span></span></span></span></span>: Report whether <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6833em;"></span><span class="mord mathnormal" style="margin-right: 0.1389em;">T</span></span></span></span></span> has a node containing <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6944em;"></span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span></span></span></span></span>. </li>
+  <li><span>print</span>: Print the keys of the binary search tree by inorder tree walk and  preorder tree walk respectively.</li>
+</ul>
+
+
+<h2>Input</h2>
+
+<p>
+  In the first line, the number of operations <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span> is given. In the following <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span> lines, operations represented by <span>insert </span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6944em;"></span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span></span></span></span></span>, <span>find </span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6944em;"></span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span></span></span></span></span> or <span>print</span> are given.
+</p>
+
+
+<h2>Output</h2>
+
+<p>
+For each <span>find </span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6944em;"></span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span></span></span></span></span> operation, print "<span>yes</span>" if <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6833em;"></span><span class="mord mathnormal" style="margin-right: 0.1389em;">T</span></span></span></span></span> has a node containing <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6944em;"></span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span></span></span></span></span>, "<span>no</span>" if not.
+</p>
+
+<p>
+  In addition, for each <span>print</span> operation, print a list of keys obtained by inorder tree walk and preorder tree walk in a line respectively. Put a space character <u>before each key</u>.
+</p>
+
+<h2>Constraints</h2>
+
+<ul>
+  <li>The number of operations <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mn>500</mn><mo separator="true">,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">\leq 500,000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.7719em; vertical-align: -0.136em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.8389em; vertical-align: -0.1944em;"></span><span class="mord">500</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">000</span></span></span></span></span></li>
+<li>The number of print operations <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">\leq 10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.7719em; vertical-align: -0.136em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">10</span></span></span></span></span>.</li>
+  <li><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>2</mn><mo separator="true">,</mo><mn>000</mn><mo separator="true">,</mo><mn>000</mn><mo separator="true">,</mo><mn>000</mn><mo>≤</mo><mi>k</mi><mi>e</mi><mi>y</mi><mo>≤</mo><mn>2</mn><mo separator="true">,</mo><mn>000</mn><mo separator="true">,</mo><mn>000</mn><mo separator="true">,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">-2,000,000,000 \leq key \leq 2,000,000,000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.8389em; vertical-align: -0.1944em;"></span><span class="mord">−</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">000</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">000</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">000</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.8889em; vertical-align: -0.1944em;"></span><span class="mord mathnormal" style="margin-right: 0.0315em;">k</span><span class="mord mathnormal" style="margin-right: 0.0359em;">ey</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.8389em; vertical-align: -0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">000</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">000</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">000</span></span></span></span></span></li>
+  <li>The height of the binary tree does not exceed 100 if you employ the above pseudo code.</li>
+<li>The keys in the binary search tree are all different.</li>
+</ul>
+
+<table class="vjudge_sample">
+<thead>
+  <tr>
+    <th>Input</th>
+    <th>Output</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><pre>10
+insert 30
+insert 88
+insert 12
+insert 1
+insert 20
+find 12
+insert 17
+insert 25
+find 16
+print
+</pre><span class="sample-cell-copier">Copy</span></td>
+    <td><pre>yes
+no
+ 1 12 17 20 25 30 88
+ 30 12 1 20 17 25 88
+</pre><span class="sample-cell-copier">Copy</span></td>
+  </tr>
+</tbody>
+</table>
+
+
+<h2>Reference</h2>
+
+<p>
+Introduction to Algorithms, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. The MIT Press.
+</p>
+
+</div></dd></div>
+<textarea class="data-json-container" style="display: none">{"lang":"en","trustable":true,"sections":[{"title":"","value":{"format":"HTML","content":"\u003ch1\u003e\u003c/h1\u003e\n\n\u003cp\u003e\nWrite a program which performs the following operations to a binary search tree $T$ by adding the find operation to A: Binary Search Tree I.\n\u003c/p\u003e\n\n\u003cul\u003e\n  \u003cli\u003e\u003cspan\u003einsert \u003c/span\u003e $k$: Insert a node containing $k$ as key into $T$.\u003c/li\u003e\n  \u003cli\u003e\u003cspan\u003efind \u003c/span\u003e$k$: Report whether $T$ has a node containing $k$. \u003c/li\u003e\n  \u003cli\u003e\u003cspan\u003eprint\u003c/span\u003e: Print the keys of the binary search tree by inorder tree walk and  preorder tree walk respectively.\u003c/li\u003e\n\u003c/ul\u003e\n\n\n\u003ch2\u003eInput\u003c/h2\u003e\n\n\u003cp\u003e\n  In the first line, the number of operations $m$ is given. In the following $m$ lines, operations represented by \u003cspan\u003einsert \u003c/span\u003e$k$, \u003cspan\u003efind \u003c/span\u003e$k$ or \u003cspan\u003eprint\u003c/span\u003e are given.\n\u003c/p\u003e\n\n\n\u003ch2\u003eOutput\u003c/h2\u003e\n\n\u003cp\u003e\nFor each \u003cspan\u003efind \u003c/span\u003e$k$ operation, print \"\u003cspan\u003eyes\u003c/span\u003e\" if $T$ has a node containing $k$, \"\u003cspan\u003eno\u003c/span\u003e\" if not.\n\u003c/p\u003e\n\n\u003cp\u003e\n  In addition, for each \u003cspan\u003eprint\u003c/span\u003e operation, print a list of keys obtained by inorder tree walk and preorder tree walk in a line respectively. Put a space character \u003cu\u003ebefore each key\u003c/u\u003e.\n\u003c/p\u003e\n\n\u003ch2\u003eConstraints\u003c/h2\u003e\n\n\u003cul\u003e\n  \u003cli\u003eThe number of operations $\\leq 500,000$\u003c/li\u003e\n\u003cli\u003eThe number of print operations $\\leq 10$.\u003c/li\u003e\n  \u003cli\u003e$-2,000,000,000 \\leq key \\leq 2,000,000,000$\u003c/li\u003e\n  \u003cli\u003eThe height of the binary tree does not exceed 100 if you employ the above pseudo code.\u003c/li\u003e\n\u003cli\u003eThe keys in the binary search tree are all different.\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003ctable class\u003d\u0027vjudge_sample\u0027\u003e\n\u003cthead\u003e\n  \u003ctr\u003e\n    \u003cth\u003eInput\u003c/th\u003e\n    \u003cth\u003eOutput\u003c/th\u003e\n  \u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n  \u003ctr\u003e\n    \u003ctd\u003e\u003cpre\u003e10\ninsert 30\ninsert 88\ninsert 12\ninsert 1\ninsert 20\nfind 12\ninsert 17\ninsert 25\nfind 16\nprint\n\u003c/pre\u003e\u003c/td\u003e\n    \u003ctd\u003e\u003cpre\u003eyes\nno\n 1 12 17 20 25 30 88\n 30 12 1 20 17 25 88\n\u003c/pre\u003e\u003c/td\u003e\n  \u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\n\n\u003ch2\u003eReference\u003c/h2\u003e\n\n\u003cp\u003e\nIntroduction to Algorithms, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. The MIT Press.\n\u003c/p\u003e\n\n"}}]}</textarea>
+
+<script type="text/javascript">basePath = "";</script>
+<script type="module" src="./vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;cbda702c6a634090aafa4717574879a5&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+
+
+</body></html>
