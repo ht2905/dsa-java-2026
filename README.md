@@ -12,10 +12,11 @@ Undergraduate coursework, algorithm implementations, analytical reports, and pro
 
 ```text
 dsa-java-2026/
+├── final-project/             # Final project guidelines, topic catalog, and brainstorm plans
 ├── in-class-assignments/      # In-class algorithmic exercises and quizzes
 ├── lecture-slides/            # Official course theoretical slides
 ├── midterm-review/            # Comprehensive review guide, cheatsheets, and exam solutions
-├── practical-module/          # Laboratory specifications, implementations, and analytical reports
+├── practical-modules/         # Laboratory specifications, problem sets, implementations, and reports
 └── src/                       # Standalone algorithmic implementations
 ```
 
@@ -31,8 +32,12 @@ Overview of algorithmic techniques and complexity evaluations across the curricu
   Comparison counts and swap profiling across Bubble, Selection, and Insertion sorts; standard binary search with lower/upper bound variants; dynamic two-pointer and sliding window subarrays.
 - **Lab 03 – Abstract Data Types, Stacks, Queues & Monotonic Structures:**
   Dynamic resizing arrays with amortized $O(1)$ scaling; circular ring buffers; monotonic deques for sliding window extrema; monotonic stacks for Next Greater Element (NGE) evaluation; and LRU Cache combining hash maps with doubly linked lists.
-- **In-Class Assignments & Competitions:**
-  CLRS-aligned divide-and-conquer Merge Sort with sentinels, custom singly linked lists (`SLList`), and competitive programming greedy and prefix-sum evaluations.
+- **Lab 06 – Algorithmic Problem Solving (VJudge):**
+  Prefix sums, binary search on the answer, difference arrays, and greedy optimization problem sets.
+- **Lab 07 – Trees, Heaps & Graph/Tree Traversals:**
+  Complete binary trees, rooted trees, preorder/inorder/postorder tree walks, Binary Search Trees (insertion & search), priority queues, tree reconstruction, and tree parity/distance traversals.
+- **In-Class Assignments & Final Project:**
+  CLRS-aligned divide-and-conquer Merge Sort with sentinels, custom singly linked lists (`SLList`), session exercises, and final project design plans (`final-project/`).
 
 ---
 
@@ -64,12 +69,16 @@ Compile and run Java source files directly using `javac` and `java`:
 
 ```bash
 # Example: Run Lab 02 Problem 01 (Sorting comparison driver)
-javac practical-module/lab-02/src/Problem01_CalibrationOffsetOrdering.java practical-module/lab-02/src/SortUtils.java
-java -cp practical-module/lab-02/src Problem01_CalibrationOffsetOrdering
+javac practical-modules/lab-02/src/Problem01_CalibrationOffsetOrdering.java practical-modules/lab-02/src/SortUtils.java
+java -cp practical-modules/lab-02/src Problem01_CalibrationOffsetOrdering
 
 # Example: Run Lab 03 Problem 05 (Peak Passenger Window - Sliding Window Maximum)
-javac practical-module/lab-03/src/Problem05_PeakPassengerWindow.java
-java -cp practical-module/lab-03/src Problem05_PeakPassengerWindow
+javac practical-modules/lab-03/src/Problem05_PeakPassengerWindow.java
+java -cp practical-modules/lab-03/src Problem05_PeakPassengerWindow
+
+# Example: Run Lab 07 Problem A (Complete Binary Tree)
+javac practical-modules/lab-07/src/problem-a_complete-binary-tree/Main.java
+java -cp practical-modules/lab-07/src/problem-a_complete-binary-tree Main
 
 # Example: Run Lab 05 Quiz Problem 02 (Balance)
 javac in-class-assignments/lab-05-quiz/problem-02/Main.java
@@ -93,7 +102,7 @@ java -cp in-class-assignments/lab-05-quiz/problem-01 Main < input.txt
   Fast I/O patterns, IDE live templates, lambda comparators, and heap/map idioms.
 - **Exam Cheatsheets (`midterm-review/cheatsheets/4-column/`):**
   Calibrated 8-page 4-column Typst cheatsheets with algorithmic templates and reversal rules.
-- **Midterm Review Cheatsheets (`practical-module/docs/lab-04/`):**
+- **Midterm Review Cheatsheets (`practical-modules/docs/lab-04/`):**
   Summary reference sheets covering algorithm analysis and core data structures.
 - **Course Lecture Slides (`lecture-slides/`):**
   Curriculum slide presentations spanning computational complexity, linear collections, sorting algorithms, and recursion trees.
