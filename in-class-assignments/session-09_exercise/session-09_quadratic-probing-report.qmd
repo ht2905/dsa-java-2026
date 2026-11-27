@@ -1,0 +1,263 @@
+---
+title: "Session 09 Exercise: Product Inventory Management Using Quadratic Probing"
+subtitle: "IT013IU – Algorithms & Data Structures"
+author: "Tran Quoc Hoang (BTBTWE24036)"
+date: "2026-11-26"
+format:
+  typst:
+    papersize: a4
+    margin:
+      x: 1.8cm
+      y: 1.8cm
+    fontsize: 10pt
+    mainfont: "DejaVu Sans"
+    toc: false
+---
+
+```{=typst}
+#set par(justify: true, leading: 0.6em)
+#show table: set par(justify: false)
+#show table: set text(size: 9pt)
+#show heading.where(level: 1): it => {
+  v(0.7em)
+  block(sticky: true, text(fill: rgb("#1B365D"), weight: "bold", size: 12.5pt, it))
+  v(0.2em)
+}
+#show heading.where(level: 2): it => {
+  v(0.45em)
+  block(sticky: true, text(fill: rgb("#2C5282"), weight: "bold", size: 10.5pt, it))
+  v(0.15em)
+}
+
+#let hash_table(slots) = {
+  align(center)[
+    #set text(size: 7.5pt)
+    #table(
+      columns: (1fr,) * 13,
+      align: center + horizon,
+      inset: 4pt,
+      stroke: 0.5pt + rgb("#4A5568"),
+      fill: (x, y) => {
+        if y == 0 { rgb("#E2E8F0") }
+        else if slots.at(x) == "DELETED" { rgb("#FED7D7") }
+        else if slots.at(x) == "" { white }
+        else { rgb("#EBF8FF") }
+      },
+      ..range(13).map(i => strong(str(i))),
+      ..slots.map(v => if v == "" { text(fill: rgb("#A0AEC0"))[—] }
+                       else if v == "DELETED" { text(fill: rgb("#9B2C2C"), weight: "bold")[DEL] }
+                       else { v })
+    )
+  ]
+}
+```
+
+## Problem Overview
+
+A supermarket manages product records in an open-addressing hash table of size $m = 13$ (indices $0$ through $12$) using the division hash function and quadratic probing:
+
+$$h(k) = k \bmod 13, \qquad h(k, i) = \bigl(h(k) + i^2\bigr) \bmod 13 \quad (i = 0, 1, 2, 3, \dots)$$
+
+Six products arrive in order: `101` (Rice), `114` (Milk), `127` (Bread), `102` (Eggs), `140` (Coffee), and `115` (Orange Juice). Every answer below has been independently verified by standalone Java programs (`Main.java`) in the corresponding question subdirectories.
+
+---
+
+# Question 1. Product Insertion
+
+Each product is inserted sequentially into the initially empty table. On every collision, the probe step $i$ increments by $1$, jumping by $i^2 \bmod 13$ from the initial hash index.
+
+| Product ID | Product Name | Initial Hash $h(k)$ | Probing Sequence | Collisions | Final Index |
+| :--- | :--- | :---: | :--- | :---: | :---: |
+| `101` | Rice | 10 | `10` | 0 | **10** |
+| `114` | Milk | 10 | `10 → 11` | 1 | **11** |
+| `127` | Bread | 10 | `10 → 11 → 1` | 2 | **1** |
+| `102` | Eggs | 11 | `11 → 12` | 1 | **12** |
+| `140` | Coffee | 10 | `10 → 11 → 1 → 6` | 3 | **6** |
+| `115` | Orange Juice | 11 | `11 → 12 → 2` | 2 | **2** |
+
+: Quadratic probing insertion trace for the initial six products ($m = 13$). {#tbl-q1-trace tbl-colwidths="[12,18,16,28,13,13]"}
+
+**Final hash table after inserting all six products:**
+
+```{=typst}
+#hash_table((
+  "",
+  [*127*\ Bread],
+  [*115*\ Orange\ Juice],
+  "",
+  "",
+  "",
+  [*140*\ Coffee],
+  "",
+  "",
+  "",
+  [*101*\ Rice],
+  [*114*\ Milk],
+  [*102*\ Eggs],
+))
+```
+
+---
+
+# Question 2. Product Search
+
+Searching follows the identical probe sequence $h(k, i) = (h(k) + i^2) \bmod 13$ until the target product ID is matched or an `EMPTY` slot is encountered.
+
+| Product ID | $h(k)$ | Probing Sequence | Probes | Search Result |
+| :--- | :---: | :--- | :---: | :--- |
+| `127` | 10 | `10 → 11 → 1` | 3 | **Successful** — Found `127 (Bread)` at index 1 |
+| `140` | 10 | `10 → 11 → 1 → 6` | 4 | **Successful** — Found `140 (Coffee)` at index 6 |
+| `166` | 10 | `10 → 11 → 1 → 6 → 0` | 5 | **Unsuccessful** — Reached `EMPTY` slot at index 0 |
+
+: Search trace for products `127`, `140`, and `166`. {#tbl-q2-search tbl-colwidths="[11,8,28,9,44]"}
+
+**Explanation of results:**
+
+- **`127` (Bread):** $127 \bmod 13 = 10$. Index `10` holds `101` and index `11` holds `114`; on the third probe ($i = 2$, $(10 + 4) \bmod 13 = 1$), `127` is found.
+- **`140` (Coffee):** $140 \bmod 13 = 10$. Probes at indices `10`, `11`, and `1` contain other keys; on the fourth probe ($i = 3$, $(10 + 9) \bmod 13 = 6$), `140` is found.
+- **`166` (Absent):** $166 \bmod 13 = 10$. After checking occupied slots `10`, `11`, `1`, and `6`, the fifth probe ($i = 4$, $(10 + 16) \bmod 13 = 0$) lands on an `EMPTY` slot. Because no deletions have occurred, an `EMPTY` slot guarantees `166` was never inserted, terminating the search.
+
+---
+
+# Question 3. Product Deletion
+
+Product `114` (Milk) is located via `10 -> 11` and removed by placing a special `DELETED` (tombstone) marker at index `11`.
+
+## (a) Hash Table After Deleting Product `114`
+
+```{=typst}
+#hash_table((
+  "",
+  [*127*\ Bread],
+  [*115*\ Orange\ Juice],
+  "",
+  "",
+  "",
+  [*140*\ Coffee],
+  "",
+  "",
+  "",
+  [*101*\ Rice],
+  "DELETED",
+  [*102*\ Eggs],
+))
+```
+
+## (b) Probing Sequence When Searching for Product `127` After Deletion
+
+- $h(127) = 127 \bmod 13 = 10$.
+- $i = 0 \to$ index `10`: contains `101` (not a match).
+- $i = 1 \to$ index `11`: contains `DELETED` (skip and continue probing).
+- $i = 2 \to$ index `1`: contains `127 (Bread)` (**Found**).
+- **Probing sequence:** `10 -> 11 -> 1` (3 probes, successful).
+
+## (c) Effect of Marking Index `11` as `EMPTY` Instead of `DELETED`
+
+If index `11` were reset to `EMPTY`, searching for `127` would probe index `10` (`101`), then index `11` (`EMPTY`), and **terminate prematurely**, falsely reporting that `127` is not in the table even though it is still stored at index `1`. The same failure would also break searches for `140` (at index `6`), `102` (at index `12`, whose probe chain starts at `11`), and `115` (at index `2`, whose probe chain also starts at `11`).
+
+## (d) Why a Special Deletion Marker Is Necessary
+
+Open-addressing search relies on the invariant that every slot preceding a stored key along its probe sequence was non-empty at insertion time; therefore, hitting `EMPTY` proves the key does not exist further down the chain. Setting a deleted slot to `EMPTY` violates this invariant and severs any probe chain passing through that slot. A `DELETED` marker distinguishes "vacated" from "never occupied": search skips over `DELETED` slots to preserve probe chains, while subsequent insertions may safely reclaim them.
+
+---
+
+# Question 4. Inserting a New Product (`153`, Green Tea)
+
+## (a) Initial Hash Index of Product `153`
+
+$$h(153) = 153 \bmod 13 = 153 - 11 \times 13 = 10$$
+
+## (b) Probing Sequence and Final Insertion Position
+
+Because duplicate product IDs are **not** allowed, the insertion algorithm remembers the first `DELETED` slot it sees (`index 11`) but continues probing until it reaches an `EMPTY` slot to confirm `153` is not already stored later in the probe chain:
+
+- $i = 0 \to$ index `10`: `101` (occupied, $\neq 153$)
+- $i = 1 \to$ index `11`: `DELETED` (record `firstDeleted = 11`, keep probing to check for duplicates)
+- $i = 2 \to$ index `1`: `127` (occupied, $\neq 153$)
+- $i = 3 \to$ index `6`: `140` (occupied, $\neq 153$)
+- $i = 4 \to$ index `0`: `EMPTY` (confirms `153` is not a duplicate; stop probing)
+
+- **Duplicate-safe probing sequence:** `10 -> 11 (DELETED, saved) -> 1 -> 6 -> 0 (EMPTY)`
+- **Final insertion position:** **index `11`** (reusing the previously deleted slot).
+
+## (c) Can the Previously Deleted Position Be Reused Without Duplicates?
+
+**Yes.** The `DELETED` slot at index `11` can be safely reused **provided** the algorithm does not stop at `DELETED` immediately. By continuing to probe until `EMPTY` (index `0`) is reached—or until the probe sequence completes—the algorithm guarantees that `153` is not already present at index `1` or `6`. Only after confirming absence does it write `153 (Green Tea)` into the remembered `DELETED` slot at index `11`, avoiding both duplicate keys and unnecessary probe-chain growth.
+
+## (d) Updated Hash Table After Inserting Product `153`
+
+```{=typst}
+#hash_table((
+  "",
+  [*127*\ Bread],
+  [*115*\ Orange\ Juice],
+  "",
+  "",
+  "",
+  [*140*\ Coffee],
+  "",
+  "",
+  "",
+  [*101*\ Rice],
+  [*153*\ Green\ Tea],
+  [*102*\ Eggs],
+))
+```
+
+---
+
+# Question 5. Load Factor and Limitations
+
+The load factor is $\alpha = n / m$, where $n$ is the number of **active** records (`OCCUPIED` slots, excluding `DELETED` tombstones) and $m = 13$.
+
+## (a)–(c) Load Factor Calculations
+
+| Stage | Active ($n$) | Size ($m$) | Exact ($\alpha = n/m$) | Decimal / Percentage |
+| :--- | :---: | :---: | :---: | :---: |
+| **(a)** After inserting original 6 products | 6 | 13 | $6 / 13$ | $0.4615$ ($46.15\%$) |
+| **(b)** After deleting product `114` | 5 | 13 | $5 / 13$ | $0.3846$ ($38.46\%$) |
+| **(c)** After inserting product `153` | 6 | 13 | $6 / 13$ | $0.4615$ ($46.15\%$) |
+
+: Load factor progression across operations ($m = 13$). {#tbl-q5-load tbl-colwidths="[40,12,11,16,21]"}
+
+## (d) Primary Clustering vs. Secondary Clustering
+
+- **Why quadratic probing reduces primary clustering:** In linear probing ($h(k, i) = (h(k) + i) \bmod m$), colliding keys are placed in immediately adjacent slots, causing keys with *different* initial hashes to coalesce into long contiguous blocks (primary clusters) that grow rapidly. Quadratic probing uses non-linear jumps ($+1, +4, +9, +16, \dots \bmod m$), dispersing colliding keys across the table so keys with different initial hashes do not merge into a single contiguous block.
+- **Why secondary clustering still occurs:** The probe offset $i^2 \bmod m$ depends *only* on the probe step $i$, not on the key $k$. Therefore, any distinct keys sharing the same initial hash value $h(k_1) = h(k_2)$—such as `101`, `114`, `127`, `140`, and `153`, all hashing to `10`—traverse the **exact same probe sequence** (`10 -> 11 -> 1 -> 6 -> 0 -> 9 -> 7`). This collision along identical probe trajectories is **secondary clustering** (which can be eliminated using double hashing).
+
+## (e) Can Quadratic Probing Fail to Insert Even When Empty Slots Exist?
+
+**Yes.** Because $i^2 \bmod m$ only generates the **quadratic residues** modulo $m$, a probe sequence does not visit all $m$ table indices. For a prime table size $m = 13$, $(m - i)^2 \equiv i^2 \pmod{13}$ causes offsets to repeat symmetrically after $i = 6$:
+
+$$\{i^2 \bmod 13 : i \ge 0\} = \{0, 1, 4, 9, 3, 12, 10\}$$
+
+Thus, from any initial hash—for example $h(k) = 10$—quadratic probing can visit at most $\frac{m + 1}{2} = 7$ distinct slots:
+
+- **Reachable slots (7):** `{10, 11, 1, 6, 0, 9, 7}`
+- **Unreachable slots (6):** `{2, 3, 4, 5, 8, 12}`
+
+Once those 7 reachable slots are occupied ($\alpha = 7/13 \approx 53.85\%$), inserting an 8th key with $h(k) = 10$ **fails** even though **6 empty slots** remain in the table. In general, for prime $m$, quadratic probing guarantees finding an empty slot only when $\alpha \le 0.5$ ($n \le \lfloor m/2 \rfloor$).
+
+---
+
+# Implementation & Complexity Summary
+
+Each problem is implemented as a standalone, zero-dependency Java program (`Main.java`) inside `in-class-assignments/session-09_exercise/`:
+
+| Directory | Problem Covered | Time Complexity | Space |
+| :--- | :--- | :--- | :---: |
+| `question-01_product-insertion/` | Q1: Sequential insertion & table trace | $O(1)$ exp. / $O(m)$ worst | $O(m)$ |
+| `question-02_product-search/` | Q2: Search traces for `127`, `140`, `166` | $O(1)$ exp. / $O(m)$ worst | $O(m)$ |
+| `question-03_product-deletion/` | Q3: `DELETED` vs. broken `EMPTY` | $O(1)$ exp. / $O(m)$ worst | $O(m)$ |
+| `question-04_inserting-new-product/` | Q4: Duplicate-safe insert of `153` | $O(1)$ exp. / $O(m)$ worst | $O(m)$ |
+| `question-05_load-factor-and-limitations/` | Q5: Load factors, clustering & failure | $O(m)$ simulation | $O(m)$ |
+
+: Summary of Java implementations and asymptotic complexities ($m = 13$). {#tbl-impl tbl-colwidths="[36,33,22,9]"}
+
+**Verification command (run from the repository root):**
+
+```bash
+for dir in in-class-assignments/session-09_exercise/question-*; do
+  javac "$dir/Main.java" && java -cp "$dir" Main
+done
+```
